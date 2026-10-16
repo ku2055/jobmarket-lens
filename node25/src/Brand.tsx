@@ -4,6 +4,7 @@ import {
   Network,
   ShieldCheck,
   LockKeyhole,
+  Box,
 } from "lucide-react";
 import type { Workspace } from "./types";
 export function Brand() {
@@ -57,6 +58,17 @@ export function Header({
             </a>
           );
         })}
+        <a
+          href="/spatial"
+          aria-current={
+            location.pathname.replace(/\/$/, "") === "/spatial"
+              ? "page"
+              : undefined
+          }
+        >
+          <Box size={15} />
+          Spatial Lab
+        </a>
       </nav>
       <div className="header-links">
         <a

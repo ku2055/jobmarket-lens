@@ -1,0 +1,82 @@
+{
+  "datasetVersion": "2d18d6d0d99a370a7ebc6a7d0d637cbca917682b504110427727ba76a339041b",
+  "measuredAt": "2026-10-16T18:34:35.992Z",
+  "scope": "Local development HTTP service, sequential requests to an already warm process. Scene cache may be populated; not cold service, production p95, GPU or physical-device evidence. Five samples per lens; gzip measured offline.",
+  "results": [
+    {
+      "lens": "demand_shelves",
+      "matched": 82851,
+      "analysis": 82851,
+      "jsonBytes": 159188,
+      "gzipBytes": 22479,
+      "samplesMs": [
+        31.207607999999993,
+        16.11466200000001,
+        18.412461000000008,
+        18.995115999999996,
+        14.705976000000021
+      ],
+      "coverage": {
+        "total": 82851,
+        "shownGroups": 462,
+        "qualifyingGroups": 462,
+        "omittedGroups": 0,
+        "representedPostings": 82851,
+        "omittedContributors": 0,
+        "completionStatus": "complete",
+        "possibleCells": 736
+      }
+    },
+    {
+      "lens": "coverage_cube",
+      "matched": 82851,
+      "analysis": 82851,
+      "jsonBytes": 125768,
+      "gzipBytes": 22280,
+      "samplesMs": [
+        16.71383800000001,
+        21.559361000000024,
+        21.206332999999972,
+        21.619011999999998,
+        14.520310999999992
+      ],
+      "coverage": {
+        "total": 82851,
+        "shownGroups": 311,
+        "qualifyingGroups": 311,
+        "omittedGroups": 0,
+        "representedPostings": 82851,
+        "omittedContributors": 0,
+        "completionStatus": "complete"
+      }
+    },
+    {
+      "lens": "skill_neighborhood",
+      "matched": 82851,
+      "analysis": 82851,
+      "jsonBytes": 35047,
+      "gzipBytes": 10711,
+      "samplesMs": [
+        11.644047,
+        7.737297000000012,
+        7.973222999999962,
+        6.815335000000061,
+        7.353548000000046
+      ],
+      "coverage": {
+        "total": 82851,
+        "shownGroups": 40,
+        "qualifyingGroups": 57,
+        "omittedGroups": 17,
+        "representedPostings": 80784,
+        "omittedContributors": 2067,
+        "completionStatus": "complete",
+        "shownEdges": 120,
+        "qualifyingEdges": 1109,
+        "omittedEdges": 989,
+        "contributorCoverageBasis": "union of shown node mentions",
+        "edgeScope": "anchor plus all threshold-qualified neighbors before node/edge caps"
+      }
+    }
+  ]
+}

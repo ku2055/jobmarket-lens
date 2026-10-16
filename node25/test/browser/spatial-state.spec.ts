@@ -1,0 +1,146 @@
+import { test, expect } from "@playwright/test";
+
+test("saved studies recompute frozen counts, restore exact selectors and reject stale releases", async ({
+  page,
+}) => {
+  const catalog = await (await page.request.get("/api/catalog")).json();
+  const sceneRequest = {
+    protocolVersion: "2.5.1",
+    datasetVersion: catalog.datasetVersion,
+    requestId: "study-contract",
+    sourceMode: "local",
+    filter: { availability: "all" },
+    lens: "demand_shelves",
+    basis: "posting_inventory",
+  };
+  const scene = await (
+    await page.request.post("/api/spatial", { data: sceneRequest })
+  ).json();
+  const cell = scene.data.cells.find((c: { count: number }) => c.count > 0);
+  const request = {
+    sceneRequest: scene.sceneRequest,
+    sceneQueryHash: scene.queryHash,
+    selection: { kind: "cell_union", cellIds: [cell.id] },
+  };
+  const study = {
+    version: "2.5.1",
+    datasetVersion: catalog.datasetVersion,
+    mode: "local",
+    filter: { availability: "all" },
+    lens: "demand_shelves",
+    basis: "recorded_mentions",
+    focusSkillId: catalog.skills[0].id,
+    support: 20,
+    shelf: "All arrangements",
+    committed: request,
+    a: {
+      label: "Untrusted cached value",
+      request,
+      count: 999999,
+      hash: "0".repeat(64),
+    },
+    b: null,
+  };
+  await page.goto("/spatial");
+  await expect(page.locator(".spatial-release")).toContainText(
+    "82,851 matching",
+  );
+  const input = page.getByLabel("Restore full study JSON");
+  await input.setInputFiles({
+    name: "study.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(study)),
+  });
+  await expect(
+    page.getByText("Study restored after server validation.", { exact: false }),
+  ).toBeVisible();
+  await expect(page.getByLabel("Source basis")).toHaveValue("local");
+  await expect(page.locator(".spatial-applied strong")).toHaveText(
+    cell.count.toLocaleString("en-US"),
+  );
+  await expect(
+    page.locator(".spatial-cohort-cards > div").first().locator("strong"),
+  ).toHaveText(cell.count.toLocaleString("en-US"));
+  const download = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Save full study" }).click();
+  const stream = await (await download).createReadStream();
+  const chunks: Buffer[] = [];
+  for await (const chunk of stream!) chunks.push(Buffer.from(chunk));
+  const saved = JSON.parse(Buffer.concat(chunks).toString("utf8"));
+  expect(saved.mode).toBe("local");
+  expect(saved.a.count).toBe(cell.count);
+  expect(saved.a.hash).not.toBe(study.a.hash);
+  expect(saved.committed.selection).toEqual(request.selection);
+  expect(saved.a.request.sceneQueryHash).toBe(scene.queryHash);
+  await input.setInputFiles({
+    name: "stale.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(
+      JSON.stringify({ ...study, datasetVersion: "0".repeat(64) }),
+    ),
+  });
+  await expect(
+    page.getByText(
+      "Study is invalid or uses an unavailable release. No cohorts were changed.",
+    ),
+  ).toBeVisible();
+  await expect(page.locator(".spatial-applied strong")).toHaveText(
+    cell.count.toLocaleString("en-US"),
+  );
+});
+
+test("isolated shelf lasso selects the complete orthographic population only after Apply", async ({
+  page,
+}) => {
+  await page.goto("/spatial");
+  await expect(page.locator(".spatial-release")).toContainText(
+    "82,851 matching",
+  );
+  await page.getByLabel("Arrangement layer").selectOption("Remote");
+  await page.getByRole("button", { name: "Lasso isolated layer" }).click();
+  const svg = page.getByRole("img", {
+    name: "Isolated shelf lasso. Keyboard equivalent: exact group list below.",
+  });
+  await expect(svg).toBeVisible();
+  await svg.scrollIntoViewIfNeeded();
+  const expected = await svg
+    .locator("circle title")
+    .evaluateAll((titles) =>
+      titles.reduce(
+        (sum, title) =>
+          sum + Number(title.textContent?.split(": ").at(-1) || 0),
+        0,
+      ),
+    );
+  expect(expected).toBeGreaterThan(0);
+  const box = (await svg.boundingBox())!;
+  const points = [
+    [0.085, 0.065],
+    [0.975, 0.065],
+    [0.975, 0.89],
+    [0.085, 0.89],
+    [0.085, 0.065],
+  ];
+  await page.mouse.move(
+    box.x + points[0][0] * box.width,
+    box.y + points[0][1] * box.height,
+  );
+  await page.mouse.down();
+  for (const [x, y] of points.slice(1))
+    await page.mouse.move(box.x + x * box.width, box.y + y * box.height, {
+      steps: 8,
+    });
+  await page.mouse.up();
+  await expect(page.locator(".spatial-applied strong")).toHaveText("—");
+  const response = page.waitForResponse(
+    (r) =>
+      r.url().includes("/api/spatial/selection") &&
+      r.request().method() === "POST",
+  );
+  await page.getByRole("button", { name: "Apply selection" }).click();
+  const selection = await (await response).json();
+  expect(selection.matchedCount).toBe(expected);
+  await expect(page.locator(".spatial-applied strong")).toHaveText(
+    expected.toLocaleString("en-US"),
+  );
+});

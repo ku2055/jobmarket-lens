@@ -15,9 +15,9 @@ under the existing user instruction until that scope is explicitly changed. V2.5
 comparison application on `feat/v2.5-node-canvas`, including protected administration, aggregate
 visitor analytics, collection statistics, logo/style design and a separate deployment. Preserve V2
 at `jobmarket.feedos.si`; V2.5 targets `lens.feedos.si`. The video team may submit a future PR;
-reserve integration boundaries but do not implement video features now. V2.5.1 is authorized for
-design/research of 3D analysis only on `design/v2.5.1-spatial-analysis`; do not install 3D dependencies,
-implement new runtime lenses or replace deployments without a later implementation instruction. A request to implement V2
+reserve integration boundaries but do not implement video features now. V2.5.1 is now authorized for implementation on `feat/v2.5.1-spatial-lab` using the approved
+spatial-analysis design, with an isolated preview and preserved V2/V2.5 public deployments. V2.6 is
+authorized for a separate 3D design based on V2.5.1; it remains design only. A request to implement V2
 does not authorize V3 API integration, profile collection or purchases.
 
 Keep the existing V1 GitHub Pages deployment intact while V2 is built separately. Vercel is the V2

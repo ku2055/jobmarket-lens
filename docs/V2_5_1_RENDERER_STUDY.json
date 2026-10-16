@@ -1,0 +1,67 @@
+{
+  "measuredAt": "2026-10-16T18:30:23.331Z",
+  "scope": "Single sequential headless Chromium run on local software WebGL; development server; same actual default-open aggregate cells; setup includes JS renderer creation after module imports, excludes network. Render submit is CPU walltime, not GPU frame rate. No physical mobile, user task or whole-browser memory claim.",
+  "results": [
+    {
+      "type": "three",
+      "dataset": "2d18d6d0d99a370a7ebc6a7d0d637cbca917682b504110427727ba76a339041b",
+      "groups": 462,
+      "count": 82851,
+      "setupMs": 85,
+      "submitMedianMs": 0.3000001907348633,
+      "submitP95Ms": 1.6999998092651367,
+      "picking100Ms": 30.200000762939453,
+      "renderer": "WebKit WebGL",
+      "errors": []
+    },
+    {
+      "type": "deck",
+      "dataset": "2d18d6d0d99a370a7ebc6a7d0d637cbca917682b504110427727ba76a339041b",
+      "groups": 462,
+      "count": 82851,
+      "setupMs": 184.30000019073486,
+      "submitMedianMs": 1.3000001907348633,
+      "submitP95Ms": 3.8000001907348633,
+      "picking100Ms": 1409.5999994277954,
+      "renderer": "WebKit WebGL",
+      "errors": []
+    }
+  ],
+  "productionBuild": {
+    "tool": "Vite 6.4.4, single shared multi-page build",
+    "note": "Entry chunk sizes exclude shared aggregate data/module-preload and possible deck dynamic expression chunks. Actual application R3F chunk measured separately.",
+    "artifacts": [
+      {
+        "name": "deck-m0tKaSHC.js",
+        "bytes": 741329,
+        "gzipBytes": 210017
+      },
+      {
+        "name": "expression-Bl_GL2tO.js",
+        "bytes": 1188,
+        "gzipBytes": 513
+      },
+      {
+        "name": "index-CJ7a9Yny.js",
+        "bytes": 16706,
+        "gzipBytes": 4975
+      },
+      {
+        "name": "index-DRbHzR6j.js",
+        "bytes": 18994,
+        "gzipBytes": 6650
+      },
+      {
+        "name": "shared-BNGQj9Qo.js",
+        "bytes": 34832,
+        "gzipBytes": 3358
+      },
+      {
+        "name": "three-DTowhrKv.js",
+        "bytes": 519392,
+        "gzipBytes": 130476
+      }
+    ]
+  },
+  "decision": "Use Three/R3F for initial bounded custom scenes: smaller core-renderer entry and lower measured CPU submission cost in this single software-WebGL run. No general claim of better GPU frame rate or analyst task performance. Keep 2D default and defer human-task acceptance."
+}

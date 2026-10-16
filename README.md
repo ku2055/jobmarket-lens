@@ -193,3 +193,15 @@ the deployed site remains a limited preview until explicitly refreshed.
 [Three.js / spatial-analysis proposal](docs/V2_5_1_3D_ANALYSIS_DESIGN.md) and its
 [concept board](docs/v2-5-1-spatial-analysis.svg) explore demand shelves, evidence coverage and
 focused skill relationships. This is design only; both deployed versions remain unchanged.
+
+## V2.5.1 implementation and V2.6 design
+
+The optional Node [Spatial Lab API contract](node25/shared/SPATIAL_CONTRACT.md) extends V2.5 with
+aggregate demand shelves, evidence coverage and focused recorded-skill neighborhoods. It is built on a
+separate feature branch for preview; the public V2/V2.5 baselines remain separate deployments.
+[Renderer study](docs/V2_5_1_RENDERER_STUDY.json) and
+[local API measurements](docs/V2_5_1_API_MEASUREMENTS.json) state their measurement limits.
+
+[V2.6 linked spatial investigations](docs/V2_6_LINKED_3D_DESIGN.md) and its
+[concept board](docs/v2-6-linked-investigations.svg) are design only: synchronized A/B views, coverage
+intersections and source-pair evidence. Historical trajectories require genuine saved releases.

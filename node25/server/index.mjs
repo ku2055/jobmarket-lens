@@ -20,9 +20,15 @@ http
   .createServer(async (req, res) => {
     if (req.url.startsWith("/api/")) return handler(req, res);
     const pathname = decodeURI(new URL(req.url, "http://local").pathname),
-      route = ["/", "/canvas", "/skills", "/evidence", "/admin"].includes(
-        pathname,
-      ),
+      route = [
+        "/",
+        "/canvas",
+        "/skills",
+        "/evidence",
+        "/admin",
+        "/spatial",
+        "/spatial/",
+      ].includes(pathname),
       p = route ? resolve(root, "index.html") : resolve(root, "." + pathname);
     if (!p.startsWith(root + "/")) {
       res.statusCode = 404;

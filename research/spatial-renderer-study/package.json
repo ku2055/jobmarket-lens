@@ -1,0 +1,17 @@
+{
+  "name": "jobmarket-spatial-renderer-study",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4188",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@deck.gl/core": "9.4.0",
+    "@deck.gl/layers": "9.4.0",
+    "three": "0.186.1"
+  },
+  "devDependencies": {
+    "vite": "6.4.4"
+  }
+}
