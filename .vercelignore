@@ -1,0 +1,16 @@
+# CLI deployments run from the repository root; only the V2 project is uploaded.
+*
+!frontend
+!frontend/**
+frontend/node_modules
+frontend/node_modules/**
+frontend/dist
+frontend/dist/**
+frontend/playwright-report
+frontend/playwright-report/**
+frontend/test-results
+frontend/test-results/**
+frontend/.vercel
+frontend/.vercel/**
+frontend/.env
+frontend/.env.*

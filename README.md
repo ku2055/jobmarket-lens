@@ -4,7 +4,9 @@ Explore global postings from covered S&P 500 employers using official career sit
 This development branch starts its **own local collection history**. It needs no access to
 `yimizhao2015/jobmarket-lens-data`, GitHub token, or paid data provider.
 
-Live preview: https://liyue2055.github.io/jobmarket-lens/
+V2 live: https://jobmarket.feedos.si
+
+V1 baseline: https://liyue2055.github.io/jobmarket-lens/
 
 Public code: https://github.com/liyue2055/jobmarket-lens
 
@@ -16,8 +18,8 @@ Original project: https://github.com/yimizhao2015/jobmarket-lens
 
 A separate React/TypeScript application lives in [`frontend/`](frontend/README.md). It provides
 Explore, Compare, Skills and Evidence over a pinned, sanitized 86,190-posting combined release.
-The existing GitHub Pages site remains the V1 baseline. V2 targets a separate Vercel project;
-no Vercel deployment has been made by building this branch.
+The existing GitHub Pages site remains the V1 baseline. V2 is deployed separately on Vercel at
+https://jobmarket.feedos.si. See the [deployment record](docs/V2_DEPLOYMENT.md) for live checks and release operations.
 
 ```sh
 cd frontend
