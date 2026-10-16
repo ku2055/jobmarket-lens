@@ -1,0 +1,89 @@
+{
+  "checkedOn": "2026-10-16",
+  "productionUrl": "https://lens.feedos.si",
+  "v2Url": "https://jobmarket.feedos.si",
+  "sourceCommit": "7297d617c4c12e234de41d18a027d467db856b3c",
+  "deploymentId": "dpl_HyQTbKsHgMEXvtiWwfHmGT6pK68A",
+  "datasetVersion": "2d18d6d0d99a370a7ebc6a7d0d637cbca917682b504110427727ba76a339041b",
+  "nodeTestsPassed": 30,
+  "ciBrowserTestsPassed": 9,
+  "liveBrowser": {
+    "startTime": "2026-10-16T17:52:04.718Z",
+    "duration": 50321.037000000004,
+    "expected": 8,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "liveApiAndExport": {
+    "url": "https://lens.feedos.si",
+    "datasetVersion": "2d18d6d0d99a370a7ebc6a7d0d637cbca917682b504110427727ba76a339041b",
+    "checkedAt": "2026-10-16T17:43:02Z",
+    "modes": [
+      {
+        "mode": "combined",
+        "count": 86190,
+        "eligiblePay": 28246,
+        "responseBytes": 14719,
+        "elapsedSeconds": 0.2,
+        "serverMs": 139
+      },
+      {
+        "mode": "upstream",
+        "count": 86144,
+        "eligiblePay": 28246,
+        "responseBytes": 14721,
+        "elapsedSeconds": 0.22,
+        "serverMs": 135
+      },
+      {
+        "mode": "local",
+        "count": 92,
+        "eligiblePay": 3,
+        "responseBytes": 9133,
+        "elapsedSeconds": 0.07,
+        "serverMs": 24
+      }
+    ],
+    "routePrivacyChecks": true,
+    "admin": {
+      "authenticated": true,
+      "secureThreeHourCookie": true,
+      "historicalRuns": 7,
+      "collectionScheduled": false,
+      "analyticsSource": "Umami (self-hosted, open source)",
+      "analyticsConfigured": false
+    },
+    "fullExport": {
+      "rows": 86190,
+      "columns": 37,
+      "eligibleUsdPay": 28246,
+      "exactV2IdSet": true,
+      "contributorHashMatches": true,
+      "decodedBytes": 111540525,
+      "elapsedSeconds": 10.08,
+      "transferEncoding": "chunked"
+    }
+  },
+  "finalDeploymentSmoke": {
+    "checkedAt": "2026-10-16T17:49:26Z",
+    "url": "https://lens.feedos.si",
+    "sourceCommit": "7297d617c4c12e234de41d18a027d467db856b3c",
+    "datasetVersion": "2d18d6d0d99a370a7ebc6a7d0d637cbca917682b504110427727ba76a339041b",
+    "authenticatedAdminAndLogout": true,
+    "legacyRuns": 7,
+    "umamiConfigured": false,
+    "v2Unchanged": true
+  },
+  "evidenceScope": [
+    "Full 86190-row/37-column export and earlier API checks ran on6cf7afc. Backend, scripts and stores are unchanged in7297d61.",
+    "Final8livebrowserchecks ran on7297d61. Fixture-passwordowner test skippedlive; actualowner login/Secure3hcookie/history/logout independently verified.",
+    "Umamiadapter verified against documented API-shape fixtures. Liveprovider remainsunconfigured; no VercelAnalytics dependency or tracker."
+  ],
+  "limitations": [
+    "No physical mobile/throttled-network or whole-browser peak-memory benchmark.",
+    "One sequential performance comparison with warm/uncontrolled origin caches, not a universal latency guarantee.",
+    "No scheduled Node collection or paid provider enabled.",
+    "Paired rollback documented but not exercised."
+  ]
+}

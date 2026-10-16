@@ -24,12 +24,17 @@ a five-second interactive interrupt and a 2 MB JSON result budget.
 The first contract uses flat, bounded conjunctive filters, rather than the proposal's nested predicate
 tree. Dimension lists are OR selections, different dimensions are AND, and selected skills require
 all selected IDs. Country and skill membership use list predicates to avoid join multiplication.
-Records are stable-ID pages of at most 100. CSV is a separate server stream. The first client uses a
+Records are stable-ID pages of at most 100. CSV is a separate server stream with the same 37 public fields as V2, including qualification, skill,
+pay and provenance metadata. The first client uses a
 typed React request coordinator with abort/stale-response guards; Mosaic compatibility and an optional
 Wasm/offline engine are not claimed or shipped. This keeps client queries within the named semantic
 contract while the native-service experiment is measured. Contributor hashes include
 the dataset, source mode, metric version and sorted distinct ID set. Frozen comparison filters are
 pinned to the same immutable dataset and source mode; mode changes invalidate pins visibly.
+
+For same-data parity, the initial wire amounts retain V2 finite numeric bounds and explicit currency/
+period units. Arbitrary SQL DECIMAL/BigInt wire amounts and Arrow encoding are not implemented or
+advertised as exact decimal interchange.
 
 The Node pipeline owns original pinned CSV/typed-supplement intake, public normalization, exact merge
 and Parquet publication. The sanitized local snapshot is a migration input. Read-only SQLite migration

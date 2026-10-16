@@ -1,7 +1,7 @@
 # JobMarket Lens V2.5 — Research Canvas
 
 A separate Node.js/TypeScript application for the same posting research task. V2 remains at
-https://jobmarket.feedos.si; V2.5 targets https://lens.feedos.si. V3 and the independent video work
+https://jobmarket.feedos.si; V2.5 is live at https://lens.feedos.si. V3 and the independent video work
 remain separate. The new lens/data mark, typography, palette and share assets are documented in the
 [brand guide](../docs/V2_5_BRAND_GUIDE.md).
 
