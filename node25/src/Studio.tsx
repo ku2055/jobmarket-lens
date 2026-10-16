@@ -33,6 +33,7 @@ import {
   n,
   studyUrl,
   validateStudy,
+  validateFilter,
 } from "./state";
 import type {
   Catalog,
@@ -232,7 +233,15 @@ export function Studio() {
   const label = (id: string) =>
     id === "__unknown__" ? "Unknown" : labels.get(id) || id;
   const setFilter = (fn: (f: Filter) => Filter) => {
-    commit((s) => ({ ...s, filter: fn(s.filter) }));
+    if (!latest.current) return;
+    const next = fn(latest.current.filter);
+    try {
+      validateFilter(next);
+    } catch (error) {
+      setNotice((error as Error).message);
+      return;
+    }
+    commit((s) => ({ ...s, filter: next }));
     setOffset(0);
     setSelected(null);
   };
@@ -502,6 +511,7 @@ export function Studio() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   aria-label="Search titles, employers or skills"
+                  maxLength={160}
                   placeholder="Title, employer, skill…"
                 />
                 {search && (

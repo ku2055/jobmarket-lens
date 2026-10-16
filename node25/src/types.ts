@@ -200,6 +200,10 @@ export interface AdminData {
     countries: Record<string, unknown>[];
     limitations: string[];
     providerDashboardUrl?: string;
+    since?: string;
+    until?: string;
+    checkedAt?: string;
+    status?: string;
   };
   runtime: Record<string, unknown>;
 }

@@ -41,18 +41,20 @@ export function validateFilter(x: unknown): Filter {
   fields(x, allowed);
   for (const [k, v] of Object.entries(x)) {
     if (k === "search") {
-      if (typeof v !== "string" || v.length > 300)
-        throw new Error("Search is too long.");
+      if (typeof v !== "string" || v.length > 160)
+        throw new Error("Search must be 160 characters or fewer.");
     } else if (k === "availability") {
       if (!["open", "all", "closed"].includes(String(v)))
         throw new Error("Unknown availability scope.");
     } else if (
       !Array.isArray(v) ||
-      v.length > 50 ||
+      v.length > 32 ||
       new Set(v).size !== v.length ||
-      v.some((s) => typeof s !== "string" || !s || s.length > 200)
+      v.some((s) => typeof s !== "string" || !s || s.length > 160)
     )
-      throw new Error("Invalid category selection.");
+      throw new Error(
+        "Choose at most 32 unique categories per field; each value must be 160 characters or fewer.",
+      );
   }
   if (
     x.arrangements &&

@@ -26,6 +26,17 @@ const display = (value: unknown) =>
     : typeof value === "object"
       ? JSON.stringify(value)
       : String(value);
+function reportingDate(value: string | undefined) {
+  if (!value) return "Not reported";
+  const date = new Date(value);
+  return Number.isFinite(date.getTime())
+    ? new Intl.DateTimeFormat("en-US", {
+        dateStyle: "medium",
+        timeStyle: "short",
+        timeZone: "UTC",
+      }).format(date) + " UTC"
+    : "Unrecognized date";
+}
 export function Admin() {
   const [data, setData] = useState<AdminData | null>(null),
     [password, setPassword] = useState(""),
@@ -321,6 +332,37 @@ export function Admin() {
                   </div>
                   <Activity size={18} />
                 </div>
+                {(data.traffic.since ||
+                  data.traffic.until ||
+                  data.traffic.checkedAt ||
+                  data.traffic.status) && (
+                  <dl
+                    className="evidence-facts"
+                    aria-label="Analytics reporting window"
+                  >
+                    {data.traffic.status && (
+                      <div>
+                        <dt>Reporting status</dt>
+                        <dd>{data.traffic.status.replaceAll("_", " ")}</dd>
+                      </div>
+                    )}
+                    {(data.traffic.since || data.traffic.until) && (
+                      <div>
+                        <dt>Reporting window</dt>
+                        <dd>
+                          {reportingDate(data.traffic.since)} →{" "}
+                          {reportingDate(data.traffic.until)}
+                        </dd>
+                      </div>
+                    )}
+                    {data.traffic.checkedAt && (
+                      <div>
+                        <dt>Last checked</dt>
+                        <dd>{reportingDate(data.traffic.checkedAt)}</dd>
+                      </div>
+                    )}
+                  </dl>
+                )}
                 {!data.traffic.configured ? (
                   <div className="traffic-unavailable">
                     <div className="traffic-icon">

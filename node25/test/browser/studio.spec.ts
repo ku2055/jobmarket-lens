@@ -331,3 +331,65 @@ test("optional open-source analytics sends public paths only, never study state 
   await page.goto("/admin");
   await expect(page.locator("#lens-umami")).toHaveCount(0);
 });
+
+test("filter contract boundaries reject oversized imported study values", async () => {
+  const { validateFilter } = await import("../../src/state");
+  expect(() =>
+    validateFilter({
+      search: "a".repeat(160),
+      companyIds: Array.from({ length: 32 }, (_, i) => String(i)),
+      occupationIds: ["a".repeat(160)],
+    }),
+  ).not.toThrow();
+  expect(() => validateFilter({ search: "a".repeat(161) })).toThrow("160");
+  expect(() =>
+    validateFilter({
+      companyIds: Array.from({ length: 33 }, (_, i) => String(i)),
+    }),
+  ).toThrow("32");
+  expect(() => validateFilter({ occupationIds: ["a".repeat(161)] })).toThrow(
+    "160",
+  );
+});
+test("owner view labels provider supplied reporting window and last check", async ({
+  page,
+}) => {
+  // Synthetic presentation fixture; authentication is covered by the real admin scenario above.
+  await page.route("**/api/admin", (route) =>
+    route.fulfill({
+      contentType: "application/json",
+      json: {
+        deployment: { version: "test fixture" },
+        runtime: { scope: "Synthetic UI fixture" },
+        collection: {
+          counts: { combined: 3 },
+          sources: [],
+          lastSnapshot: null,
+          scheduled: false,
+          runs: [],
+          limitations: [],
+        },
+        traffic: {
+          configured: true,
+          source: "Umami test fixture",
+          visitors: 12,
+          pageViews: 20,
+          routes: [],
+          countries: [],
+          limitations: [],
+          since: "2026-10-01T00:00:00Z",
+          until: "2026-10-08T00:00:00Z",
+          checkedAt: "2026-10-08T00:05:00Z",
+          status: "available",
+        },
+      },
+    }),
+  );
+  await page.goto("/admin");
+  const dates = page.locator('dl[aria-label="Analytics reporting window"]');
+  await expect(dates).toContainText("Oct 1, 2026");
+  await expect(dates).toContainText("Oct 8, 2026");
+  await expect(dates).toContainText("UTC");
+  await expect(dates).toContainText("Last checked");
+  await expect(dates).toContainText("available");
+});
