@@ -87,11 +87,51 @@ test("saved studies recompute frozen counts, restore exact selectors and reject 
   await expect(page.locator(".spatial-applied strong")).toHaveText(
     cell.count.toLocaleString("en-US"),
   );
+  const mismatched = structuredClone(study);
+  (mismatched.committed.sceneRequest.filter as Record<string, unknown>).search =
+    "different visible population";
+  await input.setInputFiles({
+    name: "mismatched.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(mismatched)),
+  });
+  await expect(
+    page.getByText("Applied cohort does not match the visible scene.", {
+      exact: false,
+    }),
+  ).toBeVisible();
+  await expect(page.locator(".spatial-applied strong")).toHaveText(
+    cell.count.toLocaleString("en-US"),
+  );
+});
+
+test("failed selection stays unavailable and cannot be frozen or exported as zero", async ({
+  page,
+}) => {
+  await page.goto("/spatial");
+  await expect(page.locator(".spatial-release")).toContainText("82,851 matching");
+  await page.route("**/api/spatial/selection", (route) =>
+    route.fulfill({
+      status: 503,
+      contentType: "application/json",
+      body: JSON.stringify({ error: "Selection service unavailable" }),
+    }),
+  );
+  await page.getByRole("button", { name: "Open exact list" }).click();
+  await page.locator(".spatial-group-list input").first().check();
+  await page.getByRole("button", { name: "Apply selection" }).click();
+  await expect(page.locator(".spatial-applied strong")).toHaveText("Unavailable");
+  await expect(page.getByRole("button", { name: "Freeze A" })).toBeDisabled();
+  await expect(
+    page.getByRole("button", { name: "Export exact contributors" }),
+  ).toBeDisabled();
 });
 
 test("isolated shelf lasso selects the complete orthographic population only after Apply", async ({
   page,
 }) => {
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/spatial");
   await expect(page.locator(".spatial-release")).toContainText(
     "82,851 matching",
@@ -131,7 +171,9 @@ test("isolated shelf lasso selects the complete orthographic population only aft
       steps: 8,
     });
   await page.mouse.up();
+  expect(errors).toEqual([]);
   await expect(page.locator(".spatial-applied strong")).toHaveText("—");
+  await expect(page.getByRole("button", { name: "Apply selection" })).toBeEnabled();
   const response = page.waitForResponse(
     (r) =>
       r.url().includes("/api/spatial/selection") &&

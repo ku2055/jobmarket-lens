@@ -70,10 +70,11 @@ export default function LassoShelf({
           setPoints([position(event)]);
         }}
         onPointerMove={(event) => {
-          if (drawing)
-            setPoints((old) =>
-              old.length < 4096 ? [...old, position(event)] : old,
-            );
+          if (!drawing) return;
+          // React clears currentTarget after dispatch; capture coordinates before
+          // a deferred state updater can run outside this pointer callback.
+          const next = position(event);
+          setPoints((old) => (old.length < 4096 ? [...old, next] : old));
         }}
         onPointerUp={(event) => {
           if (!drawing) return;

@@ -428,7 +428,7 @@ export default function SpatialLab() {
         response.headers.get("X-Dataset-Version") !==
           exportRequest.sceneRequest.datasetVersion ||
         response.headers.get("X-Contributor-Hash") !== expectedHash ||
-        Number(response.headers.get("X-Export-Rows")) !== expectedCount
+        response.headers.get("X-Export-Rows") !== String(expectedCount)
       )
         throw Error(
           "Export identity does not match the applied cohort. Nothing was downloaded.",

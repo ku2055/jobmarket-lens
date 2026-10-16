@@ -2,8 +2,9 @@
 
 V2.5.1 adds `/spatial` to the independent Node application. It uses the same verified sanitized release
 as V2.5: `2d18d6d0d99a370a7ebc6a7d0d637cbca917682b504110427727ba76a339041b`.
-No posting collection, private-description publication, employee API, paid service or video integration
-was introduced. V2.6 has a [separate design](V2_6_LINKED_3D_DESIGN.md), not runtime features.
+No posting collection, private-description publication, employee API or paid service was introduced.
+The approved self-hosted tour from PR #5 is inherited by rebasing onto `main` at `0774651`; this build
+does not produce an additional video. V2.6 has a [separate design](V2_6_LINKED_3D_DESIGN.md), not runtime features.
 
 ## What is implemented
 
