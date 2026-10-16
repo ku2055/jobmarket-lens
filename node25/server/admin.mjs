@@ -253,7 +253,7 @@ export async function admin() {
   const { release } = await load();
   return {
     deployment: {
-      version: "2.5",
+      version: "2.5.1",
       datasetVersion: release.datasetVersion,
       sourceDatasetVersion: release.sourceDatasetVersion ?? null,
       metricVersion: METRIC_VERSION,

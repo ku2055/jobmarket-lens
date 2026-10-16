@@ -77,3 +77,13 @@ changes enough that the screens or numbers differ, re-record and publish new ver
   the action row now wraps on screens under 768 px and the check passes.
 - Not verified here: deployed Vercel behavior of the cache header and range requests, real mobile
   networks, and assistive-technology use.
+
+## Production verification after merge
+
+PR #5 was merged into `main` as `0774651134010cd3c3a1e825609c7f04c8747749` and deployed to
+https://lens.feedos.si. The [live verification receipt](V2_5_VIDEO_DEPLOYMENT_CHECKS.json) records
+actual HTTP 206 range delivery (1,024 bytes), `video/mp4`, versioned immutable cache headers, and
+successful headless Chromium playback of the 1280×720, 111.418-second file with no page errors.
+The two video browser scenarios also passed against the production domain, covering lazy loading,
+caption/transcript availability, dialog accessibility and Escape/focus behavior. Physical mobile
+networks and assistive-technology user testing remain unverified.

@@ -1,5 +1,11 @@
 import { query, detail, exportCsv, load } from "./query.mjs";
 import {
+  spatialScene,
+  spatialSelection,
+  spatialCompare,
+  exportSpatialCsv,
+} from "./spatial.mjs";
+import {
   authenticated,
   login,
   logout,
@@ -12,17 +18,17 @@ export function securityHeaders(res) {
   res.setHeader("X-Frame-Options", "DENY");
   res.setHeader("Cache-Control", "no-store");
 }
-async function body(req) {
+async function body(req, maxBytes = 65536) {
   if (req.body !== undefined) {
     const v = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
-    if (Buffer.byteLength(JSON.stringify(v)) > 65536)
+    if (Buffer.byteLength(JSON.stringify(v)) > maxBytes)
       throw Object.assign(new Error("Request too large"), { status: 413 });
     return v;
   }
   let b = "";
   for await (const chunk of req) {
     b += chunk;
-    if (Buffer.byteLength(b) > 65536)
+    if (Buffer.byteLength(b) > maxBytes)
       throw Object.assign(new Error("Request too large"), { status: 413 });
   }
   return b ? JSON.parse(b) : {};
@@ -69,11 +75,20 @@ export default async function handler(req, res) {
       const { release } = await load();
       result = {
         ready: true,
-        version: "2.5",
+        version: "2.5.1",
+        protocols: ["2.5", "2.5.1"],
         datasetVersion: release.datasetVersion,
       };
     } else if (path === "/api/query" && req.method === "POST")
       result = await query(await body(req));
+    else if (path === "/api/spatial" && req.method === "POST")
+      result = await spatialScene(await body(req, 131072));
+    else if (path === "/api/spatial/selection" && req.method === "POST")
+      result = await spatialSelection(await body(req, 131072));
+    else if (path === "/api/spatial/compare" && req.method === "POST")
+      result = await spatialCompare(await body(req, 131072));
+    else if (path === "/api/spatial/export" && req.method === "POST")
+      return await exportSpatialCsv(await body(req, 131072), res);
     else if (path === "/api/detail" && req.method === "POST")
       result = await detail(await body(req));
     else if (path === "/api/export" && req.method === "POST")

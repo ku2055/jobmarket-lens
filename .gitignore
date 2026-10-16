@@ -33,3 +33,7 @@ node25/playwright-report/
 node25/.vercel/
 node25/.env*
 !node25/.env.example
+
+# Isolated renderer experiments
+research/**/node_modules/
+research/**/dist/

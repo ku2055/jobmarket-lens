@@ -1,0 +1,39 @@
+{
+  "checkedAt": "2026-10-16T18:44:54.367Z",
+  "sourceCommit": "0774651134010cd3c3a1e825609c7f04c8747749",
+  "deploymentId": "dpl_7EWCW2hUgrJVsWwczckrKHh8D4YG",
+  "range": {
+    "status": 206,
+    "bytes": 1024,
+    "contentType": "video/mp4",
+    "contentRange": "bytes 0-1023/4529355",
+    "cacheControl": "public, max-age=31536000, immutable"
+  },
+  "playback": {
+    "duration": 111.418,
+    "currentTime": 1.032409,
+    "width": 1280,
+    "height": 720,
+    "readyState": 4,
+    "error": null
+  },
+  "closedVideoCount": 0,
+  "pageErrors": [],
+  "narrationAudit": {
+    "ids": {
+      "python": "skill-11a4a60b518bf24989d4",
+      "communication": "skill-d4e16994df9002e53294",
+      "analysis": "skill-467119c2e02e473b8147"
+    },
+    "rows": [
+      {
+        "amazonComputer": 222,
+        "computer": 7963,
+        "sales": 15604,
+        "computerPython": 3621,
+        "salesPython": 103,
+        "communicationAnalysis": 19242
+      }
+    ]
+  }
+}

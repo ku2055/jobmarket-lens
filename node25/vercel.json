@@ -45,6 +45,14 @@
     {
       "source": "/admin/",
       "destination": "/index.html"
+    },
+    {
+      "source": "/spatial",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/spatial/",
+      "destination": "/index.html"
     }
   ],
   "headers": [

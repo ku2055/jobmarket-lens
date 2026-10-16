@@ -60,3 +60,11 @@ verification. No analytics service or paid provider was purchased.
 
 [Architecture/admin decisions](../docs/V2_5_EXECUTION_AND_ADMIN.md) explain current limits, including
 serverless cold starts, per-instance throttling and remaining collection-adapter migration work.
+
+## Optional V2.5.1 Spatial Lab
+
+`/spatial` adds demand shelves, employer evidence coverage and focused recorded-skill co-mentions.
+It starts in a complete 2D view; the Three.js/R3F renderer loads only after explicit 3D opt-in. Exact
+selection, comparison and CSV are resolved by Node through the [spatial contract](shared/SPATIAL_CONTRACT.md).
+The existing 2.5 API and public dataset remain unchanged. No Vercel Analytics is used.
+V2.6 remains a [separate design](../docs/V2_6_LINKED_3D_DESIGN.md).

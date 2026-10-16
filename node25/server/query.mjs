@@ -99,7 +99,7 @@ export function load() {
 }
 const cache = new Map();
 let waiting = [];
-async function slot() {
+export async function slot() {
   if (runtime.active >= 2) {
     if (waiting.length >= 16)
       throw Object.assign(new Error("Query queue busy; retry shortly"), {
@@ -122,7 +122,7 @@ async function slot() {
   }
   runtime.active++;
 }
-function free() {
+export function free() {
   runtime.active--;
   const next = waiting.shift();
   if (next) {
@@ -198,7 +198,7 @@ export function predicate(mode, filter, values = []) {
   }
   return { sql: parts.join(" AND "), values };
 }
-async function rows(conn, sql, values = []) {
+export async function rows(conn, sql, values = []) {
   if (conn.lensDeadline && performance.now() > conn.lensDeadline)
     throw Object.assign(
       new Error("Interactive query deadline exceeded; narrow selection"),
@@ -206,7 +206,7 @@ async function rows(conn, sql, values = []) {
     );
   return (await conn.runAndReadAll(sql, values)).getRowObjects();
 }
-async function stats(conn, where, values, version, mode) {
+export async function stats(conn, where, values, version, mode) {
   const [r] = await rows(
     conn,
     `SELECT count(*)::INTEGER AS count, count(DISTINCT "companyId")::INTEGER AS "companyCount",count(*) FILTER(WHERE "hasDescription"=true)::INTEGER AS "analyzedTextCount",count(*) FILTER(WHERE "eligiblePay")::INTEGER AS "eligiblePayCount",count(*) FILTER(WHERE len(countries)=0)::INTEGER AS "unknownCountryCount",count(*) FILTER(WHERE arrangement IS NULL)::INTEGER AS "unknownArrangementCount", median("annualLow") FILTER(WHERE "eligiblePay") AS "medianLow",median("annualHigh") FILTER(WHERE "eligiblePay") AS "medianHigh",sha256(coalesce(string_agg(id,chr(10) ORDER BY id),'')) AS ids FROM postings WHERE ${where}`,
@@ -583,7 +583,7 @@ async function writeChunk(res, text) {
     });
   return !res.destroyed;
 }
-export async function exportCsv(input, res) {
+export async function exportResolvedCsv(input, res, resolvePredicate) {
   const req = Request.parse({ ...input, view: "records" }),
     ctx = await load();
   if (req.datasetVersion && req.datasetVersion !== ctx.release.datasetVersion)
@@ -591,14 +591,24 @@ export async function exportCsv(input, res) {
   await slot();
   const conn = await ctx.instance.connect();
   try {
-    const p = predicate(req.sourceMode, req.filter),
-      s = await stats(
-        conn,
-        p.sql,
-        p.values,
-        ctx.release.datasetVersion,
-        req.sourceMode,
-      );
+    let p;
+    if (resolvePredicate) {
+      conn.lensDeadline = performance.now() + 5000;
+      const timer = setTimeout(() => conn.interrupt(), 5000);
+      try {
+        p = await resolvePredicate(conn, ctx);
+      } finally {
+        clearTimeout(timer);
+        conn.lensDeadline = undefined;
+      }
+    } else p = predicate(req.sourceMode, req.filter);
+    const s = await stats(
+      conn,
+      p.sql,
+      p.values,
+      ctx.release.datasetVersion,
+      req.sourceMode,
+    );
     res.setHeader("Content-Type", "text/csv; charset=utf-8");
     res.setHeader(
       "Content-Disposition",
@@ -713,4 +723,9 @@ export async function exportCsv(input, res) {
     conn.closeSync();
     free();
   }
+}
+
+// Trusted module resolver only; HTTP input still passes the unchanged 2.5 Request schema.
+export async function exportCsv(input, res) {
+  return exportResolvedCsv(input, res);
 }
