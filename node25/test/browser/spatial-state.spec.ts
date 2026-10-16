@@ -109,7 +109,9 @@ test("failed selection stays unavailable and cannot be frozen or exported as zer
   page,
 }) => {
   await page.goto("/spatial");
-  await expect(page.locator(".spatial-release")).toContainText("82,851 matching");
+  await expect(page.locator(".spatial-release")).toContainText(
+    "82,851 matching",
+  );
   await page.route("**/api/spatial/selection", (route) =>
     route.fulfill({
       status: 503,
@@ -120,7 +122,9 @@ test("failed selection stays unavailable and cannot be frozen or exported as zer
   await page.getByRole("button", { name: "Open exact list" }).click();
   await page.locator(".spatial-group-list input").first().check();
   await page.getByRole("button", { name: "Apply selection" }).click();
-  await expect(page.locator(".spatial-applied strong")).toHaveText("Unavailable");
+  await expect(page.locator(".spatial-applied strong")).toHaveText(
+    "Unavailable",
+  );
   await expect(page.getByRole("button", { name: "Freeze A" })).toBeDisabled();
   await expect(
     page.getByRole("button", { name: "Export exact contributors" }),
@@ -173,7 +177,9 @@ test("isolated shelf lasso selects the complete orthographic population only aft
   await page.mouse.up();
   expect(errors).toEqual([]);
   await expect(page.locator(".spatial-applied strong")).toHaveText("—");
-  await expect(page.getByRole("button", { name: "Apply selection" })).toBeEnabled();
+  await expect(
+    page.getByRole("button", { name: "Apply selection" }),
+  ).toBeEnabled();
   const response = page.waitForResponse(
     (r) =>
       r.url().includes("/api/spatial/selection") &&
