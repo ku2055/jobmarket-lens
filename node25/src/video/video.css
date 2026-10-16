@@ -1,0 +1,86 @@
+/* Tour video module: isolated styles using the V2.5 tokens from style.css. */
+.tour-open .tour-length {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.tour-dialog {
+  width: min(1040px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  color: var(--ink);
+  text-align: left;
+  box-shadow: 0 24px 60px rgba(23, 62, 67, 0.22);
+}
+.tour-dialog::backdrop {
+  background: rgba(23, 62, 67, 0.55);
+}
+.tour-body {
+  display: grid;
+  gap: 14px;
+  padding: 20px 22px 22px;
+}
+.tour-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.tour-head h2 {
+  margin: 4px 0 0;
+  font-size: 20px;
+  line-height: 1.25;
+}
+.tour-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  background: var(--ink);
+}
+.tour-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.tour-chapters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+}
+.tour-chapters .text-button {
+  display: inline-flex;
+  gap: 6px;
+  align-items: baseline;
+}
+.tour-time {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.tour-transcript summary {
+  cursor: pointer;
+  color: var(--teal);
+  font-weight: 600;
+  font-size: 13px;
+}
+.tour-transcript p {
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+@media (max-width: 640px) {
+  .tour-body {
+    padding: 14px;
+  }
+  .tour-head h2 {
+    font-size: 16px;
+  }
+}
+/* Phones (app breakpoint 767px): let the hero action row wrap so the extra button never causes horizontal scroll. */
+@media (max-width: 767px) {
+  .intro-actions:has(.tour-open) {
+    flex-wrap: wrap;
+  }
+}

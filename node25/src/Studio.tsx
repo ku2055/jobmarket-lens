@@ -59,6 +59,7 @@ import {
   EvidenceWorkspace,
 } from "./Workspace";
 import { Detail } from "./Detail";
+import { TourButton } from "./video/TourPlayer";
 export function Studio() {
   const [catalog, setCatalog] = useState<Catalog | null>(null),
     [study, setStudy] = useState<Study | null>(null),
@@ -399,6 +400,7 @@ export function Studio() {
                 : "Reading the source catalog"}
             </div>
             <div className="intro-actions">
+              <TourButton />
               <button
                 className="button secondary"
                 onClick={share}
