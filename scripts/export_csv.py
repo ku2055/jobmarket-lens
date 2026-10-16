@@ -16,7 +16,7 @@ NS = "Not specified"
 def posted_pay(r):
     if r["pay_lo"] is None:
         return NS
-    sym = "$" if r["pay_cur"] in ("USD", None, "") else r["pay_cur"] + " "
+    sym = "$" if r["pay_cur"] == "USD" else (r["pay_cur"] or "Unknown currency") + " "
     dec = 2 if r["pay_period"] == "hour" else 0
     f = lambda v: f"{sym}{v:,.{dec}f}"
     amt = f(r["pay_lo"]) if r["pay_lo"] == r["pay_hi"] else f"{f(r['pay_lo'])}–{f(r['pay_hi'])}"
@@ -26,14 +26,14 @@ def posted_pay(r):
 
 def status(c, s):
     if s and s["status"] == "ok":
-        return "Collected"
+        return "Collected: " + s.get("completeness", "unverified")
     if s and s["status"] == "blocked":
         return "Blocked by site"
     if s and s["status"] == "empty":
         return "No postings returned"
     if s and s["status"] == "error":
         return "Collector error"
-    if c["adapter"] == "none":
+    if (s and s["status"] == "not_applicable") or c["adapter"] == "none":
         return "Not collected yet"
     return "Collector ready, not yet run"
 
@@ -52,18 +52,18 @@ def main():
     out_dir.mkdir(exist_ok=True)
 
     with open(out_dir / "data source.csv", "w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
+        w = csv.writer(f, lineterminator="\n")
         w.writerow(["Rank", "Ticker", "Company", "Sector", "Career site", "Platform", "Status",
                     "Last collected", "Postings in dashboard", "Listed on site", "Notes"])
         for c in D["companies"]:
             s = latest.get(c["ticker"])
             w.writerow([c["rank"], c["ticker"], c["name"], c.get("sector") or "", c.get("career_site") or "",
                         c["adapter"], status(c, s), s["run_date"] if s else "", by_co.get(c["ticker"], 0),
-                        (s or {}).get("site_total") or "", (s and s.get("detail")) or c.get("known_issue") or ""])
+                        (s or {}).get("site_total", ""), (s and s.get("detail")) or c.get("known_issue") or ""])
 
     rows.sort(key=lambda r: r["posted"] or "", reverse=True)
     with open(out_dir / "Job postings.csv", "w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
+        w = csv.writer(f, lineterminator="\n")
         w.writerow(["Posting ID", "Title", "Company", "Ticker", "SOC code", "SOC group", "Job level", "Job type",
                     "Work arrangement", "City", "State", "Country", "Number of locations", "Posted", "Pay",
                     "Minimum degree", "Accepts equivalent experience", "Years of experience", "Skills",
@@ -74,7 +74,7 @@ def main():
                         r["nloc"], r["posted"] or "", posted_pay(r), r["deg"], "Yes" if r["deg_equiv"] else "No",
                         "" if r["yrs"] is None else r["yrs"], "; ".join(skills[i] for i in r["skills"]),
                         "; ".join(D["licenses"][i] for i in r["lic"]),
-                        "Open" if r["open"] else "Closed", r.get("last_seen") or "", r["url"]])
+                        r.get("status", "Unverified"), r.get("last_seen") or "", r["url"]])
     print(f"wrote {len(D['companies'])} companies and {len(rows)} postings to {out_dir}")
 
 

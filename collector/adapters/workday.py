@@ -18,6 +18,7 @@ def collect(company, params, http, max_jobs, stats):
             stats["site_total"] = data.get("total")
         posts = data.get("jobPostings") or []
         if not posts:
+            stats["exhausted"] = True
             break
         for p in posts:
             path = p.get("externalPath")
@@ -40,6 +41,9 @@ def collect(company, params, http, max_jobs, stats):
                 remote_hint=d.get("remoteType"),
             )
             seen += 1
+            if seen == stats.get("site_total"):
+                stats["exhausted"] = True
+                return
             if seen >= max_jobs:
                 return
         offset += len(posts)

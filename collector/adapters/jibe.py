@@ -12,6 +12,7 @@ def collect(company, params, http, max_jobs, stats):
             stats["site_total"] = data.get("totalCount") or data.get("count")
         jobs = data.get("jobs") or []
         if not jobs:
+            stats["exhausted"] = True
             break
         for item in jobs:
             j = item.get("data", item)
@@ -28,6 +29,9 @@ def collect(company, params, http, max_jobs, stats):
                 category=", ".join(j.get("categories", [{}])[0].values()) if j.get("categories") else None,
             )
             seen += 1
+            if seen == stats.get("site_total"):
+                stats["exhausted"] = True
+                return
             if seen >= max_jobs:
                 return
         page += 1

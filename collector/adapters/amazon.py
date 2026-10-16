@@ -21,12 +21,13 @@ def collect(company, params, http, max_jobs, stats):
             stats["site_total"] = data.get("hits")
         jobs = data.get("jobs") or []
         if not jobs:
+            stats["exhausted"] = True
             break
         for j in jobs:
             text = "\n".join(filter(None, [
                 html_to_text(j.get("description")),
-                "Basic qualifications:\n" + html_to_text(j.get("basic_qualifications") or "") ,
-                "Preferred qualifications:\n" + html_to_text(j.get("preferred_qualifications") or ""),
+                "Basic qualifications:\n" + (html_to_text(j.get("basic_qualifications")) or "") ,
+                "Preferred qualifications:\n" + (html_to_text(j.get("preferred_qualifications")) or ""),
             ]))
             loc = ", ".join(filter(None, [j.get("city"), j.get("state"), j.get("country_code")])) or j.get("location")
             yield raw_posting(
@@ -39,6 +40,9 @@ def collect(company, params, http, max_jobs, stats):
                 category=j.get("job_category"),
             )
             seen += 1
+            if seen == stats.get("site_total"):
+                stats["exhausted"] = True
+                return
             if seen >= max_jobs:
                 return
         offset += len(jobs)

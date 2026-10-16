@@ -1,131 +1,160 @@
-# JobMarket Lens
+# JobMarket Lens — independent local build
 
-*See demand. Understand skills. Track change.*
+Explore global postings from covered S&P 500 employers using official career sites.
+This development branch starts its **own local collection history**. It needs no access to
+`yimizhao2015/jobmarket-lens-data`, GitHub token, or paid data provider.
 
-JobMarket Lens tracks what America's largest employers are hiring for. It collects job postings from the
-official career sites of S&P 500 companies every week, normalizes them, and shows hiring demand by
-occupation (SOC major group), skills, education, experience, pay, job level, schedule, work arrangement
-and location.
+Live preview: https://liyue2055.github.io/jobmarket-lens/
 
-- **Live site:** https://yimizhao2015.github.io/jobmarket-lens/
-- **Data files:** [`data/data source.csv`](data/data%20source.csv) (one row per company and its collection
-  status) and [`data/Job postings.csv`](data/Job%20postings.csv) (every posting on the dashboard, newest first)
+Public code: https://github.com/liyue2055/jobmarket-lens
+
+Private evidence: https://github.com/liyue2055/jobmarket-lens-data (owner access required)
+
+Original project: https://github.com/yimizhao2015/jobmarket-lens
+
+## Start a bounded pilot
+
+Requires Python 3.10+, `requests`, and `beautifulsoup4`. The script creates a virtual environment
+using system packages when available. If dependencies are missing, install them into that environment
+with pip; some Linux installations also need their distribution's Python venv package.
+
+```sh
+./scripts/run_independent.sh
+```
+
+The default pilot collects **up to ten postings each from NVIDIA, Visa and Amazon**. These are
+technical smoke-test samples, not representative labor-market coverage. The script backs up an
+existing local database, collects, and builds `web/index.html` and the CSV exports. It never pulls,
+commits, pushes, or publishes, and never downloads the author's private history.
+
+Open `web/index.html` directly, or serve it locally:
+
+```sh
+python3 -m http.server 8000 --directory web
+```
+
+To request a complete inventory for selected companies:
+
+```sh
+./scripts/run_independent.sh --only NVDA,V,AMZN --max 0 --workers 3
+```
+
+`--max 0` removes the record cap. Completion still needs verification: APIs may impose their own
+limits, repeat pages, or report inconsistent totals. Large employers can take considerable time.
+Use `--max 20` for a bounded development run. `--date` must be an ISO date; snapshots are daily,
+so rerunning a company on the same date replaces that day's snapshot rather than adding a second one.
+Use a balanced employer panel before drawing conclusions across sectors.
+
+## Data and evidence
+
+- `data/lens.db`: local SQLite database with current records, collection metadata, observations,
+  and content versions. Ignored by Git.
+- `data/raw/YYYY-MM-DD/`: raw descriptions and run logs. Ignored by Git.
+- `data/backups/`: automatic pre-run SQLite backups. Ignored by Git.
+- `data/quality-report.json`: aggregate coverage, missingness, pay flags and limitations.
+- `data/Job postings.csv` and `data/data source.csv`: generated public dashboard exports.
+- `data/normalized/postings.csv`: richer local analyst export, including locations and pay evidence.
+- `web/template.html`: editable dashboard source; `web/index.html`: generated standalone page.
+
+The public Git history retains the original author's published normalized snapshot. That snapshot
+has no full descriptions and is not imported into the local evidence history. Rebuilding the page
+replaces its displayed data with this independent collection. Keep SQLite backups if moving machines;
+cloning this repo alone does not restore locally collected descriptions.
+
+## Collection and status rules
+
+The collector honors robots.txt and refusal responses. Existing adapters cover Workday, Oracle,
+Eightfold, Jibe, Amazon, SmartRecruiters, SuccessFactors and selected HTML/sitemap sites. Many
+configured employers still have no working adapter.
+
+- **Complete**: a supported paginated API reaches its reported total or an empty page, and the unique
+  record count matches its reported total. This is an operational check, not a guarantee of every corporate vacancy.
+- **Partial**: a cap is reached, counts disagree, or duplicate/invalid records appear.
+- **Unknown**: available evidence cannot establish completeness. HTML/sitemap adapters remain
+  unverified unless they provide the required completeness evidence.
+- Repeated IDs stop collection to avoid pagination loops; already observed records remain available.
+- **Open**: observed in the employer's latest collection attempt, even if that attempt was partial.
+- **Unverified**: not observed in the latest attempt, without verified evidence of absence.
+- **Possibly closed**: absent from one later complete collection.
+- **Closed**: absent from at least two complete collections on different dates after last observation.
+  A later observation reopens it. Closure does not mean someone was hired.
+
+All observed inventory is retained, including old and undated postings. Original source dates remain
+unchanged. Future dates and unknown dates are excluded from posting-date charts; first-seen dates
+are not substituted. Description changes are versioned; collection timestamp changes alone do not
+create a new content version. Old SQLite databases migrate automatically, but missing historical
+versions cannot be reconstructed.
+
+## Analysis and interpretation
+
+The dashboard defaults to postings observed in the latest attempt. It displays collection coverage,
+field missingness, pay review flags, sample sizes, all listed locations, and dictionary skill mentions.
+Matched skill context and salary source text remain in the private evidence export. Mentions are not verified requirements. Filters are reflected in the URL when served
+over HTTP; the filtered CSV can be downloaded from the page.
+
+Salary extraction retains its matched source text. Unknown currency, inferred pay period and
+suspicious ranges are flagged and excluded from aggregate pay charts. These checks are conservative
+and do not constitute verified salary extraction. Annualization assumes 2,080 hours for hourly pay.
+Occupation, degree, experience and skill extraction still use the original rule-based parsers;
+required/preferred qualification separation and finer occupation coding need further evaluation.
+
+Posting-date charts describe the observed inventory, **not hiring growth**. Initial discovery is not
+a new vacancy, and a posting is not a headcount measure. Company counts from partial collections
+are not comparable. Longitudinal demand analysis needs repeated, verified complete collections from
+a stable employer panel. Broad US-market claims need broader sampling; these employers hire globally.
+
+Next enrichment priorities: a manually reviewed extraction sample, O*NET occupation/skill references,
+and BLS OEWS wage benchmarks. These external datasets have not yet been imported into this branch.
+
+## Development checks
+
+```sh
+.venv/bin/python -m unittest discover -s tests -v
+.venv/bin/python scripts/build_dataset.py
+```
+
+The regression tests cover legacy database migration, incomplete-run closure protection, reopening,
+content history, same-day reruns, inventory completeness, salary suffix parsing and source-date preservation.
+
+Optional browser smoke checks (requires Playwright and its Chromium download):
+
+```sh
+.venv/bin/python tests/browser_smoke.py
+```
+
+The browser check covers desktop/mobile rendering, filters, CSV downloads, URL restoration,
+empty states, and directly opening the standalone HTML file.
+
+## Private storage and public deployment
+
+The public page embeds only an explicit allowlist of posting metadata and derived measures.
+Full descriptions, pay/skill source snippets, raw responses, and SQLite history are excluded.
+`python scripts/check_publication.py` validates the embedded payload and tracked paths before deployment.
+A public static dashboard necessarily exposes the limited metadata it displays and exports.
+
+Back up your local evidence to your own **private** data repository using your GitHub CLI login:
+
+```sh
+.venv/bin/python scripts/backup_private.py --repo liyue2055/jobmarket-lens-data
+```
+
+The script verifies repository visibility before uploading a consistent SQLite snapshot,
+raw evidence archive, richer normalized export and SHA-256 manifest to release `data`.
+It refuses public destinations. Keep additional local backups; this release contains the latest backup.
+
+To restore the SQLite database on a new checkout (do not overwrite an existing database):
+
+```sh
+mkdir -p data
+gh release download data -R liyue2055/jobmarket-lens-data -p lens.db.gz -D data
+gunzip data/lens.db.gz
+```
+
+After a local refresh, back up the evidence, rebuild, run the tests and publication check,
+then commit and push the public code and generated dashboard. GitHub Pages publishes `web/`
+on pushes to this fork's `main` branch. The workflow checks the public data boundary first.
+`scripts/run_local.sh` now invokes the independent local collector. The original workflow that
+accessed the author's private repo has been removed. No recurring collection is configured;
+the deployed site remains a limited preview until explicitly refreshed.
 
 © 2026 Yimi Zhao. All rights reserved. Job postings remain the property of the companies that published them.
-
-## What the dashboard shows
-
-- Filters: year posted, status (open now or closed), company, occupation, job level, work arrangement,
-  full/part-time, years of experience, country and title text.
-- Summary tiles: postings in view, share disclosing pay, median pay, degree requirements, remote/hybrid
-  share, full-time share and median years of experience.
-- Charts: openings by occupation group and by company, top skills (filterable by occupation), job level,
-  minimum degree, experience, work arrangement, full/part-time, licenses, pay ranges, countries, US states,
-  and postings over time (weekly bars, switching to monthly once three months are collected).
-- Source Coverage: every company in scope and the state of collection from its career site (25 per page).
-- Job Postings: the matching postings, newest first (25 per page). A posting that has disappeared from
-  the company's site is greyed out with the date it was last seen instead of linking to a dead page.
-
-## Universe
-
-All S&P 500 companies except Berkshire Hathaway, from the Wikipedia constituents list read 2026-10-15;
-companies with two share classes count once (499 companies). Each company's career site and the
-collector it uses are in `config/companies.json`; companies without a working collector carry a
-`known_issue` and show as "Not collected yet".
-
-Only postings dated October 1, 2026 or later are analyzed (`posted_from` in config).
-
-## How the data is collected and stored
-
-```
-Weekly run (GitHub Actions on Mondays at 2:00 a.m. Eastern Time, or scripts/run_local.sh on your own computer)
-  1. download the posting history (lens.db.gz) from the private repo yimizhao2015/jobmarket-lens-data
-  2. collect every company's current postings from its career site       -> data/raw/<date>/
-  3. add them to the history: first seen / last seen per posting          -> data/lens.db
-  4. normalize and rebuild the dashboard and CSV files                    -> web/index.html, data/*.csv
-  5. upload the updated history back to the private repo
-  6. commit the dashboard and CSV files here; GitHub Pages republishes the site
-```
-
-The history holds the full text of every posting, so it is kept in the **private** repo
-`jobmarket-lens-data` (release `data`) and never in this public repo. The GitHub workflow reaches it with
-the `DATA_REPO_TOKEN` secret (a fine-grained token with Contents read/write on that repo); a local run uses
-your own `gh` login.
-
-## Layout
-
-```
-config/companies.json        companies, career sites, collector per company, collection settings
-collector/                   one adapter per career-site platform + polite HTTP client + SQLite history
-  http.py                    request pacing, retries, robots.txt (RFC 9309), blocked-site detection
-  adapters/workday.py        Workday career sites (most companies)
-  adapters/oracle_hcm.py     Oracle Recruiting Cloud
-  adapters/successfactors.py SAP SuccessFactors (search pages, or sitemap + page markup)
-  adapters/eightfold.py      Eightfold (Microsoft and others)
-  adapters/jibe.py           Jibe / iCIMS career sites
-  adapters/html_sites.py     any site with a job sitemap + schema.org JobPosting; Apple; refused sites
-  adapters/amazon.py, walmart.py, smartrecruiters.py   single-company collectors
-  run.py                     runs all companies in parallel, writes data/raw/<date>/run_log.json
-normalize/                   SOC mapping, skills & license dictionaries, field parsers
-scripts/build_dataset.py     normalize everything -> web/index.html (data embedded), data/normalized/postings.csv
-scripts/export_csv.py        "data/data source.csv" and "data/Job postings.csv"
-scripts/run_local.sh         the whole weekly run on your own computer
-data/seed/                   119 postings read by hand on 2026-10-14 for the pilot (not used: use_seed_sample false)
-web/template.html            the dashboard page; build_dataset.py embeds the data into web/index.html
-.github/workflows/collect.yml weekly collection (Mondays 2:00 a.m. Eastern, or run it by hand from the Actions tab)
-.github/workflows/pages.yml  republishes the site whenever web/ changes
-```
-
-Not in this repo: `data/lens.db` and `data/raw/` (private history), `web/data.json` (build output).
-
-## Run it yourself
-
-On a Mac (Homebrew), once:
-
-```
-brew install python git gh
-gh auth login            # GitHub.com, HTTPS, log in with a web browser
-gh auth setup-git
-git clone https://github.com/yimizhao2015/jobmarket-lens.git
-```
-
-Then, from the `jobmarket-lens` folder, with the computer plugged in and the lid open:
-
-```
-caffeinate -i ./scripts/run_local.sh
-```
-
-It takes about 1 to 2 hours and needs about 2 GB of disk space. When it prints "Done", the site redeploys
-within a few minutes.
-
-For development without touching the history:
-
-```
-pip install -r requirements.txt
-python -m collector.run --only AAPL,MSFT --max 20 --date test   # small test run
-```
-
-## Rules the pipeline keeps
-
-- Official career sites only. robots.txt is honored using the standard rules (RFC 9309: the most specific
-  rule wins), and a site's Crawl-delay is respected. Requests are paced per site (0.6 s by default, 2 s for
-  sitemap-based sites, 1.5 s for SuccessFactors).
-- A site that refuses (robots.txt, HTTP 401/403, bot wall) is recorded as **blocked** and shown as blocked
-  on the dashboard. Nothing is estimated or filled in for it, and its postings keep the date they were
-  last seen instead of being marked closed.
-- A posting missing from a later successful run of its company is marked closed.
-- A posted date later than the day the posting was first collected is replaced by that day. Postings with
-  no date on the career site are left out.
-- Every derived field says "Not specified" when the posting does not state it.
-- Pay is the posted range, annualized for comparison; it is not actual earnings.
-
-## Known gaps
-
-- 156 companies have no collector yet: their career platform wasn't identified automatically, or it is
-  one without a collector here (Taleo, Avature, iCIMS classic, UltiPro, Greenhouse and others).
-- Google (robots.txt disallows its job search), Meta (its robots.txt prohibits automated collection) and
-  Tesla (HTTP 403) are recorded as blocked.
-- Collection keeps the newest 800 postings per company (`max_postings_per_company`).
-- Career sites show only *currently open* postings, so history starts with the first run (October 14, 2026).
-- SOC groups are assigned by title rules (`normalize/soc.py`), not by a trained coder. Skills and licenses
-  come from fixed dictionaries (`normalize/skills.py`), so a skill the dictionary lacks will not appear.

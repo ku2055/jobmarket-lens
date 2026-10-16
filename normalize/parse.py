@@ -21,7 +21,7 @@ def required_part(text):
 
 
 # ---------------------------------------------------------------- pay
-_NUM = r"\$?\s*(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)\s*([kK])?"
+_NUM = r"\$?\s*(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)\s*([kK](?![A-Za-z]))?"
 _RANGE = re.compile(_NUM + r"\s*(?:-|–|—|to)\s*" + _NUM + r"\s*(USD|CAD|EUR|GBP|INR)?\s*"
                     r"(per hour|/\s*hr|/\s*hour|hourly|an hour|per year|/\s*yr|/\s*year|annually|annual|a year|per annum|"
                     r"per month|monthly)?", re.I)
@@ -47,6 +47,11 @@ def parse_pay(pay_text, description):
                 lo, hi = hi, lo
             cur = (m.group(5) or ("USD" if "$" in m.group(0) or "USD" in window else "")).upper() or None
             unit = (m.group(6) or "").lower()
+            flags = []
+            if not unit:
+                flags.append("inferred_pay_period")
+            if cur is None:
+                flags.append("unknown_currency")
             if "hour" in unit or "hr" in unit:
                 period = "hour"
             elif "month" in unit:
@@ -61,7 +66,10 @@ def parse_pay(pay_text, description):
                 continue
             if period == "year" and not (15000 <= lo <= 3_000_000):
                 continue
+            if amax > 3_000_000 or (lo and hi / lo > 10):
+                flags.append("suspicious_range")
             return {"min": lo, "max": hi, "period": period, "currency": cur,
+                    "evidence": m.group(0).strip(), "flags": flags,
                     "annual_min": round(amin), "annual_max": round(amax)}
     return None
 

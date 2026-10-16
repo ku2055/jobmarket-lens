@@ -1,0 +1,36 @@
+{
+  "generated": "2026-10-16",
+  "history_origin": "Independent local collection; no private upstream history imported",
+  "postings": 92,
+  "employers_with_postings": 7,
+  "employers_in_scope": 499,
+  "collection_dates": [
+    "2026-10-16"
+  ],
+  "latest_completeness": {
+    "partial": 3,
+    "complete": 4
+  },
+  "posting_status": {
+    "Open": 92
+  },
+  "missing_fields": {
+    "country": 47,
+    "arr": 38,
+    "deg": 29,
+    "yrs": 34,
+    "posted": 0
+  },
+  "pay_flags": {
+    "inferred_pay_period": 2,
+    "unknown_currency": 1
+  },
+  "usable_usd_pay": 3,
+  "with_full_text": 92,
+  "future_source_dates": 0,
+  "limitations": [
+    "Collected employers are not a representative labor-market sample.",
+    "First discovery is not a new job; disappearance is not a hire.",
+    "Incomplete inventories must not be compared as employer hiring totals."
+  ]
+}

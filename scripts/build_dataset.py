@@ -21,6 +21,7 @@ sys.path.insert(0, str(ROOT))
 
 from collector import store  # noqa: E402
 from normalize import parse, skills, soc  # noqa: E402
+from scripts.public_data import PUBLIC_POSTING_FIELDS, public_snapshot  # noqa: E402
 
 
 def seed_to_raw(s):
@@ -59,20 +60,22 @@ def normalize(r):
     locs = r.get("locations") or []
     country, state, city = parse.parse_location(locs[0]) if locs else (None, None, None)
     posted = r.get("posted_date")
-    basis = "posted"
-    if not posted:
-        posted, basis = r.get("first_seen"), "first_seen"
-    elif r.get("first_seen") and posted > r["first_seen"]:
-        # Some sites give a scheduled start date or a next-day local date; a posting live when we
-        # collected it was posted no later than that day.
-        posted, basis = r["first_seen"], "first_seen"
+    try:
+        posted = date.fromisoformat(posted[:10]).isoformat() if posted else None
+    except (TypeError, ValueError):
+        posted = None
+    future_date = bool(posted and r.get("first_seen") and posted > r["first_seen"])
+    locations = [dict(zip(("country", "state", "city"), parse.parse_location(loc)), raw=loc) for loc in locs]
     return {
         "id": f"{r['company']}:{r['source_id']}",
         "co": r["company"],
         "title": title,
         "url": r.get("url"),
         "posted": posted,
-        "date_basis": basis,
+        "date_basis": "source" if posted else "unknown",
+        "future_date": future_date,
+        "status": r.get("posting_status", "Unverified"),
+        "locations": locations,
         "year": int(posted[:4]) if posted else None,
         "month": posted[:7] if posted else None,
         "first_seen": r.get("first_seen"),
@@ -94,11 +97,15 @@ def normalize(r):
         "pay_hi": pay["max"] if pay else None,
         "pay_period": pay["period"] if pay else None,
         "pay_cur": pay["currency"] if pay else None,
+        "pay_evidence": pay["evidence"] if pay else None,
+        "pay_flags": pay["flags"] if pay else [],
+        "pay_valid": bool(pay and not pay["flags"]),
         "country": country or parse.NS,
         "state": state,
         "city": city,
         "nloc": len(locs),
         "skills": sk,
+        "skill_evidence": skills.skill_evidence(full),
         "lic": lic,
         "src": r.get("source_method", "api"),
         "has_text": bool(r.get("description")),
@@ -119,18 +126,12 @@ def main():
             if col.get("use_seed_sample") and s["co"] not in collected:
                 seed_rows.append(seed_to_raw(s))
 
-    dropped, undated, keep = Counter(), Counter(), []
-    for r in rows + seed_rows:
-        posted = r.get("posted_date")
-        if not posted:  # no posting date on the site: can't place it in the date window
+    # All observed inventory belongs in the dashboard, including old/undated postings.
+    # Source dates remain untouched; future and unknown dates are excluded from time charts.
+    dropped, undated, keep = Counter(), Counter(), rows + seed_rows
+    for r in keep:
+        if not r.get("posted_date"):
             undated[r["company"]] += 1
-            continue
-        if r.get("first_seen") and posted > r["first_seen"]:
-            posted = r["first_seen"]  # same clamp normalize() applies
-        if not (col["posted_from"] <= posted[:10] <= (col.get("posted_to") or "9999-12-31")):
-            dropped[r["company"]] += 1
-            continue
-        keep.append(r)
     # Normalizing is regex-heavy; spread it over the machine's cores.
     with Pool() as pool:
         out = pool.map(normalize, keep, chunksize=200)
@@ -140,12 +141,11 @@ def main():
     lic_names = sorted({s for n in out for s in n["lic"]})
     sk_ix = {s: i for i, s in enumerate(skill_names)}
     lic_ix = {s: i for i, s in enumerate(lic_names)}
-    fields = ["id", "co", "title", "url", "posted", "year", "month", "open", "soc", "sched", "arr", "deg",
-              "deg_equiv", "yrs", "yrs_b", "lvl", "pay_min", "pay_max", "pay_lo", "pay_hi", "pay_period", "pay_cur", "country",
-              "state", "city", "nloc", "src", "first_seen", "last_seen"]
+    fields = list(PUBLIC_POSTING_FIELDS)
     data = {
         "generated": date.today().isoformat(),
-        "posted_from": col["posted_from"],
+        "posted_from": min((r["first_seen"] for r in rows), default=date.today().isoformat()),
+        "history_origin": "Independent local collection; no private upstream history imported",
         "universe": cfg["universe"],
         "companies": [{k: c.get(k) for k in ("rank", "ticker", "name", "weight_pct", "sector", "career_site",
                                              "adapter", "known_issue")} for c in cfg["companies"]],
@@ -154,12 +154,30 @@ def main():
         "degree_order": parse.DEGREE_ORDER,
         "skills": [{"name": s, "family": skills.SKILL_FAMILY.get(s, "Other")} for s in skill_names],
         "licenses": lic_names,
-        "snapshots": snaps,
+        "snapshots": [public_snapshot(s) for s in snaps],
         "fields": fields + ["skills", "lic"],
         "rows": [[n[f] for f in fields] + [[sk_ix[s] for s in n["skills"]], [lic_ix[s] for s in n["lic"]]] for n in out],
         "dropped_outside_window": dict(dropped),
-        "dropped_undated": dict(undated),
+        "undated": dict(undated),
     }
+    latest = {s["company"]: s for s in snaps}
+    report = {
+        "generated": data["generated"], "history_origin": data["history_origin"],
+        "postings": len(out), "employers_with_postings": len({n["co"] for n in out}),
+        "employers_in_scope": len(cfg["companies"]), "collection_dates": sorted({s["run_date"] for s in snaps}),
+        "latest_completeness": dict(Counter(s.get("completeness", "unknown") for s in latest.values())),
+        "posting_status": dict(Counter(n["status"] for n in out)),
+        "missing_fields": {k: sum(n[k] in (None, parse.NS) for n in out)
+                           for k in ("country", "arr", "deg", "yrs", "posted")},
+        "pay_flags": dict(Counter(flag for n in out for flag in n["pay_flags"])),
+        "usable_usd_pay": sum(n["pay_valid"] and n["pay_cur"] == "USD" for n in out),
+        "with_full_text": sum(n["has_text"] for n in out),
+        "future_source_dates": sum(n["future_date"] for n in out),
+        "limitations": ["Collected employers are not a representative labor-market sample.",
+                         "First discovery is not a new job; disappearance is not a hire.",
+                         "Incomplete inventories must not be compared as employer hiring totals."]
+    }
+    (ROOT / "data/quality-report.json").write_text(json.dumps(report, indent=2) + "\n")
     (ROOT / "web").mkdir(exist_ok=True)
     (ROOT / "web/data.json").write_text(json.dumps(data, separators=(",", ":"), ensure_ascii=False))
 
@@ -178,13 +196,13 @@ def main():
     (ROOT / "data/normalized").mkdir(parents=True, exist_ok=True)
     with open(ROOT / "data/normalized/postings.csv", "w", newline="") as f:
         cols = list(out[0].keys()) if out else []
-        w = csv.DictWriter(f, fieldnames=cols)
+        w = csv.DictWriter(f, fieldnames=cols, lineterminator="\n")
         w.writeheader()
         for n in out:
             w.writerow({**n, "skills": "; ".join(n["skills"]), "lic": "; ".join(n["lic"])})
 
     by_co = Counter(n["co"] for n in out)
-    print(f"{len(out)} postings in window; by company: {dict(by_co)}; dropped: {dict(dropped)}")
+    print(f"{len(out)} observed postings; by company: {dict(by_co)}; dropped: {dict(dropped)}")
     print("SOC:", Counter(n["soc"] for n in out).most_common())
     print("unclassified titles:", [n["title"] for n in out if n["soc"] == "00"][:20])
 

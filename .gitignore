@@ -1,9 +1,16 @@
 __pycache__/
 *.pyc
-# Large or regenerated data: the posting history lives in a GitHub release asset (see collect.yml)
+# Private evidence: local SQLite history, raw records and backups
 data/lens.db
 data/raw/
-# Regenerated on every build; the dashboard inlines the data, and the CSV is attached to the "data" release
+# Regenerated outputs; the richer normalized CSV stays in the private evidence release
 web/data.json
 web/artifact.html
 data/normalized/postings.csv
+
+.venv/
+data/backups/
+
+.private/
+data/*.db*
+data/*evidence*.tar.gz

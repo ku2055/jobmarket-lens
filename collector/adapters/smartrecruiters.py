@@ -13,6 +13,7 @@ def collect(company, params, http, max_jobs, stats):
             stats["site_total"] = data.get("totalFound")
         items = data.get("content") or []
         if not items:
+            stats["exhausted"] = True
             break
         for p in items:
             d = http.get(API.format(cid=cid) + "/" + p["id"]).json()
@@ -34,6 +35,9 @@ def collect(company, params, http, max_jobs, stats):
                 level_hint=(p.get("experienceLevel") or {}).get("label"),
             )
             seen += 1
+            if seen == stats.get("site_total"):
+                stats["exhausted"] = True
+                return
             if seen >= max_jobs:
                 return
         offset += len(items)

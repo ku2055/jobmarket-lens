@@ -22,6 +22,7 @@ def _v2(company, host, domain, http, max_jobs, stats):
             stats["site_total"] = data.get("count")
         pos = data.get("positions") or []
         if not pos:
+            stats["exhausted"] = True
             break
         for p in pos:
             d = http.get(f"https://{host}/api/apply/v2/jobs/{p['id']}", params={"domain": domain}).json()
@@ -36,6 +37,9 @@ def _v2(company, host, domain, http, max_jobs, stats):
                 category=p.get("department"),
             )
             seen += 1
+            if seen == stats.get("site_total"):
+                stats["exhausted"] = True
+                return
             if seen >= max_jobs:
                 return
         start += len(pos)
@@ -51,6 +55,7 @@ def _pcsx(company, host, domain, http, max_jobs, stats):
             stats["site_total"] = data.get("count")
         pos = data.get("positions") or []
         if not pos:
+            stats["exhausted"] = True
             break
         for p in pos:
             try:
@@ -70,6 +75,9 @@ def _pcsx(company, host, domain, http, max_jobs, stats):
                 category=p.get("department"),
             )
             seen += 1
+            if seen == stats.get("site_total"):
+                stats["exhausted"] = True
+                return
             if seen >= max_jobs:
                 return
         start += len(pos)

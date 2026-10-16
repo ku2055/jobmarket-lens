@@ -18,6 +18,7 @@ def collect(company, params, http, max_jobs, stats):
             stats["site_total"] = items.get("TotalJobsCount")
         reqs = items.get("requisitionList") or []
         if not reqs:
+            stats["exhausted"] = True
             break
         for q in reqs:
             jid = q.get("Id")
@@ -41,6 +42,9 @@ def collect(company, params, http, max_jobs, stats):
                 level_hint=d.get("JobLevel"),
             )
             seen += 1
+            if seen == stats.get("site_total"):
+                stats["exhausted"] = True
+                return
             if seen >= max_jobs:
                 return
         offset += len(reqs)

@@ -21,6 +21,7 @@ from pathlib import Path
 from collector.adapters import ADAPTERS
 from collector.http import BlockedError, Http
 from collector import store
+from collector.quality import collection_completeness
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -28,15 +29,28 @@ ROOT = Path(__file__).resolve().parent.parent
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", help="comma-separated tickers")
-    ap.add_argument("--max", type=int, help="max postings per company (overrides config)")
+    ap.add_argument("--max", type=int, help="max postings per company; 0 means uncapped (overrides config)")
     ap.add_argument("--date", default=date.today().isoformat(), help="run date label")
     ap.add_argument("--workers", type=int, default=24, help="companies collected in parallel")
     args = ap.parse_args()
 
     cfg = json.loads((ROOT / "config/companies.json").read_text())
     col = cfg["collection"]
-    max_jobs = args.max or col["max_postings_per_company"]
-    only = set(args.only.split(",")) if args.only else None
+    limit = args.max if args.max is not None else col["max_postings_per_company"]
+    if limit < 0:
+        ap.error("--max must be nonnegative (0 means no cap)")
+    max_jobs = limit or sys.maxsize
+    try:
+        date.fromisoformat(args.date)
+    except ValueError:
+        ap.error("--date must be an ISO date (YYYY-MM-DD)")
+    if args.workers < 1:
+        ap.error("--workers must be positive")
+    only = {t.strip().upper() for t in args.only.split(",")} if args.only else None
+    if only:
+        unknown = only - {c["ticker"] for c in cfg["companies"]}
+        if unknown:
+            ap.error("unknown tickers: " + ", ".join(sorted(unknown)))
     out = ROOT / "data/raw" / args.date
     out.mkdir(parents=True, exist_ok=True)
     log_path = out / "run_log.json"
@@ -59,19 +73,30 @@ def main():
         delay = col.get("request_delay_by_adapter", {}).get(c["adapter"], col["request_delay_seconds"])
         http = Http(col["user_agent"], delay, col["respect_robots_txt"])
         stats, n, t0 = {}, 0, time.time()
+        seen_ids = set()
         try:
             with open(out / f"{t}.jsonl", "w") as f:
                 for rec in fn(t, c["params"], http, max_jobs, stats):
-                    rec["collected_at"] = args.date
+                    sid = rec.get("source_id")
+                    if not sid or sid == "None" or not rec.get("title"):
+                        stats["invalid_records"] = stats.get("invalid_records", 0) + 1
+                        raise ValueError("Posting missing a stable ID or title; source needs review")
+                    if sid in seen_ids:
+                        stats["duplicates"] = stats.get("duplicates", 0) + 1
+                        raise ValueError("Repeated posting ID; pagination or source identity needs review")
+                    seen_ids.add(sid)
+                    rec["collected_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
                     f.write(json.dumps(rec, ensure_ascii=False) + "\n")
                     n += 1
             entry["status"] = "ok" if n else "empty"
+            entry["completeness"] = collection_completeness(n, max_jobs, stats)
         except BlockedError as e:
             entry.update(status="blocked", detail=str(e))
         except Exception as e:
             entry.update(status="error", detail=f"{type(e).__name__}: {e}")
             traceback.print_exc(file=sys.stderr)
-        entry.update(collected=n, seconds=round(time.time() - t0), **stats)
+        entry.setdefault("completeness", "partial" if n else "unknown")
+        entry.update(collected=n, limit=limit, seconds=round(time.time() - t0), **stats)
         with lock:
             log[t] = entry
             log_path.write_text(json.dumps(log, indent=2))

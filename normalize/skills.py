@@ -150,3 +150,13 @@ def find_licenses(text):
     if not text:
         return []
     return [name for name, rx in _LIC if rx.search(text)]
+
+
+def skill_evidence(text):
+    """First matched context per skill; a mention is not necessarily a requirement."""
+    evidence = []
+    for name, _, rx in _SK:
+        match = rx.search(text or "")
+        if match:
+            evidence.append({"skill": name, "text": text[max(0, match.start() - 90):match.end() + 140].strip()})
+    return evidence

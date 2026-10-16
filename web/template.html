@@ -70,7 +70,7 @@ h2 { font: 600 15px/1.3 var(--f-body); margin: 0; text-wrap: balance; }
 .kpi .n { font: 11px var(--f-mono); color: var(--ink-3); }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 16px; }
 .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px 16px; display: grid;
-  gap: 10px; align-content: start; min-width: 0; }
+  gap: 10px; align-content: start; min-width: 0; grid-template-columns: minmax(0, 1fr); }
 .panel.wide { grid-column: 1 / -1; }
 .panel-head { display: flex; justify-content: space-between; gap: 8px; align-items: start; flex-wrap: wrap; }
 .bars { display: grid; gap: 5px; }
@@ -130,6 +130,7 @@ a { color: var(--accent); }
     <div>
       <h1>JobMarket <span class="lens">Lens</span></h1>
       <p class="tagline">See demand. Understand skills. Track change.</p>
+      <p class="sub">Independent enhanced preview · limited employer coverage</p>
     </div>
     <div class="meta" id="meta"></div>
   </header>
@@ -148,15 +149,18 @@ a { color: var(--accent); }
     <label for="f-country">Country<select id="f-country"></select></label>
     <label for="f-q">Title contains<input id="f-q" type="search" placeholder="e.g. engineer"></label>
     <button id="f-reset" type="button">Reset</button>
+    <button id="download" type="button">Download filtered CSV</button>
   </div>
 
+  <div class="notice" id="coverage-summary" role="status"></div>
   <section class="kpis" id="kpis" aria-label="Summary"></section>
+  <section class="panel method" aria-label="Data quality"><h2>Evidence behind this view</h2><div id="quality-summary"></div></section>
 
   <section class="grid">
-    <div class="panel"><div><h2>Openings by Occupation Group</h2><p class="sub">SOC 2018 major groups, assigned from job titles</p></div><div class="bars" id="c-soc"></div></div>
-    <div class="panel"><div><h2>Openings by Company</h2><p class="sub">Top 20 companies by postings in view; pick a company in the filter to see any other</p></div><div class="bars" id="c-co"></div></div>
+    <div class="panel"><div><h2>Postings by Occupation Group</h2><p class="sub">SOC 2018 major groups, assigned from job titles</p></div><div class="bars" id="c-soc"></div></div>
+    <div class="panel"><div><h2>Postings by Company</h2><p class="sub">Top 20 companies by postings in view; pick a company in the filter to see any other</p></div><div class="bars" id="c-co"></div></div>
     <div class="panel">
-      <div class="panel-head"><div><h2>Top Skills</h2><p class="sub">Share of postings mentioning each skill</p></div>
+      <div class="panel-head"><div><h2>Top Skills</h2><p class="sub">Dictionary skill mentions; not necessarily required qualifications</p></div>
         <select class="inline" id="skill-soc" aria-label="Skills for occupation group"></select></div>
       <div class="bars" id="c-skills"></div>
     </div>
@@ -167,7 +171,7 @@ a { color: var(--accent); }
     <div class="panel"><div><h2>Full-Time or Part-Time</h2><p class="sub">Employment type field, then title</p></div><div class="bars" id="c-sched"></div></div>
     <div class="panel"><div><h2>Licenses and Certifications</h2><p class="sub">Share of postings in view naming each</p></div><div class="bars" id="c-lic"></div></div>
     <div class="panel wide">
-      <div class="panel-head"><div><h2>Pay Ranges by Occupation Group</h2><p class="sub">Median posted range, annualized USD (hourly × 2,080). Only postings that disclose pay in USD.</p></div></div>
+      <div class="panel-head"><div><h2>Pay Ranges by Occupation Group</h2><p class="sub">Median posted range, annualized USD (hourly × 2,080). Only unflagged USD ranges; small samples are descriptive.</p></div></div>
       <div id="c-pay"></div>
     </div>
     <div class="panel"><div><h2>Where the Jobs Are</h2><p class="sub">Primary location, by country</p></div><div class="bars" id="c-country"></div></div>
@@ -190,10 +194,12 @@ a { color: var(--accent); }
   <section class="panel wide method" aria-labelledby="m-h">
     <h2 id="m-h">Data Sources and Methodology:</h2>
     <p>* Data sources: job postings published on the official career sites of S&amp;P 500 companies (constituents as of <span id="n-const"></span>; Berkshire Hathaway is excluded). Coverage by company is listed under Source Coverage above.</p>
-    <p>Postings come only from each company's official career site. Collectors call the site's own job API where one exists (Workday, Oracle Recruiting, SuccessFactors, Eightfold, Jibe, amazon.jobs) and otherwise read the schema.org JobPosting data on each posting page. Postings without a date on the site are left out. Sites that refuse automated access are listed as blocked, not estimated.</p>
-    <p>Update schedule: the data is refreshed weekly. Collection starts every Monday at 2:00 a.m. Eastern Time (New York), and the dashboard updates when it finishes, usually a few hours later. The date in the top-right corner shows the latest update.</p>
-    <p>Each collection run is a snapshot. A posting keeps the date it was first seen; one that disappears from a later run is counted as closed, and its title is greyed out with the date it was last seen instead of linking to a page that no longer exists. Only postings dated October 1, 2026 or later are included. A posting dated after the day it was collected (a scheduled start date on some sites) is dated to the collection day.</p>
-    <p>Occupation groups follow the 2018 Standard Occupational Classification (SOC) major groups, assigned by auditable title rules with the company's own job family as a fallback. Pay is the posted range, annualized for comparison; it is not actual earnings. Skills and licenses are matched against a fixed dictionary, so a skill the dictionary lacks will not appear. "Not specified" means the posting does not specify.</p>
+    <p>Postings come only from each company's official career site. Collectors call the site's own job API where one exists (Workday, Oracle Recruiting, SuccessFactors, Eightfold, Jibe, amazon.jobs) and otherwise read the schema.org JobPosting data on each posting page. Postings without a source date remain in inventory with an unknown date. Sites that refuse automated access are listed as blocked, not estimated.</p>
+    <p>Full descriptions, raw responses, extraction snippets and observation history are stored privately. This public preview contains only the limited posting metadata and derived measures needed for these charts.</p>
+    <p>This build starts its own local history; the author's private history is not included. All observed postings are retained, including undated postings. Original source dates are preserved. Undated and future-dated records are excluded from posting-date charts. First discovery is not evidence that a job was newly created.</p>
+    <p>Open means observed in the latest collection attempt for that employer. A posting absent from one verified complete collection is possibly closed; after two complete collections it is closed. Missing records in capped, failed, blocked or unverified collections do not establish closure. Closure does not imply a hire. Counts describe postings, not vacancy headcount.</p>
+    <p>Complete means pagination reached the reported total or an empty page, and the unique count matched the site's reported total. Other collections are partial or unverified. Pay with an inferred period, unknown currency, or suspicious range is excluded from pay aggregates and retained for review. Annualizing hourly pay assumes 2,080 hours, including for part-time roles.</p>
+    <p>Occupation groups follow the 2018 Standard Occupational Classification (SOC) major groups, assigned by auditable title rules with the company's own job family as a fallback. Pay is the posted range, annualized for comparison; it is not actual earnings. Skills and licenses are matched against a fixed dictionary, so a skill the dictionary lacks will not appear. "Not specified" means the collector or parser did not establish a value; it does not prove the employer omitted it.</p>
   </section>
   <footer class="copyright">© 2026 Yimi Zhao. All rights reserved. Job postings remain the property of the companies that published them.</footer>
 </div>
@@ -218,7 +224,8 @@ async function load() {
 load().then(D => {
   const F = D.fields;
   const rows = D.rows.map(r => Object.fromEntries(F.map((f, i) => [f, r[i]])));
-  rows.forEach(r => r.status = r.open ? "Open" : "Closed");
+  rows.forEach(r => r.status = r.status || (r.open ? "Open" : "Unverified"));
+  const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"}[c]));
   const coName = Object.fromEntries(D.companies.map(c => [c.ticker, c.name]));
   const socName = D.soc_major;
   const skillNames = D.skills.map(s => s.name);
@@ -234,21 +241,27 @@ load().then(D => {
   // Weekly bars until three full months have been collected, then monthly.
   const monthly = (() => { const d = new Date(D.posted_from + "T00:00:00Z"); d.setUTCMonth(d.getUTCMonth() + 3); return lastRunISO >= d.toISOString().slice(0, 10); })();
   const shortDate = d => new Date(d + "T00:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
-  const weekOf = d => { const t = new Date(d + "T00:00:00Z"); t.setUTCDate(t.getUTCDate() - (t.getUTCDay() + 6) % 7); const w = t.toISOString().slice(0, 10); return w < D.posted_from ? D.posted_from : w; };
+  const weekOf = d => { const t = new Date(d + "T00:00:00Z"); t.setUTCDate(t.getUTCDate() - (t.getUTCDay() + 6) % 7); const w = t.toISOString().slice(0, 10); return w; };
   const sampleCos = [...new Set(rows.filter(r => r.src === "page-read").map(r => r.co))];
   const nCos = new Set(rows.map(r => r.co)).size;
   const since = new Date(D.posted_from + "T00:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
   document.getElementById("meta").innerHTML =
-    `Data sources: job postings of S&amp;P 500 companies*<br>Updated weekly, latest on ${lastRun}`;
+    `Data sources: global postings from covered S&amp;P 500 employers*<br>Data last updated: ${lastRun}`;
   document.getElementById("n-const").textContent = longDate(D.universe.retrieved);
   document.getElementById("intro").textContent =
-    "JobMarket Lens tracks what America's largest employers are hiring for, using job postings published since October 2026 on the official career sites of S&P 500 companies. " +
-    "Explore where demand is concentrated, which skills and credentials employers ask for, and how pay, experience and work arrangements differ by occupation, company and location.";
+    "Explore roles, skills, qualifications and posted pay from official employer career sites. This independent collection covers a subset of S&P 500 employers and does not represent the entire labor market.";
+  const latestCoverage = {};
+  (D.snapshots || []).forEach(x => latestCoverage[x.company] = x);
+  const inScope = D.companies.map(c => latestCoverage[c.ticker]).filter(Boolean);
+  const completeCount = inScope.filter(x => x.completeness === "complete").length;
+  const partialCount = inScope.filter(x => x.completeness === "partial").length;
+  document.getElementById("coverage-summary").textContent =
+    `${nCos} employers with observed postings / ${D.companies.length} in scope. Latest collections: ${completeCount} verified complete; ${partialCount} partial; ${inScope.length - completeCount - partialCount} unverified, blocked or failed. Local observation history starts ${since}. Company counts are not comparable when collection is incomplete.`;
 
   // ---- filters
   const defs = [
     ["f-year", "year", "All years", v => v],
-    ["f-status", "status", "Open and closed", v => v === "Open" ? "Open now" : "Closed"],
+    ["f-status", "status", "All statuses", v => v === "Open" ? "Observed in latest run" : v],
     ["f-co", "co", "All companies", v => coName[v] || v],
     ["f-soc", "soc", "All groups", v => `${v}-0000 ${socName[v]}`],
     ["f-lvl", "lvl", "All levels", v => v],
@@ -259,7 +272,7 @@ load().then(D => {
   ];
   const order = {
     co: D.companies.map(c => c.ticker),
-    status: ["Open", "Closed"],
+    status: ["Open", "Unverified", "Possibly closed", "Closed"],
     lvl: [...D.levels, NS],
     yrs_b: ["0-1 yrs", "2-4 yrs", "5-7 yrs", "8-10 yrs", "10+ yrs", NS],
   };
@@ -268,18 +281,28 @@ load().then(D => {
     let vals = [...new Set(rows.map(r => r[key]).filter(v => v != null))];
     if (order[key]) vals.sort((a, b) => order[key].indexOf(a) - order[key].indexOf(b));
     else vals.sort();
-    sel.innerHTML = `<option value="">${all}</option>` + vals.map(v => `<option value="${v}">${label(v)}</option>`).join("");
+    sel.innerHTML = `<option value="">${all}</option>` + vals.map(v => `<option value="${esc(v)}">${esc(label(v))}</option>`).join("");
     sel.addEventListener("change", render);
   }
+  const urlFilters = new URLSearchParams(location.search);
+  for (const [id] of defs) {
+    const sel = document.getElementById(id);
+    const wanted = urlFilters.get(id) ?? (id === "f-status" ? "Open" : "");
+    if ([...sel.options].some(o => o.value === wanted)) sel.value = wanted;
+  }
+  document.getElementById("f-q").value = urlFilters.get("q") || "";
   document.getElementById("f-q").addEventListener("input", render);
   document.getElementById("f-reset").addEventListener("click", () => {
     defs.forEach(([id]) => document.getElementById(id).value = "");
+    document.getElementById("f-status").value = rows.some(r => r.status === "Open") ? "Open" : "";
+    skillSel.value = "";
     document.getElementById("f-q").value = "";
     render();
   });
   const skillSel = document.getElementById("skill-soc");
   skillSel.innerHTML = `<option value="">All occupation groups</option>` +
     Object.keys(socName).filter(k => rows.some(r => r.soc === k)).map(k => `<option value="${k}">${socName[k]}</option>`).join("");
+  if ([...skillSel.options].some(o => o.value === urlFilters.get("skill-soc"))) skillSel.value = urlFilters.get("skill-soc");
   skillSel.addEventListener("change", render);
 
   function filtered() {
@@ -313,8 +336,8 @@ load().then(D => {
     el.innerHTML = entries.map(([k, v]) => {
       const lab = opts.label ? opts.label(k) : k;
       const shown = opts.share ? pct(v, total) : fmt(v);
-      return `<div class="bar-row" data-tip="${lab}: ${fmt(v)} postings (${pct(v, total)} of ${fmt(total)})">
-        <span class="lab">${lab}</span><span class="trk"><span class="fill" style="width:${100 * v / max}%"></span></span>
+      return `<div class="bar-row" data-tip="${esc(lab)}: ${fmt(v)} postings (${pct(v, total)} of ${fmt(total)})">
+        <span class="lab">${esc(lab)}</span><span class="trk"><span class="fill" style="width:${100 * v / max}%"></span></span>
         <span class="val">${shown}</span></div>`;
     }).join("");
   }
@@ -325,7 +348,17 @@ load().then(D => {
   function render() {
     const R = filtered();
     const N = R.length;
-    const paid = R.filter(r => r.pay_min && r.pay_cur === "USD");
+    const params = new URLSearchParams();
+    defs.forEach(([id]) => { const v = document.getElementById(id).value; params.set(id, v); });
+    if (skillSel.value) params.set("skill-soc", skillSel.value);
+    if (document.getElementById("f-q").value) params.set("q", document.getElementById("f-q").value);
+    try { history.replaceState(null, "", location.pathname + "?" + params.toString()); } catch (_) {}
+    const missing = key => pct(R.filter(r => r[key] == null || r[key] === NS).length, N);
+    const flagged = R.filter(r => r.pay_flags?.length).length;
+    const dates = new Set((D.snapshots || []).map(x => x.run_date));
+    document.getElementById("quality-summary").textContent =
+      `Missing: location ${missing("country")}; work arrangement ${missing("arr")}; degree ${missing("deg")}; experience ${missing("yrs")}. ${flagged} pay records need review. ${R.filter(r => !r.posted || r.future_date).length} records have unknown or future source dates. ${dates.size} collection dates available; posting-date bars describe the observed inventory and do not measure hiring growth. Remote/hybrid mentions: ${pct(R.filter(r => ["Remote", "Hybrid"].includes(r.arr)).length, N)} of all postings in view.`;
+    const paid = R.filter(r => r.pay_min && r.pay_cur === "USD" && r.pay_valid === true);
     const mids = paid.map(r => (r.pay_min + r.pay_max) / 2);
     const known = (k) => R.filter(r => r[k] !== NS);
     const arrKnown = known("arr");
@@ -334,7 +367,7 @@ load().then(D => {
     const yrsKnown = R.filter(r => r.yrs != null);
     const kpis = [
       [fmt(N), "postings in view", `${new Set(R.map(r => r.co)).size} companies`],
-      [pct(paid.length, N), "disclose pay (USD)", `${fmt(paid.length)} postings`],
+      [pct(paid.length, N), "usable posted pay (USD)", `${fmt(paid.length)} postings`],
       [mids.length ? money(median(mids)) : "–", "median pay midpoint", "annualized USD"],
       [pct(R.filter(r => ["Bachelor's", "Master's", "Doctorate"].includes(r.deg)).length, degKnown.length), "ask for a bachelor's or higher", `of ${fmt(degKnown.length)} stating a degree`],
       [pct(R.filter(r => r.deg_equiv).length, degKnown.length), "accept equivalent experience", `of ${fmt(degKnown.length)} stating a degree`],
@@ -378,10 +411,10 @@ load().then(D => {
 
     // over time: weekly (week starting Monday) until three months are collected, then monthly
     document.getElementById("month-sub").textContent = monthly
-      ? "By month posted. History fills in as scheduled collection runs accumulate."
-      : "By week posted (weeks start Monday; the latest week may be partial). Switches to months once three months of data are collected.";
+      ? "By original source posting month. Observed inventory; not a hiring-growth series."
+      : "By original source posting week (Monday). Unknown/future dates excluded. Inventory distribution; not new jobs per week.";
     const periods = {};
-    for (const r of R) { if (!r.posted) continue; const k = monthly ? r.posted.slice(0, 7) : weekOf(r.posted); periods[k] = (periods[k] || 0) + 1; }
+    for (const r of R) { if (!r.posted || r.future_date) continue; const k = monthly ? r.posted.slice(0, 7) : weekOf(r.posted); periods[k] = (periods[k] || 0) + 1; }
     const mk = Object.keys(periods).sort();
     const pLabel = k => monthly ? k : shortDate(k);
     const mEl = document.getElementById("c-month");
@@ -415,18 +448,18 @@ load().then(D => {
   function drawTable() {
     const tb = document.getElementById("tbl");
     const list = tblList.slice(tblPage * PAGE, (tblPage + 1) * PAGE);
-    tb.innerHTML = `<thead><tr><th>Title</th><th>Company</th><th>SOC group</th><th>Level</th><th>Job type</th><th>Location</th><th>Posted</th><th>Pay</th><th>Degree</th><th>Yrs</th></tr></thead><tbody>` +
-      list.map(r => `<tr><td>${r.open ? `<a href="${r.url}" target="_blank" rel="noopener">${r.title}</a>` : `<span class="closed-title" title="This posting is no longer on the company's career site">${r.title}</span> <span class="pill closed">Closed${r.last_seen ? ` · last seen ${shortDate(r.last_seen)}` : ""}</span>`}</td><td>${coName[r.co]}</td><td>${socName[r.soc]}</td><td>${r.lvl}</td><td>${r.sched}</td>
-        <td>${[r.city, r.state, r.country !== NS ? r.country : null].filter(Boolean).join(", ") || NS}${r.nloc > 1 ? ` <span class="more">+${r.nloc - 1}</span>` : ""}</td>
-        <td class="num">${r.posted || ""}</td><td class="num">${postedPay(r)}</td>
-        <td>${r.deg}${r.deg_equiv ? " or equiv." : ""}</td><td class="num">${r.yrs ?? ""}</td></tr>`).join("") + "</tbody>";
+    tb.innerHTML = `<thead><tr><th>Title</th><th>Company</th><th>SOC group</th><th>Level</th><th>Job type</th><th>Location</th><th>Posted</th><th>Pay</th><th>Degree</th><th>Yrs</th><th>Skill mentions</th></tr></thead><tbody>` +
+      list.map(r => `<tr><td><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a><br><span class="pill pending">${esc(r.status)}</span></td><td>${esc(coName[r.co])}</td><td>${socName[r.soc]}</td><td>${r.lvl}</td><td>${r.sched}</td>
+        <td>${esc([r.city, r.state, r.country !== NS ? r.country : null].filter(Boolean).join(", ") || NS)}${r.nloc > 1 ? `<details><summary>${r.nloc} locations</summary>${(r.locations || []).map(l => esc(l.raw)).join("<br>")}</details>` : ""}</td>
+        <td class="num">${r.posted || "Unknown"}</td><td class="num">${postedPay(r)}${r.pay_flags?.length ? `<br><span class="pill sample">Review pay</span>` : ""}${r.pay_evidence ? `<details><summary>Source text</summary>${esc(r.pay_evidence)}</details>` : ""}</td>
+        <td>${r.deg}${r.deg_equiv ? " or equiv." : ""}</td><td class="num">${r.yrs ?? ""}</td><td>${r.skills.length ? `<details><summary>${r.skills.length} dictionary mentions</summary>${r.skills.map(i => esc(skillNames[i])).join("<br>")}</details>` : "No dictionary matches"}</td></tr>`).join("") + "</tbody>";
     pager("tbl-pager", tblList.length, tblPage, p => { tblPage = p; drawTable(); document.getElementById("tbl-h").scrollIntoView({ block: "start" }); });
   }
 
   // Pay as the posting states it: the original amounts and period, not annualized.
   function postedPay(r) {
     if (r.pay_lo == null) return NS;
-    const sym = r.pay_cur === "USD" || !r.pay_cur ? "$" : r.pay_cur + " ";
+    const sym = r.pay_cur === "USD" ? "$" : (r.pay_cur || "Unknown currency") + " ";
     const dec = r.pay_period === "hour" ? 2 : 0;
     const f = v => sym + v.toLocaleString("en-US", { minimumFractionDigits: dec, maximumFractionDigits: dec });
     const amt = r.pay_lo === r.pay_hi ? f(r.pay_lo) : `${f(r.pay_lo)}–${f(r.pay_hi)}`;
@@ -441,17 +474,17 @@ load().then(D => {
   const covRows = D.companies.map(c => {
       const s = latest[c.ticker];
       let pill;
-      if (s && s.status === "ok") pill = `<span class="pill ok">Collected ${s.run_date}</span>`;
+      if (s && s.status === "ok") pill = `<span class="pill ${s.completeness === "complete" ? "ok" : "sample"}">${esc(s.completeness || "unverified")} · ${s.run_date}</span>`;
       else if (s && s.status === "blocked") pill = `<span class="pill blocked">Blocked by site</span>`;
       else if (sampleCos.includes(c.ticker)) pill = `<span class="pill sample">Page-read sample</span>`;
       else if (s && s.status === "empty") pill = `<span class="pill pending">No postings returned</span>`;
       else if (s && s.status === "error") pill = `<span class="pill blocked">Collector error</span>`;
-      else if (c.adapter === "none") pill = `<span class="pill pending">Not collected yet</span>`;
+      else if ((s && s.status === "not_applicable") || c.adapter === "none") pill = `<span class="pill pending">Not collected yet</span>`;
       else pill = `<span class="pill pending">Collector ready, not yet run</span>`;
       const host = c.career_site ? new URL(c.career_site).hostname : "";
       return `<tr><td class="num">${c.rank}</td><td>${c.name} <span class="more">${c.ticker}</span></td>
         <td>${c.career_site ? `<a href="${c.career_site}" target="_blank" rel="noopener">${host}</a>` : "–"}</td><td>${c.adapter}</td><td>${pill}</td>
-        <td class="num">${fmt(byCo[c.ticker] || 0)}${s && s.site_total ? ` <span class="more">of ${fmt(s.site_total)} listed</span>` : ""}</td></tr>`;
+        <td class="num">${fmt(byCo[c.ticker] || 0)}${s ? ` <span class="more">(${fmt(s.collected)} collected; ${s.site_total == null ? "total unknown" : fmt(s.site_total) + " listed"})</span>` : ""}</td></tr>`;
     });
   let covPage = 0;
   function drawCov() {
@@ -459,7 +492,19 @@ load().then(D => {
     pager("cov-pager", covRows.length, covPage, p => { covPage = p; drawCov(); document.getElementById("cov-h").scrollIntoView({ block: "start" }); });
   }
   drawCov();
-
+  document.getElementById("download").addEventListener("click", () => {
+    const cols = [...F.filter(f => !["skills", "lic"].includes(f)), "skills", "licenses"];
+    const quote = v => '"' + String(v ?? "").replace(/"/g, '""') + '"';
+    const csv = [cols.map(quote).join(","), ...filtered().map(r => cols.map(k => {
+      let v = k === "skills" ? r.skills.map(i => skillNames[i]).join("; ") : k === "licenses" ? r.lic.map(i => D.licenses[i]).join("; ") : r[k];
+      if (typeof v === "object" && v != null) v = JSON.stringify(v);
+      if (typeof v === "string" && /^[=+@-]/.test(v)) v = "'" + v;
+      return quote(v);
+    }).join(","))].join("\r\n");
+    const url = URL.createObjectURL(new Blob([csv], {type:"text/csv;charset=utf-8"}));
+    const a = document.createElement("a"); a.href = url; a.download = "jobmarket-filtered.csv"; a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
   render();
-});
+}).catch(error => { document.getElementById("intro").textContent = "Could not load the dataset: " + error.message; });
 </script>
