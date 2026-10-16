@@ -1,0 +1,37 @@
+{
+  "name": "jobmarket-lens-v2",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.20.0 <23"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "validate:data": "node scripts/validate-public-data.mjs",
+    "build": "npm run validate:data && npm run check && npm run test && vite build && node scripts/validate-public-data.mjs dist",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "4.7.0",
+    "ajv": "8.20.0",
+    "echarts": "6.1.0",
+    "lucide-react": "0.468.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "vite": "6.4.4"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.11.1",
+    "@playwright/test": "1.64.1",
+    "@types/node": "22.18.6",
+    "@types/react": "19.1.16",
+    "@types/react-dom": "19.1.9",
+    "csv-parse": "7.0.3",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
+  }
+}

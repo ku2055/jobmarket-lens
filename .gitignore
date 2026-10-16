@@ -14,3 +14,13 @@ data/backups/
 .private/
 data/*.db*
 data/*evidence*.tar.gz
+
+# V2 tooling/build artifacts; source intake remains under ignored .private/
+frontend/node_modules/
+frontend/dist/
+
+# Deployment metadata and local secrets
+.vercel/
+.env
+.env.*
+!.env.example

@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-10-16T16:45:46.607Z",
+  "host": "localhost:4174, compiled Vite preview",
+  "browser": "headless Chromium, 1440x1000 / 390x844",
+  "network": "local, unthrottled",
+  "summaryMs": 602,
+  "readyMs": 9555,
+  "workerMessages": [
+    {
+      "type": "init",
+      "ms": 5.600000381469727,
+      "error": null
+    },
+    {
+      "type": "query",
+      "ms": 8360.60000038147,
+      "error": null
+    },
+    {
+      "type": "query",
+      "ms": 266.9000005722046,
+      "error": null
+    },
+    {
+      "type": "query",
+      "ms": 115.39999961853027,
+      "error": null
+    },
+    {
+      "type": "query",
+      "ms": 183.5,
+      "error": null
+    },
+    {
+      "type": "query",
+      "ms": 54,
+      "error": null
+    },
+    {
+      "type": "query",
+      "ms": 70.69999980926514,
+      "error": null
+    },
+    {
+      "type": "export",
+      "ms": 5.300000190734863,
+      "error": null
+    }
+  ],
+  "errors": [],
+  "mobileHorizontalOverflow": false,
+  "csv": "Independently parsed local export: 92 records, exact local-source ID set, proper CSV field boundaries.",
+  "limitations": [
+    "Local machine timing; not a mobile CPU/network benchmark.",
+    "Worker query response includes initialization/loading on first request.",
+    "No actual Vercel deployment or human task study.",
+    "Concurrent local verification can affect timings; only five post-load query messages were measured, not a statistically robust browser p95."
+  ]
+}
