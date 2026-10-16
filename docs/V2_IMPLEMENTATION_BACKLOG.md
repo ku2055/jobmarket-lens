@@ -1,8 +1,10 @@
 # V2 implementation backlog
 
-Design-only work breakdown. Execute against [V2 specification](V2_DESIGN_SPEC.md).
+Implementation work breakdown. Execute against [V2 specification](V2_DESIGN_SPEC.md).
 Employee/profile API integration and two-sided workforce analysis belong to [V3](V3_DESIGN_AND_API_RESEARCH.md).
-No work package below has been implemented by creating these documents.
+Current evidence is in the [V2 build report](V2_BUILD_REPORT.md): WP01–WP08 are implemented; WP09
+automated checks pass, with human usability sessions outstanding; WP10 is configured
+locally but requires actual Vercel account/project access and host verification before release.
 
 | Package | Dependencies | Deliverable | Acceptance scenarios |
 |---|---|---|---|

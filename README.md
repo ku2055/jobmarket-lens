@@ -12,6 +12,24 @@ Private evidence: https://github.com/liyue2055/jobmarket-lens-data (owner access
 
 Original project: https://github.com/yimizhao2015/jobmarket-lens
 
+## V2 interactive workspace
+
+A separate React/TypeScript application lives in [`frontend/`](frontend/README.md). It provides
+Explore, Compare, Skills and Evidence over a pinned, sanitized 86,190-posting combined release.
+The existing GitHub Pages site remains the V1 baseline. V2 targets a separate Vercel project;
+no Vercel deployment has been made by building this branch.
+
+```sh
+cd frontend
+npm ci
+npm run build
+npm run preview -- --port 4173
+```
+
+Use Node 22.20.0. See the [V2 build report](docs/V2_BUILD_REPORT.md) for validation and outstanding
+release gates, and the [data pipeline](docs/V2_DATA_PIPELINE.md) for reproducible source intake.
+V3 employee/profile integration remains outside this implementation.
+
 ## Start a bounded pilot
 
 Requires Python 3.10+, `requests`, and `beautifulsoup4`. The script creates a virtual environment

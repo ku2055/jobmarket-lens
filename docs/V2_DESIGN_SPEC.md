@@ -1,8 +1,11 @@
 # JobMarket Lens V2 — executable design specification
 
-Status: implementation-ready proposal. Updated 2026-10-16.
+Status: core V2 implementation built as a separate review candidate on `feat/v2-workspace`, 2026-10-16.
+See [build evidence and outstanding release gates](V2_BUILD_REPORT.md).
 Primary deployment: **Vercel**. Initial data: **original public upstream snapshot plus local evidence**.
-This document specifies implementation; the frontend, importer and deployment described here are not yet built.
+This document specifies the implementation target. The frontend and importer are now built locally;
+Vercel hosting and formative user validation remain release gates. Audited baseline and pre-implementation
+counts below retain their original research context; the build report records actual release counts.
 
 This specification supersedes the 92-row-only and GitHub-Pages-first implementation assumptions in
 [V2 research](V2_RESEARCH_AND_DESIGN.md). The [workspace concept](v2-workspace-concept.png) remains the visual

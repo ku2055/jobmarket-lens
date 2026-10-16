@@ -1,0 +1,53 @@
+name: Check V2 workspace
+on:
+  push:
+    branches: [main, feat/v2-workspace]
+    paths:
+      - 'frontend/**'
+      - 'scripts/*v2*'
+      - 'scripts/import_upstream.py'
+      - 'tests/test_v2_data.py'
+      - '.github/workflows/v2.yml'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - name: Verify collector and data publication
+        run: |
+          python -m unittest discover -s tests -v
+          python scripts/check_publication.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: frontend/.node-version
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+        working-directory: frontend
+      - name: Build and validate the public application
+        run: npm run build
+        working-directory: frontend
+      - name: Install browser for acceptance tests
+        run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - name: Check compiled application in a browser
+        run: npm run test:e2e
+        working-directory: frontend
+      - name: Keep browser evidence on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v2-browser-report
+          path: |
+            frontend/playwright-report/
+            frontend/test-results/
+          if-no-files-found: ignore

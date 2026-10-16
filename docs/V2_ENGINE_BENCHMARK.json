@@ -1,0 +1,417 @@
+{
+  "recordedAt": "2026-10-16T16:33:39.808Z",
+  "runtime": "v22.20.0",
+  "platform": "linux x64",
+  "cpu": "AMD EPYC 7571",
+  "logicalCpus": 4,
+  "datasetVersion": "9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28",
+  "duckdbVersion": "1.33.1-dev57.0",
+  "sharedJSONReadAndParseMs": 2476.857015,
+  "combinedJSONBytes": 140925161,
+  "combinedGzipBytes": 6957433,
+  "runs": [
+    {
+      "dataset": "real",
+      "records": 86190,
+      "productionEngine": {
+        "setupMs": 744.0711839999999,
+        "p95FullAnalysisMs": 123.25540100000035,
+        "maxMs": 1296.998443,
+        "runs": 35,
+        "queryCases": [
+          {
+            "company": "all",
+            "records": 82851,
+            "ms": 1296.998443
+          },
+          {
+            "company": "AAPL",
+            "records": 804,
+            "ms": 82.0355610000006
+          },
+          {
+            "company": "AAPL",
+            "records": 804,
+            "ms": 2.668986999999106
+          },
+          {
+            "company": "AAPL",
+            "records": 804,
+            "ms": 1.933708999999908
+          },
+          {
+            "company": "AAPL",
+            "records": 804,
+            "ms": 1.9464389999993728
+          },
+          {
+            "company": "all",
+            "records": 82851,
+            "ms": 65.94641499999943
+          },
+          {
+            "company": "ABBV",
+            "records": 706,
+            "ms": 122.59751499999948
+          },
+          {
+            "company": "ABBV",
+            "records": 706,
+            "ms": 2.0196509999996124
+          },
+          {
+            "company": "ABT",
+            "records": 826,
+            "ms": 64.01666599999953
+          },
+          {
+            "company": "ABT",
+            "records": 826,
+            "ms": 1.2320110000000568
+          },
+          {
+            "company": "all",
+            "records": 82851,
+            "ms": 63.802410000000236
+          },
+          {
+            "company": "ACGL",
+            "records": 62,
+            "ms": 66.45313799999985
+          },
+          {
+            "company": "ACN",
+            "records": 540,
+            "ms": 73.75763199999983
+          },
+          {
+            "company": "ACN",
+            "records": 540,
+            "ms": 1.9088879999999335
+          },
+          {
+            "company": "ADBE",
+            "records": 66,
+            "ms": 123.25540100000035
+          },
+          {
+            "company": "all",
+            "records": 82851,
+            "ms": 82.96116400000028
+          },
+          {
+            "company": "AEP",
+            "records": 298,
+            "ms": 80.84104100000059
+          },
+          {
+            "company": "AES",
+            "records": 66,
+            "ms": 81.1311080000005
+          },
+          {
+            "company": "AJG",
+            "records": 348,
+            "ms": 61.81235100000049
+          },
+          {
+            "company": "AJG",
+            "records": 348,
+            "ms": 0.9120130000001154
+          },
+          {
+            "company": "all",
+            "records": 82851,
+            "ms": 68.25882300000012
+          },
+          {
+            "company": "AMAT",
+            "records": 548,
+            "ms": 63.35233999999946
+          },
+          {
+            "company": "AMAT",
+            "records": 548,
+            "ms": 1.2237209999993865
+          },
+          {
+            "company": "AMAT",
+            "records": 548,
+            "ms": 0.654077000000143
+          },
+          {
+            "company": "AMD",
+            "records": 351,
+            "ms": 76.25830500000029
+          },
+          {
+            "company": "all",
+            "records": 82851,
+            "ms": 65.01426100000026
+          },
+          {
+            "company": "AME",
+            "records": 416,
+            "ms": 72.69976499999939
+          },
+          {
+            "company": "AME",
+            "records": 416,
+            "ms": 5.833827999999812
+          },
+          {
+            "company": "AMGN",
+            "records": 409,
+            "ms": 65.39669099999992
+          },
+          {
+            "company": "AMGN",
+            "records": 409,
+            "ms": 4.080163000000539
+          },
+          {
+            "company": "all",
+            "records": 82851,
+            "ms": 73.49669499999982
+          },
+          {
+            "company": "AMZN",
+            "records": 816,
+            "ms": 71.68026999999984
+          },
+          {
+            "company": "AMZN",
+            "records": 816,
+            "ms": 2.6375359999992725
+          },
+          {
+            "company": "AMZN",
+            "records": 816,
+            "ms": 2.282847999999831
+          },
+          {
+            "company": "AMZN",
+            "records": 816,
+            "ms": 2.4002510000000257
+          }
+        ],
+        "workload": "35 complete analysis requests: default open query every fifth call, otherwise employer-filtered; repeated queries use the bounded production cache"
+      },
+      "indexedJS": {
+        "setupMs": 38.673156999999264,
+        "p95Ms": 0.3876399999990099
+      },
+      "duckdbWasm": {
+        "setupMs": 4196.600942,
+        "p95Ms": 11.038328999999067
+      },
+      "countsMatch": true,
+      "kernelQuery": "open postings for employer grouped by occupation, 90 calls / first 30 employers"
+    },
+    {
+      "dataset": "synthetic100k",
+      "records": 100000,
+      "productionEngine": {
+        "setupMs": 789.4693399999996,
+        "p95FullAnalysisMs": 78.60153399999945,
+        "maxMs": 1346.466570999999,
+        "runs": 35,
+        "queryCases": [
+          {
+            "company": "all",
+            "records": 96045,
+            "ms": 1346.466570999999
+          },
+          {
+            "company": "AAPL",
+            "records": 1608,
+            "ms": 68.91900999999962
+          },
+          {
+            "company": "AAPL",
+            "records": 1608,
+            "ms": 1.365563999999722
+          },
+          {
+            "company": "AAPL",
+            "records": 1608,
+            "ms": 2.0571920000002137
+          },
+          {
+            "company": "AAPL",
+            "records": 1608,
+            "ms": 1.9602390000000014
+          },
+          {
+            "company": "all",
+            "records": 96045,
+            "ms": 31.63542899999993
+          },
+          {
+            "company": "ABBV",
+            "records": 1412,
+            "ms": 77.15039699999943
+          },
+          {
+            "company": "ABBV",
+            "records": 1412,
+            "ms": 0.3904100000017934
+          },
+          {
+            "company": "ABT",
+            "records": 1652,
+            "ms": 74.76693700000033
+          },
+          {
+            "company": "ABT",
+            "records": 1652,
+            "ms": 0.47461199999997916
+          },
+          {
+            "company": "all",
+            "records": 96045,
+            "ms": 21.127134000000297
+          },
+          {
+            "company": "ACGL",
+            "records": 124,
+            "ms": 76.17802299999857
+          },
+          {
+            "company": "ACN",
+            "records": 1080,
+            "ms": 70.65634399999908
+          },
+          {
+            "company": "ACN",
+            "records": 1080,
+            "ms": 1.2077009999993606
+          },
+          {
+            "company": "ADBE",
+            "records": 132,
+            "ms": 76.01006899999993
+          },
+          {
+            "company": "all",
+            "records": 96045,
+            "ms": 30.260113999998794
+          },
+          {
+            "company": "AEP",
+            "records": 596,
+            "ms": 71.09571499999947
+          },
+          {
+            "company": "AES",
+            "records": 132,
+            "ms": 73.76079299999947
+          },
+          {
+            "company": "AJG",
+            "records": 696,
+            "ms": 67.0973840000006
+          },
+          {
+            "company": "AJG",
+            "records": 696,
+            "ms": 0.9777150000008987
+          },
+          {
+            "company": "all",
+            "records": 96045,
+            "ms": 24.617410999999265
+          },
+          {
+            "company": "AMAT",
+            "records": 1096,
+            "ms": 72.96261199999935
+          },
+          {
+            "company": "AMAT",
+            "records": 1096,
+            "ms": 0.43464099999982864
+          },
+          {
+            "company": "AMAT",
+            "records": 1096,
+            "ms": 0.2875370000001567
+          },
+          {
+            "company": "AMD",
+            "records": 702,
+            "ms": 66.90408899999966
+          },
+          {
+            "company": "all",
+            "records": 96045,
+            "ms": 23.76057899999978
+          },
+          {
+            "company": "AME",
+            "records": 832,
+            "ms": 72.88299000000006
+          },
+          {
+            "company": "AME",
+            "records": 832,
+            "ms": 0.5533639999994193
+          },
+          {
+            "company": "AMGN",
+            "records": 818,
+            "ms": 65.89184299999943
+          },
+          {
+            "company": "AMGN",
+            "records": 818,
+            "ms": 1.256930999999895
+          },
+          {
+            "company": "all",
+            "records": 96045,
+            "ms": 27.211317000001145
+          },
+          {
+            "company": "AMZN",
+            "records": 1632,
+            "ms": 78.60153399999945
+          },
+          {
+            "company": "AMZN",
+            "records": 1632,
+            "ms": 0.5094530000005761
+          },
+          {
+            "company": "AMZN",
+            "records": 1632,
+            "ms": 0.31894800000009127
+          },
+          {
+            "company": "AMZN",
+            "records": 1632,
+            "ms": 0.29673799999909534
+          }
+        ],
+        "workload": "35 complete analysis requests: default open query every fifth call, otherwise employer-filtered; repeated queries use the bounded production cache"
+      },
+      "indexedJS": {
+        "setupMs": 31.202798000000257,
+        "p95Ms": 0.573195000000851
+      },
+      "duckdbWasm": {
+        "setupMs": 2266.194914999998,
+        "p95Ms": 6.783088000000134
+      },
+      "countsMatch": true,
+      "kernelQuery": "open postings for employer grouped by occupation, 90 calls / first 30 employers"
+    }
+  ],
+  "limits": [
+    "Node WASM comparison; browser worker startup, mobile performance and network not measured here.",
+    "Shared compact input projected from full sanitized release; representative count/facet kernel only, not all UI operations.",
+    "Synthetic100k repeats real public feature combinations with unique synthetic IDs.",
+    "Production worker full query timings require separate browser measurements."
+  ],
+  "selectionDecision": "Keep one indexed JavaScript production worker for V2. This kernel benchmark does not predict a Node-native SQL service or a future columnar application."
+}
