@@ -1,0 +1,30 @@
+{
+  "repository": "yimizhao2015/jobmarket-lens",
+  "commit": "7e415fe62d0597e9c6c806bf813b30f8e8c88c98",
+  "commit_date": "2026-10-16T12:53:22Z",
+  "files": {
+    "Job postings.csv": {
+      "url": "https://raw.githubusercontent.com/yimizhao2015/jobmarket-lens/7e415fe62d0597e9c6c806bf813b30f8e8c88c98/data/Job%20postings.csv",
+      "sha256": "7063958088835db11499eb36858d54329fb003d2dba711565e396a90fa82fba6",
+      "bytes": 37993867,
+      "rows": 86144
+    },
+    "data source.csv": {
+      "url": "https://raw.githubusercontent.com/yimizhao2015/jobmarket-lens/7e415fe62d0597e9c6c806bf813b30f8e8c88c98/data/data%20source.csv",
+      "sha256": "48a6c193b54601dafe9f34c18d7699177e08671e35b526d1cb248a67bcfde02e",
+      "bytes": 68465,
+      "rows": 499
+    }
+  },
+  "posting_audit": {
+    "employers": 310,
+    "reported_open": 82805,
+    "reported_closed": 3339,
+    "missing_pay": 56347,
+    "duplicate_ids": 0,
+    "local_ids": 92,
+    "exact_overlap": 46,
+    "candidate_combined_unique": 86190,
+    "merged_release_created": false
+  }
+}
