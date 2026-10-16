@@ -18,5 +18,22 @@
     "error": null
   },
   "closedVideoCount": 0,
-  "pageErrors": []
+  "pageErrors": [],
+  "narrationAudit": {
+    "ids": {
+      "python": "skill-11a4a60b518bf24989d4",
+      "communication": "skill-d4e16994df9002e53294",
+      "analysis": "skill-467119c2e02e473b8147"
+    },
+    "rows": [
+      {
+        "amazonComputer": 222,
+        "computer": 7963,
+        "sales": 15604,
+        "computerPython": 3621,
+        "salesPython": 103,
+        "communicationAnalysis": 19242
+      }
+    ]
+  }
 }

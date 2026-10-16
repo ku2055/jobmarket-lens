@@ -1,6 +1,6 @@
 # V2.6 — linked spatial investigations
 
-Design for review, 2026-10-16. V2.5.1 implementation is in progress; this proposal builds on its
+Design for review, 2026-10-16. V2.5.1 is implemented on an isolated preview; this proposal builds on its
 contracts and must be reconciled with its measured results before implementation. V2.6 is design
 only. It does not authorize new data collection, subscriptions, employee profiles or production changes.
 
@@ -31,6 +31,19 @@ Current capability: categorical intersections, source variants, recorded-skill s
 coverage counts. Missing capability: a real longitudinal release series, representative employee supply,
 precise universal coordinates, or a justified latent skill-distance model. Do not fill those gaps with
 synthetic movement, interpolated dates or inferred employee populations.
+
+## Lessons from the V2.5.1 build
+
+The [implementation evidence](V2_5_1_BUILD_REPORT.md) now includes 42 Node tests and 18 browser
+scenarios. Its optional Three/R3F chunk is approximately 249.6 KiB gzip, close to the proposed 250 KiB
+budget. This is a reason to reuse one renderer rather than add a second stack. The observed idle and
+390 px layout results are bounded checks, not physical-device fps or proof of analyst benefit.
+
+The current skill scene deliberately puts exact labels/counts in the evidence list; 3D marks can
+occlude one another. Prototype selected/anchor labels and linked focus rings before adding more nodes.
+For synchronized A/B, compare one canvas with two camera viewports against two mounted canvases;
+measure memory, interaction and context recovery instead of assuming twice the scene is affordable.
+The V2.5.1 startup context-loss and pointer-lasso regressions must remain acceptance cases.
 
 ## Proposed workspace
 

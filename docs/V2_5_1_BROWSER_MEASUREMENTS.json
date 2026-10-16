@@ -1,0 +1,38 @@
+{
+  "sourceCommit": "fda5ca6",
+  "checkedAt": "2026-10-16T18:56:20.245Z",
+  "scope": "Local production build, headless Chromium/software WebGL. Idle interval1.2s, single observation. No physical-device fps, thermal, memory or human-task claim. Later context-capture-only fix separately tested in CI.",
+  "baselineRendererRequests": [],
+  "canvasBeforeOptIn": 0,
+  "rendererBeforeOptIn": [],
+  "drawsBefore": 4,
+  "drawsAfter": 4,
+  "mobileWidth": {
+    "document": 390,
+    "viewport": 390
+  },
+  "pageErrors": [],
+  "productionChunks": [
+    {
+      "name": "SpatialLab-DrSiqZHw.js",
+      "bytes": 47024,
+      "gzipBytes": 15055
+    },
+    {
+      "name": "SpatialScene-BLnzuv0s.js",
+      "bytes": 952056,
+      "gzipBytes": 255557
+    },
+    {
+      "name": "index-BTVuELH1.js",
+      "bytes": 270988,
+      "gzipBytes": 82446
+    }
+  ],
+  "nativeVideo": {
+    "status": 206,
+    "bytes": 1024,
+    "contentType": "video/mp4",
+    "contentRange": "bytes 0-1023/4529355"
+  }
+}

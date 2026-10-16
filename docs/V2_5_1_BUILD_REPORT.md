@@ -67,3 +67,26 @@ choose a separate project/domain or explicitly authorize replacing that baseline
 
 Recovery for an isolated preview means reverting to the previously validated Git SHA; it does not alter
 V2/V2.5 production aliases. Revert semantic handlers and UI together if selection identities change.
+
+## Verified build and release evidence
+
+Runtime commit `aa5c7ef525fda6b54e5b83365842cd1da234140e` is based on the deployed tour merge
+`0774651134010cd3c3a1e825609c7f04c8747749`. The [CI run](https://github.com/liyue2055/jobmarket-lens/actions/runs/38951198614)
+passed 42 Node tests, TypeScript/build and all 18 browser scenarios with no flaky retry. Preserved V2
+and publication checks also passed. A context-loss startup race was fixed by capturing the native
+non-bubbling event from the already-mounted parent; its focused test additionally passed three consecutive
+local runs with retries disabled. An earlier pointer-event lifecycle bug in lasso was reproduced and
+fixed; the end-to-end case now resolves the complete shelf and exact contributor count.
+
+The [production-build measurement receipt](V2_5_1_BROWSER_MEASUREMENTS.json) records the measured
+source revision and limits. Optional renderer gzip is 255,557 bytes (249.6 KiB); ordinary canvas and
+2D Spatial Lab entry did not request it. No extra draws occurred during the measured idle interval,
+390 px document width matched the viewport, and no page errors were observed. The native Node server
+now streams video ranges with media/caption MIME types, matching the Vercel deployment behavior.
+
+[Authenticated preview checks](V2_5_1_PREVIEW_CHECKS.json) verify native Node/DuckDB scene queries,
+rendered Spatial Lab and the inherited tour. Preview access uses existing Vercel authentication;
+production protections were not disabled. The feature remains separate from public V2/V2.5 aliases.
+
+Actual captures: [desktop 3D](v251-spatial-desktop.png), [focused skills](v251-spatial-skills.png),
+[mobile 2D](v251-spatial-mobile.png). They show public snapshot fields only.
