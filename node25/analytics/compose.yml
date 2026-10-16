@@ -1,0 +1,39 @@
+name: lens-analytics
+services:
+  umami:
+    image: ghcr.io/umami-software/umami:3.4.0
+    ports:
+      - "127.0.0.1:3006:3000"
+    environment:
+      DATABASE_URL: postgresql://umami:${UMAMI_DB_PASSWORD:?Generate .env first}@db:5432/umami
+      APP_SECRET: ${UMAMI_APP_SECRET:?Generate .env first}
+      TWO_FACTOR_ENCRYPTION_KEY: ${UMAMI_2FA_KEY:?Generate .env first}
+      DISABLE_TELEMETRY: "1"
+      TRACKER_SCRIPT_NAME: script.js
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    init: true
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:3000/api/heartbeat"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: umami
+      POSTGRES_DB: umami
+      POSTGRES_PASSWORD: ${UMAMI_DB_PASSWORD:?Generate .env first}
+      TZ: UTC
+    volumes:
+      - analytics-db:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami -d umami"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  analytics-db:

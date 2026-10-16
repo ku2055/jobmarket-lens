@@ -1,0 +1,26 @@
+name: V2.5 Node checks
+on:
+  push:
+    branches: [feat/v2.5-node-canvas]
+    paths: ['node25/**', '.github/workflows/v25-checks.yml']
+  pull_request:
+    paths: ['node25/**', '.github/workflows/v25-checks.yml']
+jobs:
+  node25:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: node25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.20.0
+          cache: npm
+          cache-dependency-path: node25/package-lock.json
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: npx tsc --noEmit
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e

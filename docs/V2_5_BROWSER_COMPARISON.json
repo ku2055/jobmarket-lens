@@ -1,0 +1,453 @@
+{
+  "checkedAt": "2026-10-16T17:44:24.667Z",
+  "method": "One sequential pass, fresh browser contexts, same headless Chromium1440x1000 cloud workstation, unthrottled public HTTPS. Browser cache starts empty; origin/CDN/engine caches uncontrolled. Readiness uses each app enabled cohort controls; V2.5 additionally waits for100recordpage. No physical mobile or robust p95/peak-memory claim.",
+  "reports": [
+    {
+      "version": "2",
+      "url": "https://jobmarket.feedos.si/explore",
+      "summaryMs": 739,
+      "readyMs": 7729,
+      "resources": [
+        {
+          "url": "https://jobmarket.feedos.si/fonts/dm-sans-latin.woff2",
+          "transferSize": 37232,
+          "encodedBodySize": 36932,
+          "decodedBodySize": 36932
+        },
+        {
+          "url": "https://jobmarket.feedos.si/assets/index-BnnPJzAR.js",
+          "transferSize": 123423,
+          "encodedBodySize": 123123,
+          "decodedBodySize": 388964
+        },
+        {
+          "url": "https://jobmarket.feedos.si/assets/index-D9U0o9dL.css",
+          "transferSize": 9918,
+          "encodedBodySize": 9618,
+          "decodedBodySize": 38076
+        },
+        {
+          "url": "https://jobmarket.feedos.si/fonts/manrope-latin.woff2",
+          "transferSize": 25136,
+          "encodedBodySize": 24836,
+          "decodedBodySize": 24836
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/manifest.json",
+          "transferSize": 3013,
+          "encodedBodySize": 2713,
+          "decodedBodySize": 12266
+        },
+        {
+          "url": "https://jobmarket.feedos.si/assets/worker-DtBeMx2N.js",
+          "transferSize": 47529,
+          "encodedBodySize": 47229,
+          "decodedBodySize": 145726
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/companies.json",
+          "transferSize": 13004,
+          "encodedBodySize": 12704,
+          "decodedBodySize": 59406
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/taxonomy.json",
+          "transferSize": 3779,
+          "encodedBodySize": 3479,
+          "decodedBodySize": 10283
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/sources.json",
+          "transferSize": 1140,
+          "encodedBodySize": 840,
+          "decodedBodySize": 840
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/summary.json",
+          "transferSize": 830,
+          "encodedBodySize": 530,
+          "decodedBodySize": 1153
+        },
+        {
+          "url": "https://jobmarket.feedos.si/assets/Chart-Dh9eGWZf.js",
+          "transferSize": 179762,
+          "encodedBodySize": 179462,
+          "decodedBodySize": 510067
+        }
+      ],
+      "network": [
+        {
+          "url": "https://jobmarket.feedos.si/explore",
+          "requestBodySize": 0,
+          "requestHeadersSize": 697,
+          "responseBodySize": 1120,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/fonts/dm-sans-latin.woff2",
+          "requestBodySize": 0,
+          "requestHeadersSize": 620,
+          "responseBodySize": 37129,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/assets/index-D9U0o9dL.css",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 9766,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/assets/index-BnnPJzAR.js",
+          "requestBodySize": 0,
+          "requestHeadersSize": 620,
+          "responseBodySize": 123391,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/fonts/manrope-latin.woff2",
+          "requestBodySize": 0,
+          "requestHeadersSize": 638,
+          "responseBodySize": 24989,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/manifest.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 599,
+          "responseBodySize": 2861,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/assets/worker-DtBeMx2N.js",
+          "requestBodySize": 0,
+          "requestHeadersSize": 466,
+          "responseBodySize": 113,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/sources.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 719,
+          "responseBodySize": 1018,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/taxonomy.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 721,
+          "responseBodySize": 3605,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/companies.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 723,
+          "responseBodySize": 12831,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/summary.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 719,
+          "responseBodySize": 685,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-002.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 371678,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-001.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 363265,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-000.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 356255,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-003.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 336516,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-004.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 255682,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-005.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 324616,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-006.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 345075,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-007.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 322454,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-008.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 362199,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-011.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 340675,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-009.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 312921,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-012.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 317210,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-010.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 388324,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-013.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 308706,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-014.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 326146,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-015.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 277407,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-016.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 288645,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/data/releases/9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28/postings-combined-017.json",
+          "requestBodySize": 0,
+          "requestHeadersSize": 636,
+          "responseBodySize": 90625,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://jobmarket.feedos.si/assets/Chart-Dh9eGWZf.js",
+          "requestBodySize": 0,
+          "requestHeadersSize": 637,
+          "responseBodySize": 179848,
+          "responseHeadersSize": 0
+        }
+      ],
+      "analyticalRequests": 23,
+      "dataResponseBodyBytes": 5709399,
+      "dataResponseHeaderBytes": 0,
+      "heap": {
+        "usedJSHeapSize": 14300000,
+        "totalJSHeapSize": 21700000,
+        "limitation": "Main-thread only, not worker/native/whole-browser peak; no memory improvement claim."
+      },
+      "api": [],
+      "errors": []
+    },
+    {
+      "version": "2.5",
+      "url": "https://lens.feedos.si/canvas",
+      "summaryMs": 481,
+      "readyMs": 632,
+      "resources": [
+        {
+          "url": "https://lens.feedos.si/brand/dm-sans-latin.woff2",
+          "transferSize": 37232,
+          "encodedBodySize": 36932,
+          "decodedBodySize": 36932
+        },
+        {
+          "url": "https://lens.feedos.si/assets/index-BFoizPk9.css",
+          "transferSize": 11384,
+          "encodedBodySize": 11084,
+          "decodedBodySize": 47780
+        },
+        {
+          "url": "https://lens.feedos.si/assets/index-CnU8qFb3.js",
+          "transferSize": 82327,
+          "encodedBodySize": 82027,
+          "decodedBodySize": 263000
+        },
+        {
+          "url": "https://lens.feedos.si/brand/mark.svg",
+          "transferSize": 681,
+          "encodedBodySize": 381,
+          "decodedBodySize": 381
+        },
+        {
+          "url": "https://lens.feedos.si/brand/manrope-latin.woff2",
+          "transferSize": 25136,
+          "encodedBodySize": 24836,
+          "decodedBodySize": 24836
+        },
+        {
+          "url": "https://lens.feedos.si/api/catalog",
+          "transferSize": 9316,
+          "encodedBodySize": 9016,
+          "decodedBodySize": 26391
+        },
+        {
+          "url": "https://lens.feedos.si/api/query",
+          "transferSize": 4001,
+          "encodedBodySize": 3701,
+          "decodedBodySize": 14913
+        },
+        {
+          "url": "https://lens.feedos.si/api/query",
+          "transferSize": 11456,
+          "encodedBodySize": 11156,
+          "decodedBodySize": 174901
+        }
+      ],
+      "network": [
+        {
+          "url": "https://lens.feedos.si/canvas",
+          "requestBodySize": 0,
+          "requestHeadersSize": 690,
+          "responseBodySize": 1038,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://lens.feedos.si/assets/index-BFoizPk9.css",
+          "requestBodySize": 0,
+          "requestHeadersSize": 620,
+          "responseBodySize": 11233,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://lens.feedos.si/brand/dm-sans-latin.woff2",
+          "requestBodySize": 0,
+          "requestHeadersSize": 604,
+          "responseBodySize": 37134,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://lens.feedos.si/assets/index-CnU8qFb3.js",
+          "requestBodySize": 0,
+          "requestHeadersSize": 604,
+          "responseBodySize": 82258,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://lens.feedos.si/brand/mark.svg",
+          "requestBodySize": 0,
+          "requestHeadersSize": 623,
+          "responseBodySize": 521,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://lens.feedos.si/brand/manrope-latin.woff2",
+          "requestBodySize": 0,
+          "requestHeadersSize": 623,
+          "responseBodySize": 24989,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://lens.feedos.si/api/catalog",
+          "requestBodySize": 0,
+          "requestHeadersSize": 580,
+          "responseBodySize": 9155,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://lens.feedos.si/api/query",
+          "requestBodySize": 207,
+          "requestHeadersSize": 631,
+          "responseBodySize": 3782,
+          "responseHeadersSize": 0
+        },
+        {
+          "url": "https://lens.feedos.si/api/query",
+          "requestBodySize": 238,
+          "requestHeadersSize": 631,
+          "responseBodySize": 11246,
+          "responseHeadersSize": 0
+        }
+      ],
+      "analyticalRequests": 3,
+      "dataResponseBodyBytes": 24183,
+      "dataResponseHeaderBytes": 0,
+      "heap": {
+        "usedJSHeapSize": 10000000,
+        "totalJSHeapSize": 11900000,
+        "limitation": "Main-thread only, not worker/native/whole-browser peak; no memory improvement claim."
+      },
+      "api": [
+        {
+          "path": "/api/catalog",
+          "view": null
+        },
+        {
+          "path": "/api/query",
+          "view": "overview"
+        },
+        {
+          "path": "/api/query",
+          "view": "records"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "sourceCommit": "6cf7afce99479024b5e9876546675a2158231ad4",
+  "limitations": [
+    "One sequential pass; browser caches empty but CDN/native-service caches uncontrolled and warm from verification.",
+    "Encoded response body sizes are reported by Playwright request.sizes; headers excluded because unavailable.",
+    "23 V2 analytical requests include manifest/catalog and dedicated-worker shards; V2.5 uses catalog/overview/100-row page.",
+    "No physical mobile benchmark, robust interaction p95 or whole-browser peak-memory improvement claim."
+  ]
+}

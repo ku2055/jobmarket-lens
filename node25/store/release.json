@@ -1,0 +1,2667 @@
+{
+  "datasetVersion": "2d18d6d0d99a370a7ebc6a7d0d637cbca917682b504110427727ba76a339041b",
+  "sourceDatasetVersion": "9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28",
+  "counts": {
+    "combined": 86190,
+    "upstream": 86144,
+    "local": 92,
+    "overlap": 46,
+    "rejected": 0
+  },
+  "catalog": {
+    "companies": [
+      {
+        "id": "A",
+        "name": "Agilent Technologies"
+      },
+      {
+        "id": "AAPL",
+        "name": "Apple"
+      },
+      {
+        "id": "ABBV",
+        "name": "AbbVie"
+      },
+      {
+        "id": "ABNB",
+        "name": "Airbnb"
+      },
+      {
+        "id": "ABT",
+        "name": "Abbott Laboratories"
+      },
+      {
+        "id": "ACGL",
+        "name": "Arch Capital Group"
+      },
+      {
+        "id": "ACN",
+        "name": "Accenture"
+      },
+      {
+        "id": "ADBE",
+        "name": "Adobe Inc."
+      },
+      {
+        "id": "ADI",
+        "name": "Analog Devices"
+      },
+      {
+        "id": "ADM",
+        "name": "Archer Daniels Midland"
+      },
+      {
+        "id": "ADP",
+        "name": "Automatic Data Processing"
+      },
+      {
+        "id": "ADSK",
+        "name": "Autodesk"
+      },
+      {
+        "id": "AEE",
+        "name": "Ameren"
+      },
+      {
+        "id": "AEP",
+        "name": "American Electric Power"
+      },
+      {
+        "id": "AES",
+        "name": "AES Corporation"
+      },
+      {
+        "id": "AFL",
+        "name": "Aflac"
+      },
+      {
+        "id": "AIG",
+        "name": "American International Group"
+      },
+      {
+        "id": "AIZ",
+        "name": "Assurant"
+      },
+      {
+        "id": "AJG",
+        "name": "Arthur J. Gallagher & Co."
+      },
+      {
+        "id": "AKAM",
+        "name": "Akamai Technologies"
+      },
+      {
+        "id": "ALB",
+        "name": "Albemarle Corporation"
+      },
+      {
+        "id": "ALGN",
+        "name": "Align Technology"
+      },
+      {
+        "id": "ALL",
+        "name": "Allstate"
+      },
+      {
+        "id": "ALLE",
+        "name": "Allegion"
+      },
+      {
+        "id": "AMAT",
+        "name": "Applied Materials"
+      },
+      {
+        "id": "AMCR",
+        "name": "Amcor"
+      },
+      {
+        "id": "AMD",
+        "name": "Advanced Micro Devices"
+      },
+      {
+        "id": "AME",
+        "name": "Ametek"
+      },
+      {
+        "id": "AMGN",
+        "name": "Amgen"
+      },
+      {
+        "id": "AMP",
+        "name": "Ameriprise Financial"
+      },
+      {
+        "id": "AMT",
+        "name": "American Tower"
+      },
+      {
+        "id": "AMZN",
+        "name": "Amazon"
+      },
+      {
+        "id": "ANET",
+        "name": "Arista Networks"
+      },
+      {
+        "id": "AON",
+        "name": "Aon plc"
+      },
+      {
+        "id": "AOS",
+        "name": "A. O. Smith"
+      },
+      {
+        "id": "APA",
+        "name": "APA Corporation"
+      },
+      {
+        "id": "APD",
+        "name": "Air Products"
+      },
+      {
+        "id": "APH",
+        "name": "Amphenol"
+      },
+      {
+        "id": "APO",
+        "name": "Apollo Global Management"
+      },
+      {
+        "id": "APP",
+        "name": "AppLovin"
+      },
+      {
+        "id": "APTV",
+        "name": "Aptiv"
+      },
+      {
+        "id": "ARE",
+        "name": "Alexandria Real Estate Equities"
+      },
+      {
+        "id": "ARES",
+        "name": "Ares Management"
+      },
+      {
+        "id": "ATO",
+        "name": "Atmos Energy"
+      },
+      {
+        "id": "AVGO",
+        "name": "Broadcom"
+      },
+      {
+        "id": "AVY",
+        "name": "Avery Dennison"
+      },
+      {
+        "id": "AWK",
+        "name": "American Water Works"
+      },
+      {
+        "id": "AXON",
+        "name": "Axon Enterprise"
+      },
+      {
+        "id": "AXP",
+        "name": "American Express"
+      },
+      {
+        "id": "AZO",
+        "name": "AutoZone"
+      },
+      {
+        "id": "BA",
+        "name": "Boeing"
+      },
+      {
+        "id": "BAC",
+        "name": "Bank of America"
+      },
+      {
+        "id": "BALL",
+        "name": "Ball Corporation"
+      },
+      {
+        "id": "BAX",
+        "name": "Baxter International"
+      },
+      {
+        "id": "BBY",
+        "name": "Best Buy"
+      },
+      {
+        "id": "BDX",
+        "name": "Becton Dickinson"
+      },
+      {
+        "id": "BE",
+        "name": "Bloom Energy"
+      },
+      {
+        "id": "BEN",
+        "name": "Franklin Resources"
+      },
+      {
+        "id": "BF.B",
+        "name": "Brown–Forman"
+      },
+      {
+        "id": "BG",
+        "name": "Bunge Global"
+      },
+      {
+        "id": "BIIB",
+        "name": "Biogen"
+      },
+      {
+        "id": "BKNG",
+        "name": "Booking Holdings"
+      },
+      {
+        "id": "BKR",
+        "name": "Baker Hughes"
+      },
+      {
+        "id": "BLK",
+        "name": "BlackRock"
+      },
+      {
+        "id": "BMY",
+        "name": "Bristol Myers Squibb"
+      },
+      {
+        "id": "BNY",
+        "name": "BNY Mellon"
+      },
+      {
+        "id": "BR",
+        "name": "Broadridge Financial Solutions"
+      },
+      {
+        "id": "BRO",
+        "name": "Brown & Brown"
+      },
+      {
+        "id": "BSX",
+        "name": "Boston Scientific"
+      },
+      {
+        "id": "BX",
+        "name": "Blackstone Inc."
+      },
+      {
+        "id": "BXP",
+        "name": "BXP, Inc."
+      },
+      {
+        "id": "C",
+        "name": "Citigroup"
+      },
+      {
+        "id": "CAH",
+        "name": "Cardinal Health"
+      },
+      {
+        "id": "CARR",
+        "name": "Carrier Global"
+      },
+      {
+        "id": "CASY",
+        "name": "Casey's"
+      },
+      {
+        "id": "CAT",
+        "name": "Caterpillar Inc."
+      },
+      {
+        "id": "CB",
+        "name": "Chubb Limited"
+      },
+      {
+        "id": "CBOE",
+        "name": "Cboe Global Markets"
+      },
+      {
+        "id": "CBRE",
+        "name": "CBRE Group"
+      },
+      {
+        "id": "CCI",
+        "name": "Crown Castle"
+      },
+      {
+        "id": "CCL",
+        "name": "Carnival Corporation"
+      },
+      {
+        "id": "CDNS",
+        "name": "Cadence Design Systems"
+      },
+      {
+        "id": "CDW",
+        "name": "CDW Corporation"
+      },
+      {
+        "id": "CEG",
+        "name": "Constellation Energy"
+      },
+      {
+        "id": "CF",
+        "name": "CF Industries"
+      },
+      {
+        "id": "CFG",
+        "name": "Citizens Financial Group"
+      },
+      {
+        "id": "CHD",
+        "name": "Church & Dwight"
+      },
+      {
+        "id": "CHRW",
+        "name": "C.H. Robinson"
+      },
+      {
+        "id": "CHTR",
+        "name": "Charter Communications"
+      },
+      {
+        "id": "CI",
+        "name": "Cigna"
+      },
+      {
+        "id": "CIEN",
+        "name": "Ciena"
+      },
+      {
+        "id": "CINF",
+        "name": "Cincinnati Financial"
+      },
+      {
+        "id": "CL",
+        "name": "Colgate-Palmolive"
+      },
+      {
+        "id": "CLX",
+        "name": "Clorox"
+      },
+      {
+        "id": "CMCSA",
+        "name": "Comcast"
+      },
+      {
+        "id": "CME",
+        "name": "CME Group"
+      },
+      {
+        "id": "CMG",
+        "name": "Chipotle Mexican Grill"
+      },
+      {
+        "id": "CMI",
+        "name": "Cummins"
+      },
+      {
+        "id": "CMS",
+        "name": "CMS Energy"
+      },
+      {
+        "id": "CNC",
+        "name": "Centene Corporation"
+      },
+      {
+        "id": "CNP",
+        "name": "CenterPoint Energy"
+      },
+      {
+        "id": "COF",
+        "name": "Capital One"
+      },
+      {
+        "id": "COHR",
+        "name": "Coherent Corp."
+      },
+      {
+        "id": "COIN",
+        "name": "Coinbase"
+      },
+      {
+        "id": "COO",
+        "name": "Cooper Companies (The)"
+      },
+      {
+        "id": "COP",
+        "name": "ConocoPhillips"
+      },
+      {
+        "id": "COR",
+        "name": "Cencora"
+      },
+      {
+        "id": "COST",
+        "name": "Costco"
+      },
+      {
+        "id": "CPAY",
+        "name": "Corpay"
+      },
+      {
+        "id": "CPRT",
+        "name": "Copart"
+      },
+      {
+        "id": "CPT",
+        "name": "Camden Property Trust"
+      },
+      {
+        "id": "CRH",
+        "name": "CRH plc"
+      },
+      {
+        "id": "CRL",
+        "name": "Charles River Laboratories"
+      },
+      {
+        "id": "CRM",
+        "name": "Salesforce"
+      },
+      {
+        "id": "CRWD",
+        "name": "CrowdStrike"
+      },
+      {
+        "id": "CSCO",
+        "name": "Cisco"
+      },
+      {
+        "id": "CSGP",
+        "name": "CoStar Group"
+      },
+      {
+        "id": "CSX",
+        "name": "CSX Corporation"
+      },
+      {
+        "id": "CTAS",
+        "name": "Cintas"
+      },
+      {
+        "id": "CTSH",
+        "name": "Cognizant"
+      },
+      {
+        "id": "CVNA",
+        "name": "Carvana"
+      },
+      {
+        "id": "CVS",
+        "name": "CVS Health"
+      },
+      {
+        "id": "CVX",
+        "name": "Chevron Corporation"
+      },
+      {
+        "id": "D",
+        "name": "Dominion Energy"
+      },
+      {
+        "id": "DAL",
+        "name": "Delta Air Lines"
+      },
+      {
+        "id": "DASH",
+        "name": "DoorDash"
+      },
+      {
+        "id": "DD",
+        "name": "DuPont"
+      },
+      {
+        "id": "DDOG",
+        "name": "Datadog"
+      },
+      {
+        "id": "DE",
+        "name": "Deere & Company"
+      },
+      {
+        "id": "DECK",
+        "name": "Deckers Brands"
+      },
+      {
+        "id": "DELL",
+        "name": "Dell Technologies"
+      },
+      {
+        "id": "DG",
+        "name": "Dollar General"
+      },
+      {
+        "id": "DGX",
+        "name": "Quest Diagnostics"
+      },
+      {
+        "id": "DHI",
+        "name": "D. R. Horton"
+      },
+      {
+        "id": "DHR",
+        "name": "Danaher Corporation"
+      },
+      {
+        "id": "DIS",
+        "name": "Walt Disney Company (The)"
+      },
+      {
+        "id": "DLR",
+        "name": "Digital Realty"
+      },
+      {
+        "id": "DLTR",
+        "name": "Dollar Tree"
+      },
+      {
+        "id": "DOC",
+        "name": "Healthpeak Properties"
+      },
+      {
+        "id": "DOV",
+        "name": "Dover Corporation"
+      },
+      {
+        "id": "DOW",
+        "name": "Dow Inc."
+      },
+      {
+        "id": "DPZ",
+        "name": "Domino's"
+      },
+      {
+        "id": "DRI",
+        "name": "Darden Restaurants"
+      },
+      {
+        "id": "DTE",
+        "name": "DTE Energy"
+      },
+      {
+        "id": "DUK",
+        "name": "Duke Energy"
+      },
+      {
+        "id": "DVA",
+        "name": "DaVita"
+      },
+      {
+        "id": "DVN",
+        "name": "Devon Energy"
+      },
+      {
+        "id": "DXCM",
+        "name": "Dexcom"
+      },
+      {
+        "id": "EBAY",
+        "name": "eBay Inc."
+      },
+      {
+        "id": "ECHO",
+        "name": "EchoStar"
+      },
+      {
+        "id": "ECL",
+        "name": "Ecolab"
+      },
+      {
+        "id": "ED",
+        "name": "Consolidated Edison"
+      },
+      {
+        "id": "EFX",
+        "name": "Equifax"
+      },
+      {
+        "id": "EG",
+        "name": "Everest Group"
+      },
+      {
+        "id": "EIX",
+        "name": "Edison International"
+      },
+      {
+        "id": "EL",
+        "name": "Estée Lauder Companies (The)"
+      },
+      {
+        "id": "ELV",
+        "name": "Elevance Health"
+      },
+      {
+        "id": "EME",
+        "name": "Emcor"
+      },
+      {
+        "id": "EMR",
+        "name": "Emerson Electric"
+      },
+      {
+        "id": "EOG",
+        "name": "EOG Resources"
+      },
+      {
+        "id": "EQIX",
+        "name": "Equinix"
+      },
+      {
+        "id": "EQT",
+        "name": "EQT Corporation"
+      },
+      {
+        "id": "ERIE",
+        "name": "Erie Indemnity"
+      },
+      {
+        "id": "ES",
+        "name": "Eversource Energy"
+      },
+      {
+        "id": "ESS",
+        "name": "Essex Property Trust"
+      },
+      {
+        "id": "ETN",
+        "name": "Eaton Corporation"
+      },
+      {
+        "id": "ETR",
+        "name": "Entergy"
+      },
+      {
+        "id": "EVRG",
+        "name": "Evergy"
+      },
+      {
+        "id": "EW",
+        "name": "Edwards Lifesciences"
+      },
+      {
+        "id": "EXC",
+        "name": "Exelon"
+      },
+      {
+        "id": "EXE",
+        "name": "Expand Energy"
+      },
+      {
+        "id": "EXPD",
+        "name": "Expeditors International"
+      },
+      {
+        "id": "EXPE",
+        "name": "Expedia Group"
+      },
+      {
+        "id": "EXR",
+        "name": "Extra Space Storage"
+      },
+      {
+        "id": "F",
+        "name": "Ford Motor Company"
+      },
+      {
+        "id": "FANG",
+        "name": "Diamondback Energy"
+      },
+      {
+        "id": "FAST",
+        "name": "Fastenal"
+      },
+      {
+        "id": "FCX",
+        "name": "Freeport-McMoRan"
+      },
+      {
+        "id": "FDS",
+        "name": "FactSet"
+      },
+      {
+        "id": "FDX",
+        "name": "FedEx"
+      },
+      {
+        "id": "FDXF",
+        "name": "FedEx Freight"
+      },
+      {
+        "id": "FE",
+        "name": "FirstEnergy"
+      },
+      {
+        "id": "FERG",
+        "name": "Ferguson Enterprises"
+      },
+      {
+        "id": "FFIV",
+        "name": "F5, Inc."
+      },
+      {
+        "id": "FICO",
+        "name": "Fair Isaac"
+      },
+      {
+        "id": "FIS",
+        "name": "Fidelity National Information Services"
+      },
+      {
+        "id": "FISV",
+        "name": "Fiserv"
+      },
+      {
+        "id": "FITB",
+        "name": "Fifth Third Bancorp"
+      },
+      {
+        "id": "FIX",
+        "name": "Comfort Systems USA"
+      },
+      {
+        "id": "FLEX",
+        "name": "Flex Ltd."
+      },
+      {
+        "id": "FOXA",
+        "name": "Fox Corporation(Class A)"
+      },
+      {
+        "id": "FRT",
+        "name": "Federal Realty Investment Trust"
+      },
+      {
+        "id": "FSLR",
+        "name": "First Solar"
+      },
+      {
+        "id": "FTNT",
+        "name": "Fortinet"
+      },
+      {
+        "id": "FTV",
+        "name": "Fortive"
+      },
+      {
+        "id": "GD",
+        "name": "General Dynamics"
+      },
+      {
+        "id": "GDDY",
+        "name": "GoDaddy"
+      },
+      {
+        "id": "GE",
+        "name": "GE Aerospace"
+      },
+      {
+        "id": "GEHC",
+        "name": "GE HealthCare"
+      },
+      {
+        "id": "GEN",
+        "name": "Gen Digital"
+      },
+      {
+        "id": "GEV",
+        "name": "GE Vernova"
+      },
+      {
+        "id": "GILD",
+        "name": "Gilead Sciences"
+      },
+      {
+        "id": "GIS",
+        "name": "General Mills"
+      },
+      {
+        "id": "GL",
+        "name": "Globe Life"
+      },
+      {
+        "id": "GLW",
+        "name": "Corning Inc."
+      },
+      {
+        "id": "GM",
+        "name": "General Motors"
+      },
+      {
+        "id": "GNRC",
+        "name": "Generac"
+      },
+      {
+        "id": "GOOGL",
+        "name": "Alphabet (Google)"
+      },
+      {
+        "id": "GPC",
+        "name": "Genuine Parts Company"
+      },
+      {
+        "id": "GPN",
+        "name": "Global Payments"
+      },
+      {
+        "id": "GRMN",
+        "name": "Garmin"
+      },
+      {
+        "id": "GS",
+        "name": "Goldman Sachs"
+      },
+      {
+        "id": "GWW",
+        "name": "W. W. Grainger"
+      },
+      {
+        "id": "HAL",
+        "name": "Halliburton"
+      },
+      {
+        "id": "HAS",
+        "name": "Hasbro"
+      },
+      {
+        "id": "HBAN",
+        "name": "Huntington Bancshares"
+      },
+      {
+        "id": "HCA",
+        "name": "HCA Healthcare"
+      },
+      {
+        "id": "HD",
+        "name": "Home Depot (The)"
+      },
+      {
+        "id": "HIG",
+        "name": "Hartford (The)"
+      },
+      {
+        "id": "HII",
+        "name": "Huntington Ingalls Industries"
+      },
+      {
+        "id": "HLT",
+        "name": "Hilton Worldwide"
+      },
+      {
+        "id": "HON",
+        "name": "Honeywell Technologies"
+      },
+      {
+        "id": "HONA",
+        "name": "Honeywell Aerospace"
+      },
+      {
+        "id": "HOOD",
+        "name": "Robinhood Markets"
+      },
+      {
+        "id": "HPE",
+        "name": "Hewlett Packard Enterprise"
+      },
+      {
+        "id": "HPQ",
+        "name": "HP Inc."
+      },
+      {
+        "id": "HRL",
+        "name": "Hormel Foods"
+      },
+      {
+        "id": "HSIC",
+        "name": "Henry Schein"
+      },
+      {
+        "id": "HST",
+        "name": "Host Hotels & Resorts"
+      },
+      {
+        "id": "HSY",
+        "name": "Hershey Company (The)"
+      },
+      {
+        "id": "HUBB",
+        "name": "Hubbell Incorporated"
+      },
+      {
+        "id": "HUM",
+        "name": "Humana"
+      },
+      {
+        "id": "HWM",
+        "name": "Howmet Aerospace"
+      },
+      {
+        "id": "IBKR",
+        "name": "Interactive Brokers"
+      },
+      {
+        "id": "IBM",
+        "name": "IBM"
+      },
+      {
+        "id": "ICE",
+        "name": "Intercontinental Exchange"
+      },
+      {
+        "id": "IDXX",
+        "name": "Idexx Laboratories"
+      },
+      {
+        "id": "IEX",
+        "name": "IDEX Corporation"
+      },
+      {
+        "id": "IFF",
+        "name": "International Flavors & Fragrances"
+      },
+      {
+        "id": "ILMN",
+        "name": "Illumina, Inc."
+      },
+      {
+        "id": "INCY",
+        "name": "Incyte"
+      },
+      {
+        "id": "INTC",
+        "name": "Intel"
+      },
+      {
+        "id": "INTU",
+        "name": "Intuit"
+      },
+      {
+        "id": "INVH",
+        "name": "Invitation Homes"
+      },
+      {
+        "id": "IP",
+        "name": "International Paper"
+      },
+      {
+        "id": "IQV",
+        "name": "IQVIA"
+      },
+      {
+        "id": "IR",
+        "name": "Ingersoll Rand"
+      },
+      {
+        "id": "IRM",
+        "name": "Iron Mountain"
+      },
+      {
+        "id": "ISRG",
+        "name": "Intuitive Surgical"
+      },
+      {
+        "id": "IT",
+        "name": "Gartner"
+      },
+      {
+        "id": "ITW",
+        "name": "Illinois Tool Works"
+      },
+      {
+        "id": "IVZ",
+        "name": "Invesco"
+      },
+      {
+        "id": "J",
+        "name": "Jacobs Solutions"
+      },
+      {
+        "id": "JBHT",
+        "name": "J.B. Hunt"
+      },
+      {
+        "id": "JBL",
+        "name": "Jabil"
+      },
+      {
+        "id": "JCI",
+        "name": "Johnson Controls"
+      },
+      {
+        "id": "JKHY",
+        "name": "Jack Henry & Associates"
+      },
+      {
+        "id": "JNJ",
+        "name": "Johnson & Johnson"
+      },
+      {
+        "id": "JPM",
+        "name": "JPMorgan Chase"
+      },
+      {
+        "id": "KDP",
+        "name": "Keurig Dr Pepper"
+      },
+      {
+        "id": "KEY",
+        "name": "KeyCorp"
+      },
+      {
+        "id": "KEYS",
+        "name": "Keysight Technologies"
+      },
+      {
+        "id": "KHC",
+        "name": "Kraft Heinz"
+      },
+      {
+        "id": "KIM",
+        "name": "Kimco Realty"
+      },
+      {
+        "id": "KKR",
+        "name": "KKR & Co."
+      },
+      {
+        "id": "KLAC",
+        "name": "KLA Corporation"
+      },
+      {
+        "id": "KMB",
+        "name": "Kimberly-Clark"
+      },
+      {
+        "id": "KMI",
+        "name": "Kinder Morgan"
+      },
+      {
+        "id": "KO",
+        "name": "Coca-Cola Company (The)"
+      },
+      {
+        "id": "KR",
+        "name": "Kroger"
+      },
+      {
+        "id": "KVUE",
+        "name": "Kenvue"
+      },
+      {
+        "id": "L",
+        "name": "Loews Corporation"
+      },
+      {
+        "id": "LDOS",
+        "name": "Leidos"
+      },
+      {
+        "id": "LEN",
+        "name": "Lennar"
+      },
+      {
+        "id": "LH",
+        "name": "Labcorp"
+      },
+      {
+        "id": "LHX",
+        "name": "L3Harris"
+      },
+      {
+        "id": "LII",
+        "name": "Lennox International"
+      },
+      {
+        "id": "LIN",
+        "name": "Linde plc"
+      },
+      {
+        "id": "LITE",
+        "name": "Lumentum"
+      },
+      {
+        "id": "LLY",
+        "name": "Eli Lilly"
+      },
+      {
+        "id": "LMT",
+        "name": "Lockheed Martin"
+      },
+      {
+        "id": "LNT",
+        "name": "Alliant Energy"
+      },
+      {
+        "id": "LOW",
+        "name": "Lowe's"
+      },
+      {
+        "id": "LRCX",
+        "name": "Lam Research"
+      },
+      {
+        "id": "LULU",
+        "name": "Lululemon Athletica"
+      },
+      {
+        "id": "LUV",
+        "name": "Southwest Airlines"
+      },
+      {
+        "id": "LVS",
+        "name": "Las Vegas Sands"
+      },
+      {
+        "id": "LYB",
+        "name": "LyondellBasell"
+      },
+      {
+        "id": "LYV",
+        "name": "Live Nation Entertainment"
+      },
+      {
+        "id": "MA",
+        "name": "Mastercard"
+      },
+      {
+        "id": "MAA",
+        "name": "Mid-America Apartment Communities"
+      },
+      {
+        "id": "MAR",
+        "name": "Marriott International"
+      },
+      {
+        "id": "MAS",
+        "name": "Masco"
+      },
+      {
+        "id": "MCD",
+        "name": "McDonald's"
+      },
+      {
+        "id": "MCHP",
+        "name": "Microchip Technology"
+      },
+      {
+        "id": "MCK",
+        "name": "McKesson"
+      },
+      {
+        "id": "MCO",
+        "name": "Moody's Corporation"
+      },
+      {
+        "id": "MDLZ",
+        "name": "Mondelez International"
+      },
+      {
+        "id": "MDT",
+        "name": "Medtronic"
+      },
+      {
+        "id": "MET",
+        "name": "MetLife"
+      },
+      {
+        "id": "META",
+        "name": "Meta Platforms"
+      },
+      {
+        "id": "MGM",
+        "name": "MGM Resorts"
+      },
+      {
+        "id": "MKC",
+        "name": "McCormick & Company"
+      },
+      {
+        "id": "MLM",
+        "name": "Martin Marietta Materials"
+      },
+      {
+        "id": "MMM",
+        "name": "3M"
+      },
+      {
+        "id": "MNST",
+        "name": "Monster Beverage"
+      },
+      {
+        "id": "MO",
+        "name": "Altria"
+      },
+      {
+        "id": "MOS",
+        "name": "Mosaic Company (The)"
+      },
+      {
+        "id": "MPC",
+        "name": "Marathon Petroleum"
+      },
+      {
+        "id": "MPWR",
+        "name": "Monolithic Power Systems"
+      },
+      {
+        "id": "MRK",
+        "name": "Merck & Co."
+      },
+      {
+        "id": "MRNA",
+        "name": "Moderna"
+      },
+      {
+        "id": "MRSH",
+        "name": "Marsh McLennan"
+      },
+      {
+        "id": "MRVL",
+        "name": "Marvell Technology"
+      },
+      {
+        "id": "MS",
+        "name": "Morgan Stanley"
+      },
+      {
+        "id": "MSCI",
+        "name": "MSCI"
+      },
+      {
+        "id": "MSFT",
+        "name": "Microsoft"
+      },
+      {
+        "id": "MSI",
+        "name": "Motorola Solutions"
+      },
+      {
+        "id": "MTB",
+        "name": "M&T Bank"
+      },
+      {
+        "id": "MTD",
+        "name": "Mettler Toledo"
+      },
+      {
+        "id": "MU",
+        "name": "Micron Technology"
+      },
+      {
+        "id": "NCLH",
+        "name": "Norwegian Cruise Line Holdings"
+      },
+      {
+        "id": "NDAQ",
+        "name": "Nasdaq, Inc."
+      },
+      {
+        "id": "NDSN",
+        "name": "Nordson Corporation"
+      },
+      {
+        "id": "NEE",
+        "name": "NextEra Energy"
+      },
+      {
+        "id": "NEM",
+        "name": "Newmont"
+      },
+      {
+        "id": "NFLX",
+        "name": "Netflix"
+      },
+      {
+        "id": "NI",
+        "name": "NiSource"
+      },
+      {
+        "id": "NKE",
+        "name": "Nike, Inc."
+      },
+      {
+        "id": "NOC",
+        "name": "Northrop Grumman"
+      },
+      {
+        "id": "NOW",
+        "name": "ServiceNow"
+      },
+      {
+        "id": "NRG",
+        "name": "NRG Energy"
+      },
+      {
+        "id": "NSC",
+        "name": "Norfolk Southern"
+      },
+      {
+        "id": "NTAP",
+        "name": "NetApp"
+      },
+      {
+        "id": "NTRS",
+        "name": "Northern Trust"
+      },
+      {
+        "id": "NUE",
+        "name": "Nucor"
+      },
+      {
+        "id": "NVDA",
+        "name": "NVIDIA"
+      },
+      {
+        "id": "NVR",
+        "name": "NVR, Inc."
+      },
+      {
+        "id": "NWSA",
+        "name": "News Corp(Class A)"
+      },
+      {
+        "id": "NXPI",
+        "name": "NXP Semiconductors"
+      },
+      {
+        "id": "O",
+        "name": "Realty Income"
+      },
+      {
+        "id": "ODFL",
+        "name": "Old Dominion"
+      },
+      {
+        "id": "OKE",
+        "name": "Oneok"
+      },
+      {
+        "id": "OMC",
+        "name": "Omnicom Group"
+      },
+      {
+        "id": "ON",
+        "name": "ON Semiconductor"
+      },
+      {
+        "id": "ORCL",
+        "name": "Oracle Corporation"
+      },
+      {
+        "id": "ORLY",
+        "name": "O'Reilly Automotive"
+      },
+      {
+        "id": "OTIS",
+        "name": "Otis Worldwide"
+      },
+      {
+        "id": "OXY",
+        "name": "Occidental Petroleum"
+      },
+      {
+        "id": "P",
+        "name": "Everpure"
+      },
+      {
+        "id": "PANW",
+        "name": "Palo Alto Networks"
+      },
+      {
+        "id": "PAYX",
+        "name": "Paychex"
+      },
+      {
+        "id": "PCAR",
+        "name": "Paccar"
+      },
+      {
+        "id": "PCG",
+        "name": "PG&E Corporation"
+      },
+      {
+        "id": "PEG",
+        "name": "Public Service Enterprise Group"
+      },
+      {
+        "id": "PEP",
+        "name": "PepsiCo"
+      },
+      {
+        "id": "PFE",
+        "name": "Pfizer"
+      },
+      {
+        "id": "PFG",
+        "name": "Principal Financial Group"
+      },
+      {
+        "id": "PG",
+        "name": "Procter & Gamble"
+      },
+      {
+        "id": "PGR",
+        "name": "Progressive Corporation"
+      },
+      {
+        "id": "PH",
+        "name": "Parker Hannifin"
+      },
+      {
+        "id": "PHM",
+        "name": "PulteGroup"
+      },
+      {
+        "id": "PKG",
+        "name": "Packaging Corporation of America"
+      },
+      {
+        "id": "PLD",
+        "name": "Prologis"
+      },
+      {
+        "id": "PLTR",
+        "name": "Palantir Technologies"
+      },
+      {
+        "id": "PM",
+        "name": "Philip Morris International"
+      },
+      {
+        "id": "PNC",
+        "name": "PNC Financial Services"
+      },
+      {
+        "id": "PNR",
+        "name": "Pentair"
+      },
+      {
+        "id": "PNW",
+        "name": "Pinnacle West Capital"
+      },
+      {
+        "id": "PODD",
+        "name": "Insulet Corporation"
+      },
+      {
+        "id": "PPG",
+        "name": "PPG Industries"
+      },
+      {
+        "id": "PPL",
+        "name": "PPL Corporation"
+      },
+      {
+        "id": "PRU",
+        "name": "Prudential Financial"
+      },
+      {
+        "id": "PSA",
+        "name": "Public Storage"
+      },
+      {
+        "id": "PSX",
+        "name": "Phillips 66"
+      },
+      {
+        "id": "PTC",
+        "name": "PTC Inc."
+      },
+      {
+        "id": "PWR",
+        "name": "Quanta Services"
+      },
+      {
+        "id": "PYPL",
+        "name": "PayPal"
+      },
+      {
+        "id": "Q",
+        "name": "Qnity Electronics"
+      },
+      {
+        "id": "QCOM",
+        "name": "Qualcomm"
+      },
+      {
+        "id": "RCL",
+        "name": "Royal Caribbean Group"
+      },
+      {
+        "id": "RDDT",
+        "name": "Reddit"
+      },
+      {
+        "id": "REG",
+        "name": "Regency Centers"
+      },
+      {
+        "id": "REGN",
+        "name": "Regeneron Pharmaceuticals"
+      },
+      {
+        "id": "RF",
+        "name": "Regions Financial Corporation"
+      },
+      {
+        "id": "RJF",
+        "name": "Raymond James Financial"
+      },
+      {
+        "id": "RL",
+        "name": "Ralph Lauren Corporation"
+      },
+      {
+        "id": "RMD",
+        "name": "ResMed|"
+      },
+      {
+        "id": "ROK",
+        "name": "Rockwell Automation"
+      },
+      {
+        "id": "ROL",
+        "name": "Rollins, Inc."
+      },
+      {
+        "id": "ROP",
+        "name": "Roper Technologies"
+      },
+      {
+        "id": "ROST",
+        "name": "Ross Stores"
+      },
+      {
+        "id": "RSG",
+        "name": "Republic Services"
+      },
+      {
+        "id": "RTX",
+        "name": "RTX Corporation"
+      },
+      {
+        "id": "RVTY",
+        "name": "Revvity"
+      },
+      {
+        "id": "SBAC",
+        "name": "SBA Communications"
+      },
+      {
+        "id": "SBUX",
+        "name": "Starbucks"
+      },
+      {
+        "id": "SCHW",
+        "name": "Charles Schwab Corporation"
+      },
+      {
+        "id": "SHW",
+        "name": "Sherwin-Williams"
+      },
+      {
+        "id": "SJM",
+        "name": "J.M. Smucker Company (The)"
+      },
+      {
+        "id": "SKYD",
+        "name": "Skydance Corporation"
+      },
+      {
+        "id": "SLB",
+        "name": "Schlumberger"
+      },
+      {
+        "id": "SMCI",
+        "name": "Supermicro"
+      },
+      {
+        "id": "SNA",
+        "name": "Snap-on"
+      },
+      {
+        "id": "SNDK",
+        "name": "Sandisk"
+      },
+      {
+        "id": "SNPS",
+        "name": "Synopsys"
+      },
+      {
+        "id": "SO",
+        "name": "Southern Company"
+      },
+      {
+        "id": "SOLV",
+        "name": "Solventum"
+      },
+      {
+        "id": "SPG",
+        "name": "Simon Property Group"
+      },
+      {
+        "id": "SPGI",
+        "name": "S&P Global"
+      },
+      {
+        "id": "SRE",
+        "name": "Sempra"
+      },
+      {
+        "id": "STE",
+        "name": "Steris"
+      },
+      {
+        "id": "STLD",
+        "name": "Steel Dynamics"
+      },
+      {
+        "id": "STT",
+        "name": "State Street Corporation"
+      },
+      {
+        "id": "STX",
+        "name": "Seagate Technology"
+      },
+      {
+        "id": "STZ",
+        "name": "Constellation Brands"
+      },
+      {
+        "id": "SW",
+        "name": "Smurfit Westrock"
+      },
+      {
+        "id": "SWK",
+        "name": "Stanley Black & Decker"
+      },
+      {
+        "id": "SWKS",
+        "name": "Skyworks Solutions"
+      },
+      {
+        "id": "SYF",
+        "name": "Synchrony Financial"
+      },
+      {
+        "id": "SYK",
+        "name": "Stryker Corporation"
+      },
+      {
+        "id": "SYY",
+        "name": "Sysco"
+      },
+      {
+        "id": "T",
+        "name": "AT&T"
+      },
+      {
+        "id": "TDG",
+        "name": "TransDigm Group"
+      },
+      {
+        "id": "TDY",
+        "name": "Teledyne Technologies"
+      },
+      {
+        "id": "TECH",
+        "name": "Bio-Techne"
+      },
+      {
+        "id": "TEL",
+        "name": "TE Connectivity"
+      },
+      {
+        "id": "TER",
+        "name": "Teradyne"
+      },
+      {
+        "id": "TFC",
+        "name": "Truist Financial"
+      },
+      {
+        "id": "TGT",
+        "name": "Target Corporation"
+      },
+      {
+        "id": "TJX",
+        "name": "TJX Companies"
+      },
+      {
+        "id": "TKO",
+        "name": "TKO Group Holdings"
+      },
+      {
+        "id": "TMO",
+        "name": "Thermo Fisher Scientific"
+      },
+      {
+        "id": "TMUS",
+        "name": "T-Mobile US"
+      },
+      {
+        "id": "TPL",
+        "name": "Texas Pacific Land Corporation"
+      },
+      {
+        "id": "TPR",
+        "name": "Tapestry, Inc."
+      },
+      {
+        "id": "TRGP",
+        "name": "Targa Resources"
+      },
+      {
+        "id": "TRMB",
+        "name": "Trimble Inc."
+      },
+      {
+        "id": "TROW",
+        "name": "T. Rowe Price"
+      },
+      {
+        "id": "TRV",
+        "name": "Travelers Companies (The)"
+      },
+      {
+        "id": "TSCO",
+        "name": "Tractor Supply"
+      },
+      {
+        "id": "TSLA",
+        "name": "Tesla"
+      },
+      {
+        "id": "TSN",
+        "name": "Tyson Foods"
+      },
+      {
+        "id": "TT",
+        "name": "Trane Technologies"
+      },
+      {
+        "id": "TTWO",
+        "name": "Take-Two Interactive"
+      },
+      {
+        "id": "TWLO",
+        "name": "Twilio"
+      },
+      {
+        "id": "TXN",
+        "name": "Texas Instruments"
+      },
+      {
+        "id": "TXT",
+        "name": "Textron"
+      },
+      {
+        "id": "TYL",
+        "name": "Tyler Technologies"
+      },
+      {
+        "id": "UAL",
+        "name": "United Airlines Holdings"
+      },
+      {
+        "id": "UBER",
+        "name": "Uber"
+      },
+      {
+        "id": "UDR",
+        "name": "UDR, Inc."
+      },
+      {
+        "id": "UHS",
+        "name": "Universal Health Services"
+      },
+      {
+        "id": "ULTA",
+        "name": "Ulta Beauty"
+      },
+      {
+        "id": "UNH",
+        "name": "UnitedHealth Group"
+      },
+      {
+        "id": "UNP",
+        "name": "Union Pacific Corporation"
+      },
+      {
+        "id": "UPS",
+        "name": "United Parcel Service"
+      },
+      {
+        "id": "URI",
+        "name": "United Rentals"
+      },
+      {
+        "id": "USB",
+        "name": "U.S. Bancorp"
+      },
+      {
+        "id": "V",
+        "name": "Visa"
+      },
+      {
+        "id": "VEEV",
+        "name": "Veeva Systems"
+      },
+      {
+        "id": "VICI",
+        "name": "Vici Properties"
+      },
+      {
+        "id": "VLO",
+        "name": "Valero Energy"
+      },
+      {
+        "id": "VLTO",
+        "name": "Veralto"
+      },
+      {
+        "id": "VMC",
+        "name": "Vulcan Materials Company"
+      },
+      {
+        "id": "VMRK",
+        "name": "Vivmark Residential"
+      },
+      {
+        "id": "VRSK",
+        "name": "Verisk Analytics"
+      },
+      {
+        "id": "VRSN",
+        "name": "Verisign"
+      },
+      {
+        "id": "VRT",
+        "name": "Vertiv"
+      },
+      {
+        "id": "VRTX",
+        "name": "Vertex Pharmaceuticals"
+      },
+      {
+        "id": "VST",
+        "name": "Vistra Corp."
+      },
+      {
+        "id": "VTR",
+        "name": "Ventas"
+      },
+      {
+        "id": "VTRS",
+        "name": "Viatris"
+      },
+      {
+        "id": "VYLR",
+        "name": "Vylor"
+      },
+      {
+        "id": "VZ",
+        "name": "Verizon"
+      },
+      {
+        "id": "WAB",
+        "name": "Wabtec"
+      },
+      {
+        "id": "WAT",
+        "name": "Waters Corporation"
+      },
+      {
+        "id": "WDAY",
+        "name": "Workday, Inc."
+      },
+      {
+        "id": "WDC",
+        "name": "Western Digital"
+      },
+      {
+        "id": "WEC",
+        "name": "WEC Energy Group"
+      },
+      {
+        "id": "WELL",
+        "name": "Welltower"
+      },
+      {
+        "id": "WFC",
+        "name": "Wells Fargo"
+      },
+      {
+        "id": "WM",
+        "name": "Waste Management"
+      },
+      {
+        "id": "WMB",
+        "name": "Williams Companies"
+      },
+      {
+        "id": "WMT",
+        "name": "Walmart"
+      },
+      {
+        "id": "WRB",
+        "name": "W. R. Berkley Corporation"
+      },
+      {
+        "id": "WSM",
+        "name": "Williams-Sonoma, Inc."
+      },
+      {
+        "id": "WST",
+        "name": "West Pharmaceutical Services"
+      },
+      {
+        "id": "WTW",
+        "name": "Willis Towers Watson"
+      },
+      {
+        "id": "WY",
+        "name": "Weyerhaeuser"
+      },
+      {
+        "id": "WYNN",
+        "name": "Wynn Resorts"
+      },
+      {
+        "id": "XEL",
+        "name": "Xcel Energy"
+      },
+      {
+        "id": "XOM",
+        "name": "ExxonMobil"
+      },
+      {
+        "id": "XYL",
+        "name": "Xylem Inc."
+      },
+      {
+        "id": "XYZ",
+        "name": "Block, Inc."
+      },
+      {
+        "id": "YUM",
+        "name": "Yum! Brands"
+      },
+      {
+        "id": "ZBH",
+        "name": "Zimmer Biomet"
+      },
+      {
+        "id": "ZBRA",
+        "name": "Zebra Technologies"
+      },
+      {
+        "id": "ZTS",
+        "name": "Zoetis"
+      }
+    ],
+    "occupations": [
+      {
+        "id": "00",
+        "name": "Unclassified"
+      },
+      {
+        "id": "11",
+        "name": "Management"
+      },
+      {
+        "id": "13",
+        "name": "Business and Financial Operations"
+      },
+      {
+        "id": "15",
+        "name": "Computer and Mathematical"
+      },
+      {
+        "id": "17",
+        "name": "Architecture and Engineering"
+      },
+      {
+        "id": "19",
+        "name": "Life, Physical, and Social Science"
+      },
+      {
+        "id": "21",
+        "name": "Community and Social Service"
+      },
+      {
+        "id": "23",
+        "name": "Legal"
+      },
+      {
+        "id": "25",
+        "name": "Educational Instruction and Library"
+      },
+      {
+        "id": "27",
+        "name": "Arts, Design, Entertainment, Sports, and Media"
+      },
+      {
+        "id": "29",
+        "name": "Healthcare Practitioners and Technical"
+      },
+      {
+        "id": "31",
+        "name": "Healthcare Support"
+      },
+      {
+        "id": "33",
+        "name": "Protective Service"
+      },
+      {
+        "id": "35",
+        "name": "Food Preparation and Serving Related"
+      },
+      {
+        "id": "37",
+        "name": "Building and Grounds Cleaning and Maintenance"
+      },
+      {
+        "id": "39",
+        "name": "Personal Care and Service"
+      },
+      {
+        "id": "41",
+        "name": "Sales and Related"
+      },
+      {
+        "id": "43",
+        "name": "Office and Administrative Support"
+      },
+      {
+        "id": "45",
+        "name": "Farming, Fishing, and Forestry"
+      },
+      {
+        "id": "47",
+        "name": "Construction and Extraction"
+      },
+      {
+        "id": "49",
+        "name": "Installation, Maintenance, and Repair"
+      },
+      {
+        "id": "51",
+        "name": "Production"
+      },
+      {
+        "id": "53",
+        "name": "Transportation and Material Moving"
+      },
+      {
+        "id": "55",
+        "name": "Military Specific"
+      }
+    ],
+    "skills": [
+      {
+        "id": "skill-76f1e543bdc9908b8570",
+        "name": "API design"
+      },
+      {
+        "id": "skill-1d5ff82de4eb08f874b6",
+        "name": "ASIC / chip design"
+      },
+      {
+        "id": "skill-7d1507284a5757cac6b6",
+        "name": "AWS"
+      },
+      {
+        "id": "skill-2a31aefa266db9cca794",
+        "name": "Accounting"
+      },
+      {
+        "id": "skill-ea9ed61e0c22333f8d14",
+        "name": "Android development"
+      },
+      {
+        "id": "skill-838db642d32742305f1f",
+        "name": "Bash/Shell"
+      },
+      {
+        "id": "skill-eddd7153d81f6c19d6a9",
+        "name": "Budget management"
+      },
+      {
+        "id": "skill-2e7d2c03a9507ae265ec",
+        "name": "C"
+      },
+      {
+        "id": "skill-951a4d36e0a9018b7b89",
+        "name": "C#"
+      },
+      {
+        "id": "skill-cedb1bac7efcd7db47e9",
+        "name": "C++"
+      },
+      {
+        "id": "skill-2afe5e26e9c8cbec2eab",
+        "name": "CAD"
+      },
+      {
+        "id": "skill-80c974d15958976b7357",
+        "name": "CFD / simulation"
+      },
+      {
+        "id": "skill-f947493a715332ae7e66",
+        "name": "CUDA / GPU computing"
+      },
+      {
+        "id": "skill-14de2c4a06be80625995",
+        "name": "Clinical research"
+      },
+      {
+        "id": "skill-0d5a011050205b392ce2",
+        "name": "Collaboration"
+      },
+      {
+        "id": "skill-d4e16994df9002e53294",
+        "name": "Communication"
+      },
+      {
+        "id": "skill-efd27688df326c837366",
+        "name": "Construction documents"
+      },
+      {
+        "id": "skill-349543c18201758b4142",
+        "name": "Customer service"
+      },
+      {
+        "id": "skill-64a1e1972b663b35a8c0",
+        "name": "Cybersecurity"
+      },
+      {
+        "id": "skill-467119c2e02e473b8147",
+        "name": "Data analysis"
+      },
+      {
+        "id": "skill-5037b08f806a3c8cf3f8",
+        "name": "Data structures & algorithms"
+      },
+      {
+        "id": "skill-0ce35f7d00d80024a318",
+        "name": "Data visualization"
+      },
+      {
+        "id": "skill-505bd12938815abc8b94",
+        "name": "Deep learning"
+      },
+      {
+        "id": "skill-c6ae9b43b823a87dafd4",
+        "name": "DevOps / CI/CD"
+      },
+      {
+        "id": "skill-d85fda20a6d8d37d1c14",
+        "name": "Distributed systems"
+      },
+      {
+        "id": "skill-2b0e8c2be21539f9ac32",
+        "name": "Docker/containers"
+      },
+      {
+        "id": "skill-46dc436f4c0627a35388",
+        "name": "Electrical systems"
+      },
+      {
+        "id": "skill-5dae7d7a0beb7ca08dcc",
+        "name": "Equipment operation (forklift, cranes)"
+      },
+      {
+        "id": "skill-faba1e00af8e6c89837f",
+        "name": "Excel"
+      },
+      {
+        "id": "skill-95c7e896df055bf3240e",
+        "name": "Financial modeling"
+      },
+      {
+        "id": "skill-788fc13e8aad189f336b",
+        "name": "Generative AI / LLMs"
+      },
+      {
+        "id": "skill-4cd0e21a9a0795a14ec9",
+        "name": "Go"
+      },
+      {
+        "id": "skill-d9b1d7819af92e77de64",
+        "name": "Google Cloud"
+      },
+      {
+        "id": "skill-9116e9a3ce1ec3c07e0e",
+        "name": "Hardware troubleshooting"
+      },
+      {
+        "id": "skill-38a0963a6364b09ad867",
+        "name": "Java"
+      },
+      {
+        "id": "skill-eda71746c01c3f465ffd",
+        "name": "JavaScript"
+      },
+      {
+        "id": "skill-19a67c2a53695668e491",
+        "name": "Kotlin"
+      },
+      {
+        "id": "skill-94abcb2d2773df65cda0",
+        "name": "Kubernetes"
+      },
+      {
+        "id": "skill-fe9a2d54577d870a3009",
+        "name": "Laboratory techniques"
+      },
+      {
+        "id": "skill-9e720e53885580b1e0c5",
+        "name": "Leadership"
+      },
+      {
+        "id": "skill-caf90169eefa5f807d57",
+        "name": "Linux"
+      },
+      {
+        "id": "skill-2552a9843c49f92bc323",
+        "name": "MATLAB"
+      },
+      {
+        "id": "skill-dcaa8e5ecb8d70ad4ede",
+        "name": "Machine learning"
+      },
+      {
+        "id": "skill-e2a530e251d3675034d2",
+        "name": "Marketing"
+      },
+      {
+        "id": "skill-94ad67d0f610669da37e",
+        "name": "Mechanical systems"
+      },
+      {
+        "id": "skill-dbb9cded2e5efbfd124f",
+        "name": "Microsoft Azure"
+      },
+      {
+        "id": "skill-365c74daf6f0fcc1b295",
+        "name": "Microsoft Office"
+      },
+      {
+        "id": "skill-bac169c345ce1e862ea2",
+        "name": "Networking (TCP/IP)"
+      },
+      {
+        "id": "skill-2c26ea23a1adea4b3ebc",
+        "name": "Object-oriented design"
+      },
+      {
+        "id": "skill-ec4db399036725d358a0",
+        "name": "Patient care"
+      },
+      {
+        "id": "skill-f0c929a9e723bc62724e",
+        "name": "Perl"
+      },
+      {
+        "id": "skill-682c9ffb347dde323882",
+        "name": "Problem solving"
+      },
+      {
+        "id": "skill-7f82838d544e9127cf88",
+        "name": "Process control"
+      },
+      {
+        "id": "skill-5a7c3011cba026a3ec11",
+        "name": "Project management"
+      },
+      {
+        "id": "skill-95b9e168529be5e7d405",
+        "name": "PyTorch/TensorFlow"
+      },
+      {
+        "id": "skill-11a4a60b518bf24989d4",
+        "name": "Python"
+      },
+      {
+        "id": "skill-2a0fd2683325b45c6740",
+        "name": "Quality / Six Sigma"
+      },
+      {
+        "id": "skill-454349e422f05297191e",
+        "name": "R"
+      },
+      {
+        "id": "skill-eeb96f79826a7b27815a",
+        "name": "RF / test equipment"
+      },
+      {
+        "id": "skill-275976081ce1abf67779",
+        "name": "React"
+      },
+      {
+        "id": "skill-f51442b277cd1b224ce0",
+        "name": "Recommendation systems"
+      },
+      {
+        "id": "skill-777d85de32734835f72a",
+        "name": "Recruiting / HR"
+      },
+      {
+        "id": "skill-0f071331f36074cbc3b8",
+        "name": "Regulatory affairs"
+      },
+      {
+        "id": "skill-47ac95fd8f8738cd3c76",
+        "name": "Risk management"
+      },
+      {
+        "id": "skill-521fe5c9ece1aa1f8b66",
+        "name": "Rust"
+      },
+      {
+        "id": "skill-54c38e7b4be185ba2a6b",
+        "name": "SAP / ERP"
+      },
+      {
+        "id": "skill-4ec7c53222c8a758c722",
+        "name": "SQL"
+      },
+      {
+        "id": "skill-8be142b311e695abd924",
+        "name": "Sales / business development"
+      },
+      {
+        "id": "skill-a1c176cc5c0cbe6de947",
+        "name": "Scala"
+      },
+      {
+        "id": "skill-94e2447f60e1db81bcbd",
+        "name": "Semiconductor process"
+      },
+      {
+        "id": "skill-2858e0cc6ff6bf7f7050",
+        "name": "Spark/Big data"
+      },
+      {
+        "id": "skill-0e7e59863b4d5fe66685",
+        "name": "Stakeholder management"
+      },
+      {
+        "id": "skill-49d4843163a72a458423",
+        "name": "Statistics"
+      },
+      {
+        "id": "skill-177025b0eec6e5e441b7",
+        "name": "Supply chain"
+      },
+      {
+        "id": "skill-a33603bf79f74b056172",
+        "name": "Swift"
+      },
+      {
+        "id": "skill-0cf41d5fc9dec4786129",
+        "name": "Technical writing"
+      },
+      {
+        "id": "skill-a9bf72260f3642b3a987",
+        "name": "Trading / markets"
+      },
+      {
+        "id": "skill-969545dde1584d882275",
+        "name": "TypeScript"
+      },
+      {
+        "id": "skill-67d8eee180496e0da2bd",
+        "name": "Vector databases"
+      },
+      {
+        "id": "skill-3a1e8c68361302f44723",
+        "name": "Verilog/SystemVerilog"
+      },
+      {
+        "id": "skill-bbe86a22a377ec127297",
+        "name": "iOS development"
+      }
+    ],
+    "sources": [
+      {
+        "asOf": "2026-10-16T12:53:22Z",
+        "commit": "7e415fe62d0597e9c6c806bf813b30f8e8c88c98",
+        "completeness": "unknown",
+        "id": "upstream:7e415fe62d0597e9c6c806bf813b30f8e8c88c98",
+        "kind": "upstream"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "partial",
+        "id": "local:AMZN",
+        "kind": "local"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "complete",
+        "id": "local:BF.B",
+        "kind": "local"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "complete",
+        "id": "local:COP",
+        "kind": "local"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "complete",
+        "id": "local:GL",
+        "kind": "local"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "complete",
+        "id": "local:HST",
+        "kind": "local"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "partial",
+        "id": "local:NVDA",
+        "kind": "local"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "partial",
+        "id": "local:V",
+        "kind": "local"
+      }
+    ]
+  },
+  "asOf": "2026-10-16T12:53:22Z",
+  "methods": {
+    "import": "csv-1",
+    "merge": "freshness-groups-1",
+    "pay": "csv-audited-typed-currency-1",
+    "nodeMaterializer": "native-parquet-1"
+  },
+  "limitations": [
+    "Cross-sectional, non-representative employer inventory; not the whole labor market.",
+    "Upstream statuses, dates and extracted skills are reported, not independently verified local observations.",
+    "No hiring-growth or employee-supply conclusions; one release is not a historical panel.",
+    "Unknown upstream text coverage makes skill denominators source-dependent.",
+    "Upstream CSV dollar signs also represent missing currencies; ambiguous ranges are excluded from pay comparisons.",
+    "Node release reuses sanitized local observations; live Node source collection is not scheduled."
+  ],
+  "files": [
+    {
+      "path": "postings.parquet",
+      "sha256": "e5e4ddaece24bafd53801f7c78bcde594ef2206b13d6867ffec23651fdbef792",
+      "bytes": 15987880
+    },
+    {
+      "path": "collection-history.json",
+      "sha256": "c7ca6b3d7b4ceee94f379888bc3acb7788aeb3cf32da89282eb01b38e93d23dc",
+      "bytes": 1806
+    }
+  ],
+  "eligiblePayByMode": {
+    "combined": 28246,
+    "upstream": 28246,
+    "local": 3
+  },
+  "collection": {
+    "counts": {
+      "postings": 92,
+      "employers": 7
+    },
+    "sources": [
+      {
+        "asOf": "2026-10-16T12:53:22Z",
+        "commit": "7e415fe62d0597e9c6c806bf813b30f8e8c88c98",
+        "completeness": "unknown",
+        "id": "upstream:7e415fe62d0597e9c6c806bf813b30f8e8c88c98",
+        "kind": "upstream"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "partial",
+        "id": "local:AMZN",
+        "kind": "local"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "complete",
+        "id": "local:BF.B",
+        "kind": "local"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "complete",
+        "id": "local:COP",
+        "kind": "local"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "complete",
+        "id": "local:GL",
+        "kind": "local"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "complete",
+        "id": "local:HST",
+        "kind": "local"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "partial",
+        "id": "local:NVDA",
+        "kind": "local"
+      },
+      {
+        "asOf": "2026-10-16",
+        "commit": null,
+        "completeness": "partial",
+        "id": "local:V",
+        "kind": "local"
+      }
+    ],
+    "lastSnapshot": "2026-10-16",
+    "scheduled": false,
+    "runs": [
+      {
+        "company": "AMZN",
+        "runDate": "2026-10-16",
+        "status": "ok",
+        "collected": 10,
+        "siteTotal": 10000,
+        "inventoryStatus": "partial",
+        "engine": "legacy-python",
+        "kind": "historical-import"
+      },
+      {
+        "company": "BF.B",
+        "runDate": "2026-10-16",
+        "status": "ok",
+        "collected": 25,
+        "siteTotal": 25,
+        "inventoryStatus": "complete",
+        "engine": "legacy-python",
+        "kind": "historical-import"
+      },
+      {
+        "company": "COP",
+        "runDate": "2026-10-16",
+        "status": "ok",
+        "collected": 4,
+        "siteTotal": 4,
+        "inventoryStatus": "complete",
+        "engine": "legacy-python",
+        "kind": "historical-import"
+      },
+      {
+        "company": "GL",
+        "runDate": "2026-10-16",
+        "status": "ok",
+        "collected": 28,
+        "siteTotal": 28,
+        "inventoryStatus": "complete",
+        "engine": "legacy-python",
+        "kind": "historical-import"
+      },
+      {
+        "company": "HST",
+        "runDate": "2026-10-16",
+        "status": "ok",
+        "collected": 5,
+        "siteTotal": 5,
+        "inventoryStatus": "complete",
+        "engine": "legacy-python",
+        "kind": "historical-import"
+      },
+      {
+        "company": "NVDA",
+        "runDate": "2026-10-16",
+        "status": "ok",
+        "collected": 10,
+        "siteTotal": 2000,
+        "inventoryStatus": "partial",
+        "engine": "legacy-python",
+        "kind": "historical-import"
+      },
+      {
+        "company": "V",
+        "runDate": "2026-10-16",
+        "status": "ok",
+        "collected": 10,
+        "siteTotal": 826,
+        "inventoryStatus": "partial",
+        "engine": "legacy-python",
+        "kind": "historical-import"
+      }
+    ],
+    "limitations": [
+      "No Node collector has run. Imported snapshot metadata is not a collection-run ledger.",
+      "Existing Python collection adapters are not automatically supported by this separate Node application."
+    ]
+  }
+}

@@ -1,0 +1,843 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "release.schema.json",
+  "$defs": {
+    "location": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "region": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "precision": {
+          "type": "string",
+          "enum": [
+            "country",
+            "region",
+            "city",
+            "unknown"
+          ]
+        },
+        "primary": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "country",
+        "region",
+        "city",
+        "precision",
+        "primary"
+      ],
+      "additionalProperties": false
+    },
+    "pay": {
+      "type": "object",
+      "properties": {
+        "low": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "high": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "currency": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "period": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "annualLow": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "annualHigh": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "valid": {
+          "type": "boolean"
+        },
+        "flags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "low",
+        "high",
+        "currency",
+        "period",
+        "annualLow",
+        "annualHigh",
+        "valid",
+        "flags"
+      ],
+      "additionalProperties": false
+    },
+    "posting": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "companyId": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "sourceUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "occupationId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "level": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "employmentType": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "arrangement": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "Remote",
+            "Hybrid",
+            "On-site",
+            null
+          ]
+        },
+        "degree": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "equivalentExperience": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "experienceYears": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/location"
+          }
+        },
+        "skillIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "licenseIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "pay": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/pay"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sourcePostedDate": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dateBasis": {
+          "type": "string",
+          "enum": [
+            "source",
+            "upstream_normalized",
+            "unknown"
+          ]
+        },
+        "firstObservedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastObservedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hasDescription": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "availability": {
+          "type": "string",
+          "enum": [
+            "local_observed",
+            "upstream_reported_open",
+            "possibly_closed",
+            "closed",
+            "unverified"
+          ]
+        },
+        "availabilityAsOf": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "availabilitySourceId": {
+          "type": "string"
+        },
+        "sourceIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "quality": {
+          "type": "object",
+          "properties": {
+            "completeness": {
+              "type": "string",
+              "enum": [
+                "complete",
+                "partial",
+                "unknown"
+              ]
+            },
+            "flags": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
+            "conflictGroups": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "completeness",
+            "flags",
+            "conflictGroups"
+          ],
+          "additionalProperties": false
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "location": {
+              "type": "string"
+            },
+            "pay": {
+              "type": "string"
+            },
+            "skills": {
+              "type": "string"
+            },
+            "qualifications": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "date",
+            "location",
+            "pay",
+            "skills",
+            "qualifications"
+          ],
+          "additionalProperties": false
+        },
+        "fieldProvenance": {
+          "type": "object",
+          "properties": {
+            "occupationId": {
+              "type": "string"
+            },
+            "level": {
+              "type": "string"
+            },
+            "employmentType": {
+              "type": "string"
+            },
+            "arrangement": {
+              "type": "string"
+            },
+            "degree": {
+              "type": "string"
+            },
+            "equivalentExperience": {
+              "type": "string"
+            },
+            "experienceYears": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "companyId",
+        "title",
+        "sourceUrl",
+        "occupationId",
+        "level",
+        "employmentType",
+        "arrangement",
+        "degree",
+        "equivalentExperience",
+        "experienceYears",
+        "locations",
+        "skillIds",
+        "licenseIds",
+        "pay",
+        "sourcePostedDate",
+        "dateBasis",
+        "firstObservedAt",
+        "lastObservedAt",
+        "hasDescription",
+        "availability",
+        "availabilityAsOf",
+        "availabilitySourceId",
+        "sourceIds",
+        "quality",
+        "provenance",
+        "fieldProvenance"
+      ],
+      "additionalProperties": false
+    },
+    "shard": {
+      "type": "object",
+      "properties": {
+        "sourceMode": {
+          "type": "string",
+          "enum": [
+            "combined",
+            "upstream",
+            "local"
+          ]
+        },
+        "postings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/posting"
+          },
+          "maxItems": 5000
+        }
+      },
+      "required": [
+        "sourceMode",
+        "postings"
+      ],
+      "additionalProperties": false
+    },
+    "company": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "sector": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "careerUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "sector",
+        "careerUrl"
+      ],
+      "additionalProperties": false
+    },
+    "companies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/company"
+      }
+    },
+    "taxonomy": {
+      "type": "object",
+      "properties": {
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "family": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "family"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "licenses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "occupations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "skills",
+        "licenses",
+        "occupations"
+      ],
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "upstream",
+            "local"
+          ]
+        },
+        "asOf": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "commit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "completeness": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "partial",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "asOf",
+        "commit",
+        "completeness"
+      ],
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "modeSummary": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "companies": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "availability": {
+          "type": "object",
+          "properties": {
+            "local_observed": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "upstream_reported_open": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "possibly_closed": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "closed": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unverified": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "local_observed",
+            "upstream_reported_open",
+            "possibly_closed",
+            "closed",
+            "unverified"
+          ],
+          "additionalProperties": false
+        },
+        "withValidPay": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "withAnalyzedText": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unknownText": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "count",
+        "companies",
+        "availability",
+        "withValidPay",
+        "withAnalyzedText",
+        "unknownText"
+      ],
+      "additionalProperties": false
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "sourceModes": {
+          "type": "object",
+          "properties": {
+            "combined": {
+              "$ref": "#/$defs/modeSummary"
+            },
+            "upstream": {
+              "$ref": "#/$defs/modeSummary"
+            },
+            "local": {
+              "$ref": "#/$defs/modeSummary"
+            }
+          },
+          "required": [
+            "combined",
+            "upstream",
+            "local"
+          ],
+          "additionalProperties": false
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "sourceModes",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "manifest": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": "2.0.0",
+          "type": "string"
+        },
+        "datasetVersion": {
+          "type": "string"
+        },
+        "builtAt": {
+          "type": "string"
+        },
+        "inputReleases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "commit": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "asOf": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "sha256": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "commit",
+              "asOf",
+              "sha256"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "methods": {
+          "type": "object",
+          "properties": {
+            "import": {
+              "type": "string"
+            },
+            "merge": {
+              "type": "string"
+            },
+            "pay": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "import",
+            "merge",
+            "pay"
+          ],
+          "additionalProperties": false
+        },
+        "counts": {
+          "type": "object",
+          "properties": {
+            "upstream": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "local": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "combined": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "overlap": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "rejected": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "upstream",
+            "local",
+            "combined",
+            "overlap",
+            "rejected"
+          ],
+          "additionalProperties": false
+        },
+        "localEvidenceAvailable": {
+          "type": "boolean"
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string"
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "recordCount": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "postings",
+                  "companies",
+                  "taxonomy",
+                  "sources",
+                  "summary"
+                ]
+              },
+              "sourceMode": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "combined",
+                  "upstream",
+                  "local",
+                  null
+                ]
+              }
+            },
+            "required": [
+              "path",
+              "sha256",
+              "bytes",
+              "recordCount",
+              "kind",
+              "sourceMode"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "datasetVersion",
+        "builtAt",
+        "inputReleases",
+        "methods",
+        "counts",
+        "localEvidenceAvailable",
+        "files"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

@@ -24,3 +24,12 @@ frontend/dist/
 .env
 .env.*
 !.env.example
+
+# V2.5 Node tooling and private operational state
+node25/node_modules/
+node25/dist/
+node25/test-results/
+node25/playwright-report/
+node25/.vercel/
+node25/.env*
+!node25/.env.example

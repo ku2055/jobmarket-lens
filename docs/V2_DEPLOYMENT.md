@@ -35,8 +35,9 @@ feature-branch pushes create previews; they do not automatically replace this pr
 Merge and production promotion are separate release actions.
 
 For local CLI operations use the repository root and explicitly select the project, because its
-configured root is already `frontend`. The root `.vercelignore` permits only the frontend source;
-both ignore files exclude dependencies, compiled output, browser reports and local environment files.
+configured root is already `frontend`. At the initial V2 launch, the root `.vercelignore` permitted only the frontend source;
+the later V2.5 branch also permits its separate `node25/` application root.
+Both application ignore files exclude dependencies, compiled output, browser reports and local environment files.
 A CLI dry run found 81 source/public files (282,397,580 bytes), with private storage excluded.
 Do not commit CLI-created `.vercel/` or `.env.local` files.
 

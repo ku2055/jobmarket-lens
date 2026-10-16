@@ -32,6 +32,15 @@ Use Node 22.20.0. See the [V2 build report](docs/V2_BUILD_REPORT.md) for validat
 release gates, and the [data pipeline](docs/V2_DATA_PIPELINE.md) for reproducible source intake.
 V3 employee/profile integration remains outside this implementation.
 
+## V2.5 Node research canvas
+
+A separate [Node.js application](node25/README.md) adds a linked research canvas, server-side DuckDB
+queries, paged evidence, a protected owner console and a new logo/style system. It is live separately at
+https://lens.feedos.si; V2 remains at https://jobmarket.feedos.si. Visitor reporting uses self-hosted,
+open-source Umami; connecting persistent analytics hosting is separate from app deployment.
+See the [build/deployment report](docs/V2_5_BUILD_REPORT.md),
+[execution/admin design](docs/V2_5_EXECUTION_AND_ADMIN.md) and [brand guide](docs/V2_5_BRAND_GUIDE.md).
+
 ## Start a bounded pilot
 
 Requires Python 3.10+, `requests`, and `beautifulsoup4`. The script creates a virtual environment
@@ -178,3 +187,9 @@ accessed the author's private repo has been removed. No recurring collection is 
 the deployed site remains a limited preview until explicitly refreshed.
 
 © 2026 Yimi Zhao. All rights reserved. Job postings remain the property of the companies that published them.
+
+## V2.5.1 spatial analysis design
+
+[Three.js / spatial-analysis proposal](docs/V2_5_1_3D_ANALYSIS_DESIGN.md) and its
+[concept board](docs/v2-5-1-spatial-analysis.svg) explore demand shelves, evidence coverage and
+focused skill relationships. This is design only; both deployed versions remain unchanged.

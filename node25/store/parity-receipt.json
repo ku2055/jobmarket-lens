@@ -1,0 +1,45 @@
+{
+  "audit": "canonical-json-lines-sorted-id-1",
+  "checkedAt": "2026-10-16T17:24:17.262Z",
+  "nodeVersion": "v22.20.0",
+  "sourceCommit": "7e415fe62d0597e9c6c806bf813b30f8e8c88c98",
+  "sourceDatasetVersion": "9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28",
+  "originalInputSha256": {
+    "Job postings.csv": "7063958088835db11499eb36858d54329fb003d2dba711565e396a90fa82fba6",
+    "data source.csv": "48a6c193b54601dafe9f34c18d7699177e08671e35b526d1cb248a67bcfde02e",
+    "index.html": "bc6a3b4ec490615c39ea31298deb41ecc925021e0e160afadf2d25e5b947a6d3"
+  },
+  "counts": {
+    "combined": 86190,
+    "upstream": 86144,
+    "local": 92,
+    "overlap": 46,
+    "rejected": 0
+  },
+  "eligiblePayByMode": {
+    "combined": 28246,
+    "upstream": 28246,
+    "local": 3
+  },
+  "modes": {
+    "combined": {
+      "records": 86190,
+      "mismatches": 0,
+      "nodeCanonicalRowsSha256": "2c25ad97e00fd3a03fe2cff97e65bd512cdc3d2f80b1e59c0d5a412368beee32",
+      "v2CanonicalRowsSha256": "2c25ad97e00fd3a03fe2cff97e65bd512cdc3d2f80b1e59c0d5a412368beee32"
+    },
+    "upstream": {
+      "records": 86144,
+      "mismatches": 0,
+      "nodeCanonicalRowsSha256": "ecafe9084952d5fdd98efc1a28c563a0a5d9d13cc12666c9e3f4611d0f2f13bf",
+      "v2CanonicalRowsSha256": "ecafe9084952d5fdd98efc1a28c563a0a5d9d13cc12666c9e3f4611d0f2f13bf"
+    },
+    "local": {
+      "records": 92,
+      "mismatches": 0,
+      "nodeCanonicalRowsSha256": "7d0b1a5bf37070c7cecaa80207bd3c540dfa8e54b18b6ac8ded60f41cc4bcefb",
+      "v2CanonicalRowsSha256": "7d0b1a5bf37070c7cecaa80207bd3c540dfa8e54b18b6ac8ded60f41cc4bcefb"
+    }
+  },
+  "mismatches": 0
+}
