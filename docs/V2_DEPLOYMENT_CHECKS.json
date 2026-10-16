@@ -1,0 +1,121 @@
+{
+  "checkedOn": "2026-10-16",
+  "productionUrl": "https://jobmarket.feedos.si",
+  "sourceCommit": "1b0f7d28067c5030aed1a169ce937a7fbf8fa3d2",
+  "deploymentId": "dpl_37dWaAV5rvYnNWu2SJKcsVYgqN6E",
+  "artifacts": {
+    "url": "https://jobmarket.feedos.si",
+    "datasetVersion": "9bd992ecffd1bb6fad5a0715ca8c38a75b1bb4416df342c49abbb02a38b8de28",
+    "filesVerified": 41,
+    "decodedBytesVerified": 281992046,
+    "counts": {
+      "combined": 86190,
+      "upstream": 86144,
+      "local": 92
+    },
+    "elapsedSeconds": 6.7,
+    "hashesMatch": true,
+    "immutableHeaders": true,
+    "exactUnionAndOverlap": true,
+    "remoteManifestEqualsLocal": true
+  },
+  "browserInspection": {
+    "checkedAt": "2026-10-16T17:03:18.492Z",
+    "host": "https://jobmarket.feedos.si, Vercel production",
+    "browser": "headless Chromium, 1440x1000 / 390x844",
+    "network": "public HTTPS, unthrottled cloud workstation",
+    "summaryMs": 987,
+    "readyMs": 7442,
+    "workerMessages": [
+      {
+        "type": "init",
+        "ms": 11.300000190734863,
+        "error": null
+      },
+      {
+        "type": "query",
+        "ms": 5859.800000190735,
+        "error": null
+      },
+      {
+        "type": "query",
+        "ms": 191.89999961853027,
+        "error": null
+      },
+      {
+        "type": "query",
+        "ms": 96.29999923706055,
+        "error": null
+      },
+      {
+        "type": "query",
+        "ms": 182.69999980926514,
+        "error": null
+      },
+      {
+        "type": "query",
+        "ms": 38.10000038146973,
+        "error": null
+      },
+      {
+        "type": "query",
+        "ms": 78.10000038146973,
+        "error": null
+      },
+      {
+        "type": "export",
+        "ms": 5.90000057220459,
+        "error": null
+      }
+    ],
+    "errors": [],
+    "mobileHorizontalOverflow": false,
+    "limitations": [
+      "Cloud workstation/browser timing; not a physical mobile CPU/network benchmark.",
+      "Worker query response includes initialization/loading on first request.",
+      "Actual Vercel deployment; human task study not performed."
+    ]
+  },
+  "playwright": {
+    "startTime": "2026-10-16T17:04:54.283Z",
+    "duration": 52801.231,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "csv": {
+    "rows": 92,
+    "uniqueIds": 92,
+    "equalsLocalContributorSet": true,
+    "validFieldBoundaries": true
+  },
+  "routing": {
+    "httpsCertificateValid": true,
+    "workspaceRoutes200": [
+      "/",
+      "/explore",
+      "/compare",
+      "/skills",
+      "/evidence",
+      "/explore/"
+    ],
+    "missingPaths404": [
+      "/data/does-not-exist.json",
+      "/assets/does-not-exist.js",
+      "/data/lens.db"
+    ],
+    "manifestRevalidates": true
+  },
+  "cliUploadDryRun": {
+    "files": 81,
+    "bytes": 282397580,
+    "onlyFrontendUploaded": true,
+    "privateDataEnvironmentBuildOutputAndDependenciesExcluded": true
+  },
+  "limitations": [
+    "No physical mobile/network or whole-browser memory benchmark.",
+    "Formative human usability sessions not performed.",
+    "Paired app/data rollback documented but not exercised."
+  ]
+}

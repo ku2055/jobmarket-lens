@@ -1,7 +1,7 @@
 # V2 build and verification report
 
 Date: 2026-10-16. Implementation branch: `feat/v2-workspace`.
-Status: **working local review candidate; not deployed or production accepted**.
+Status: **deployed for review at https://jobmarket.feedos.si; broader acceptance gates remain**.
 [V2 specification](V2_DESIGN_SPEC.md) remains the release target. V3 and the proposed
 [V2.5 Node alternative](V2_5_NODE_DATA_VIRTUALIZATION_DESIGN.md) are separate design efforts.
 
@@ -22,7 +22,8 @@ for reproduction commands, hashes, merge rules and currency safeguards.
 
 V1's `web/` files and Pages deployment workflow are unchanged. V2 has separate build/check configuration
 and a Vercel configuration with explicit workspace rewrites, immutable release caching and genuine
-missing-data behavior by filesystem routing. No Vercel project/account was provisioned.
+missing-data behavior by filesystem routing. The separate Vercel project is now live; see the
+[deployment record](V2_DEPLOYMENT.md) and [live checks](V2_DEPLOYMENT_CHECKS.json).
 
 ## Actual data release
 
@@ -103,10 +104,13 @@ Use Node 22.20.0. See [frontend instructions](../frontend/README.md).
 
 ## Remaining release gates
 
-The core local build is reviewable. Production release remains incomplete:
+The site is deployed for review. Live HTTPS, deep links, missing assets, cache headers, all 41 artifact
+hashes and all six browser scenarios passed on the production domain. The cloud browser displayed a
+summary in 987 ms and completed initial loading in 7.4 seconds; this is an unthrottled observation.
+Remaining acceptance work:
 
-- Actual Vercel account/project connection, deployed deep-link/missing-asset/cache checks, live payload
-  inspection and paired app/data rollback verification (AT14–AT15).
+- Exercise paired app/data rollback against a subsequent release (AT14–AT15); the initial production
+  deployment is recorded as the baseline, not a completed rollback test.
 - Named mobile hardware/network performance and memory measurements; broader workload coverage.
 - The specified 5–8 formative user sessions and task-completion evidence. Automated browser and axe checks
   are useful evidence but do not establish full accessibility or substitute for those sessions.

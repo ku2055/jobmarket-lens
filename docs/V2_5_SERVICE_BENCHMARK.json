@@ -1,0 +1,434 @@
+{
+  "checkedAt": "2026-10-16T17:28:14.105Z",
+  "host": "http://127.0.0.1:4175",
+  "datasetVersion": "2d18d6d0d99a370a7ebc6a7d0d637cbca917682b504110427727ba76a339041b",
+  "method": "Fixed real-data HTTP workload; catalog initializes native engine before timing. Warm cache rounds at concurrency 1/5/10; not a cold-engine, physical mobile or browser-memory comparison.",
+  "workloads": [
+    {
+      "name": "default",
+      "view": "overview",
+      "sourceMode": "combined",
+      "filter": {}
+    },
+    {
+      "name": "all",
+      "view": "overview",
+      "sourceMode": "combined",
+      "filter": {
+        "availability": "all"
+      }
+    },
+    {
+      "name": "employer",
+      "view": "overview",
+      "sourceMode": "combined",
+      "filter": {
+        "companyIds": [
+          "AMZN"
+        ]
+      }
+    },
+    {
+      "name": "country",
+      "view": "overview",
+      "sourceMode": "combined",
+      "filter": {
+        "countries": [
+          "United States"
+        ]
+      }
+    },
+    {
+      "name": "local",
+      "view": "overview",
+      "sourceMode": "local",
+      "filter": {
+        "availability": "all"
+      }
+    },
+    {
+      "name": "page",
+      "view": "records",
+      "sourceMode": "combined",
+      "filter": {},
+      "page": {
+        "offset": 0,
+        "limit": 100
+      }
+    },
+    {
+      "name": "skills",
+      "view": "skills",
+      "sourceMode": "combined",
+      "filter": {}
+    },
+    {
+      "name": "compare",
+      "view": "compare",
+      "sourceMode": "combined",
+      "filter": {},
+      "cohortA": {
+        "companyIds": [
+          "AMZN"
+        ]
+      },
+      "cohortB": {
+        "companyIds": [
+          "NVDA"
+        ]
+      }
+    }
+  ],
+  "rounds": [
+    {
+      "concurrency": 1,
+      "requests": 8,
+      "p50": 280,
+      "p95": 1644,
+      "failures": 0,
+      "results": [
+        {
+          "name": "default",
+          "status": 200,
+          "ms": 1098,
+          "bytes": 14921
+        },
+        {
+          "name": "all",
+          "status": 200,
+          "ms": 344,
+          "bytes": 14716
+        },
+        {
+          "name": "employer",
+          "status": 200,
+          "ms": 159,
+          "bytes": 7979
+        },
+        {
+          "name": "country",
+          "status": 200,
+          "ms": 280,
+          "bytes": 13473
+        },
+        {
+          "name": "local",
+          "status": 200,
+          "ms": 66,
+          "bytes": 9130
+        },
+        {
+          "name": "page",
+          "status": 200,
+          "ms": 15,
+          "bytes": 174906
+        },
+        {
+          "name": "skills",
+          "status": 200,
+          "ms": 1644,
+          "bytes": 9967
+        },
+        {
+          "name": "compare",
+          "status": 200,
+          "ms": 1279,
+          "bytes": 17761
+        }
+      ]
+    },
+    {
+      "concurrency": 5,
+      "requests": 15,
+      "p50": 12,
+      "p95": 25,
+      "failures": 0,
+      "results": [
+        {
+          "name": "all",
+          "status": 200,
+          "ms": 9,
+          "bytes": 14714
+        },
+        {
+          "name": "employer",
+          "status": 200,
+          "ms": 10,
+          "bytes": 7977
+        },
+        {
+          "name": "default",
+          "status": 200,
+          "ms": 14,
+          "bytes": 14918
+        },
+        {
+          "name": "country",
+          "status": 200,
+          "ms": 14,
+          "bytes": 13471
+        },
+        {
+          "name": "local",
+          "status": 200,
+          "ms": 17,
+          "bytes": 9129
+        },
+        {
+          "name": "page",
+          "status": 200,
+          "ms": 14,
+          "bytes": 174906
+        },
+        {
+          "name": "default",
+          "status": 200,
+          "ms": 12,
+          "bytes": 14918
+        },
+        {
+          "name": "all",
+          "status": 200,
+          "ms": 10,
+          "bytes": 14714
+        },
+        {
+          "name": "employer",
+          "status": 200,
+          "ms": 11,
+          "bytes": 7978
+        },
+        {
+          "name": "skills",
+          "status": 200,
+          "ms": 25,
+          "bytes": 9964
+        },
+        {
+          "name": "compare",
+          "status": 200,
+          "ms": 25,
+          "bytes": 17758
+        },
+        {
+          "name": "country",
+          "status": 200,
+          "ms": 12,
+          "bytes": 13472
+        },
+        {
+          "name": "local",
+          "status": 200,
+          "ms": 10,
+          "bytes": 9130
+        },
+        {
+          "name": "page",
+          "status": 200,
+          "ms": 8,
+          "bytes": 174907
+        },
+        {
+          "name": "skills",
+          "status": 200,
+          "ms": 6,
+          "bytes": 9965
+        }
+      ]
+    },
+    {
+      "concurrency": 10,
+      "requests": 30,
+      "p50": 21,
+      "p95": 45,
+      "failures": 0,
+      "results": [
+        {
+          "name": "default",
+          "status": 200,
+          "ms": 8,
+          "bytes": 14919
+        },
+        {
+          "name": "all",
+          "status": 200,
+          "ms": 12,
+          "bytes": 14715
+        },
+        {
+          "name": "employer",
+          "status": 200,
+          "ms": 13,
+          "bytes": 7978
+        },
+        {
+          "name": "country",
+          "status": 200,
+          "ms": 14,
+          "bytes": 13472
+        },
+        {
+          "name": "local",
+          "status": 200,
+          "ms": 15,
+          "bytes": 9130
+        },
+        {
+          "name": "page",
+          "status": 200,
+          "ms": 21,
+          "bytes": 174907
+        },
+        {
+          "name": "employer",
+          "status": 200,
+          "ms": 21,
+          "bytes": 7979
+        },
+        {
+          "name": "country",
+          "status": 200,
+          "ms": 19,
+          "bytes": 13473
+        },
+        {
+          "name": "local",
+          "status": 200,
+          "ms": 19,
+          "bytes": 9131
+        },
+        {
+          "name": "skills",
+          "status": 200,
+          "ms": 32,
+          "bytes": 9965
+        },
+        {
+          "name": "compare",
+          "status": 200,
+          "ms": 36,
+          "bytes": 17759
+        },
+        {
+          "name": "default",
+          "status": 200,
+          "ms": 37,
+          "bytes": 14919
+        },
+        {
+          "name": "all",
+          "status": 200,
+          "ms": 38,
+          "bytes": 14715
+        },
+        {
+          "name": "compare",
+          "status": 200,
+          "ms": 19,
+          "bytes": 17760
+        },
+        {
+          "name": "default",
+          "status": 200,
+          "ms": 15,
+          "bytes": 14920
+        },
+        {
+          "name": "all",
+          "status": 200,
+          "ms": 15,
+          "bytes": 14716
+        },
+        {
+          "name": "employer",
+          "status": 200,
+          "ms": 16,
+          "bytes": 7979
+        },
+        {
+          "name": "page",
+          "status": 200,
+          "ms": 44,
+          "bytes": 174908
+        },
+        {
+          "name": "skills",
+          "status": 200,
+          "ms": 53,
+          "bytes": 9966
+        },
+        {
+          "name": "local",
+          "status": 200,
+          "ms": 33,
+          "bytes": 9131
+        },
+        {
+          "name": "page",
+          "status": 200,
+          "ms": 36,
+          "bytes": 174908
+        },
+        {
+          "name": "skills",
+          "status": 200,
+          "ms": 36,
+          "bytes": 9966
+        },
+        {
+          "name": "compare",
+          "status": 200,
+          "ms": 35,
+          "bytes": 17760
+        },
+        {
+          "name": "default",
+          "status": 200,
+          "ms": 34,
+          "bytes": 14920
+        },
+        {
+          "name": "country",
+          "status": 200,
+          "ms": 45,
+          "bytes": 13473
+        },
+        {
+          "name": "employer",
+          "status": 200,
+          "ms": 32,
+          "bytes": 7979
+        },
+        {
+          "name": "country",
+          "status": 200,
+          "ms": 19,
+          "bytes": 13473
+        },
+        {
+          "name": "local",
+          "status": 200,
+          "ms": 11,
+          "bytes": 9131
+        },
+        {
+          "name": "page",
+          "status": 200,
+          "ms": 12,
+          "bytes": 174908
+        },
+        {
+          "name": "all",
+          "status": 200,
+          "ms": 39,
+          "bytes": 14716
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Origin initialized before timing; first round may contain uncached queries, later rounds largely cache hits.",
+    "Local cloud workstation; not public production p95, physical mobile or peak-memory measurement.",
+    "Eight named requests; not comprehensive workload coverage or a concurrency SLA."
+  ]
+}

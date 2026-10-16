@@ -1,6 +1,6 @@
 # JobMarket Lens V2
 
-JobMarket Lens V2 is a separate React/Vite application. The existing V1 site remains deployed from `web/` through GitHub Pages; V2 is built from this directory and is intended for Vercel. A V2 change should not replace the V1 Pages artifact.
+JobMarket Lens V2 is a separate React/Vite application. The existing V1 site remains deployed from `web/` through GitHub Pages; V2 is built from this directory and is deployed on Vercel at https://jobmarket.feedos.si. A V2 change should not replace the V1 Pages artifact.
 
 ## Local development
 
@@ -32,7 +32,7 @@ The available package scripts are:
 - `npm run build` — validate public data, type-check, run unit tests, build to `dist/`, then validate the built output.
 - `npm run preview` — serve the compiled app locally.
 
-The Vercel project root is `frontend/`; its build command is `npm run build` and its output directory is `dist/`, as configured in `vercel.json`. Build and preview commands do not verify an actual Vercel deployment or protected preview configuration.
+The Vercel project root is `frontend/`; its build command is `npm run build` and its output directory is `dist/`, as configured in `vercel.json`. The [deployment record](../docs/V2_DEPLOYMENT.md) records verified live behavior. Local build/preview commands alone do not verify hosting or preview protection.
 
 ## Data and privacy boundary
 

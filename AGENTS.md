@@ -11,8 +11,13 @@
 
 The user has authorized implementing V2 as a separate version on `feat/v2-workspace`. Use the package
 order and ownership below. V3 remains design/research only
-under the existing user instruction until that scope is explicitly changed. V2.5 is a separate Node.js
-comparison design requested for review only; do not implement it without a later instruction. A request to implement V2
+under the existing user instruction until that scope is explicitly changed. V2.5 is now authorized for implementation as a separate Node.js
+comparison application on `feat/v2.5-node-canvas`, including protected administration, aggregate
+visitor analytics, collection statistics, logo/style design and a separate deployment. Preserve V2
+at `jobmarket.feedos.si`; V2.5 targets `lens.feedos.si`. The video team may submit a future PR;
+reserve integration boundaries but do not implement video features now. V2.5.1 is authorized for
+design/research of 3D analysis only on `design/v2.5.1-spatial-analysis`; do not install 3D dependencies,
+implement new runtime lenses or replace deployments without a later implementation instruction. A request to implement V2
 does not authorize V3 API integration, profile collection or purchases.
 
 Keep the existing V1 GitHub Pages deployment intact while V2 is built separately. Vercel is the V2

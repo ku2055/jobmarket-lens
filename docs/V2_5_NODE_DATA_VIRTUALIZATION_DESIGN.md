@@ -1,8 +1,9 @@
 # V2.5: Node.js data virtualization and visual analysis
 
-Design proposal for review, researched 2026-10-16. **No V2.5 implementation, infrastructure provisioning,
-package installation or purchase is authorized by this document.** V2 implementation remains separate;
-V3 employee/profile integration is excluded.
+Design researched 2026-10-16. The user subsequently authorized V2.5 implementation and separate
+deployment, including admin and visual identity. V2 stays live independently; V3 employee/profile
+integration remains excluded. See the [execution addendum](V2_5_EXECUTION_AND_ADMIN.md) for implementation
+decisions that supersede proposal-only gates below. No paid subscription or provider purchase is authorized.
 
 ## Recommendation and scope
 
