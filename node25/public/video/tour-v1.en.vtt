@@ -1,0 +1,157 @@
+WEBVTT
+
+00:00:00.600 --> 00:00:02.392
+This is JobMarket Lens,
+
+00:00:02.392 --> 00:00:04.164
+the research canvas.
+
+00:00:04.164 --> 00:00:06.842
+82,000 job postings from S&P 500
+
+00:00:06.842 --> 00:00:09.239
+career sites.
+
+00:00:09.239 --> 00:00:10.063
+Its promise:
+
+00:00:10.063 --> 00:00:11.093
+see the demand,
+
+00:00:11.093 --> 00:00:12.475
+then check the evidence.
+
+00:00:12.475 --> 00:00:13.765
+Here's how,
+
+00:00:13.765 --> 00:00:15.001
+in 90 seconds.
+
+00:00:14.370 --> 00:00:16.761
+Everything starts from one question.
+
+00:00:16.761 --> 00:00:17.987
+The scope line tells
+
+00:00:17.987 --> 00:00:19.152
+you what you're looking at:
+
+00:00:19.152 --> 00:00:22.049
+a snapshot of reported and observed postings,
+
+00:00:22.049 --> 00:00:23.521
+not real-time vacancies.
+
+00:00:24.140 --> 00:00:28.681
+The demand landscape shows where roles meet employers.
+
+00:00:28.681 --> 00:00:29.974
+Select one cell,
+
+00:00:29.974 --> 00:00:32.728
+say computer and math at Amazon,
+
+00:00:32.728 --> 00:00:34.776
+and every panel follows.
+
+00:00:34.776 --> 00:00:37.186
+222 postings,
+
+00:00:37.186 --> 00:00:40.095
+with their pay ranges and locations.
+
+00:00:40.270 --> 00:00:41.494
+To compare,
+
+00:00:41.494 --> 00:00:43.421
+pick an occupation and
+
+00:00:43.421 --> 00:00:44.476
+pin it as view A.
+
+00:00:44.476 --> 00:00:46.071
+Then pick another,
+
+00:00:46.071 --> 00:00:46.596
+sales,
+
+00:00:46.596 --> 00:00:48.436
+and pin it as view B.
+
+00:00:49.040 --> 00:00:50.886
+Both views stay frozen,
+
+00:00:50.886 --> 00:00:51.929
+side by side.
+
+00:00:51.929 --> 00:00:55.055
+7,963 postings
+
+00:00:55.055 --> 00:00:57.642
+against 15,604.
+
+00:00:57.642 --> 00:01:00.087
+Every difference shows its counts.
+
+00:01:00.087 --> 00:01:02.171
+Python appears in 3,621
+
+00:01:02.171 --> 00:01:04.015
+tech postings,
+
+00:01:04.015 --> 00:01:06.164
+and 103 in sales.
+
+00:01:06.810 --> 00:01:10.507
+Skill connections reads the shared language of postings.
+
+00:01:10.507 --> 00:01:12.625
+Communication and data analysis
+
+00:01:12.625 --> 00:01:15.308
+appear together in 19,242
+
+00:01:15.308 --> 00:01:16.911
+of them.
+
+00:01:16.911 --> 00:01:18.497
+A mention is a clue,
+
+00:01:18.497 --> 00:01:19.727
+not a requirement.
+
+00:01:20.380 --> 00:01:21.992
+Evidence and sources shows
+
+00:01:21.992 --> 00:01:23.663
+what a selection can support:
+
+00:01:23.663 --> 00:01:25.433
+how much text was analyzed,
+
+00:01:25.433 --> 00:01:26.506
+what's unknown,
+
+00:01:26.506 --> 00:01:28.613
+and how many pay ranges are valid.
+
+00:01:28.950 --> 00:01:31.088
+Every number has an origin,
+
+00:01:31.088 --> 00:01:34.971
+from the pinned upstream snapshot to local observations.
+
+00:01:34.971 --> 00:01:37.712
+And inventory is not hiring growth.
+
+00:01:38.640 --> 00:01:40.493
+Found a useful view?
+
+00:01:40.493 --> 00:01:41.701
+Share the study,
+
+00:01:41.701 --> 00:01:44.834
+and anyone opens exactly the same question.
+
+00:01:44.834 --> 00:01:47.627
+Start at lens.feedos.si.
