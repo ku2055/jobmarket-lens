@@ -286,7 +286,8 @@ export default function SpatialLab() {
   }, [request]);
   useEffect(() => {
     const target = root.current;
-    const failed = () => {
+    const failed = (event: Event) => {
+      event.preventDefault();
       setView("2d");
       setRenderFailed(true);
       setNotice(
@@ -294,7 +295,13 @@ export default function SpatialLab() {
       );
     };
     target?.addEventListener("spatial-context-lost", failed);
-    return () => target?.removeEventListener("spatial-context-lost", failed);
+    // Context loss does not bubble. Capture it from the already mounted app
+    // before a lazy canvas's renderer/effects have finished initializing.
+    target?.addEventListener("webglcontextlost", failed, true);
+    return () => {
+      target?.removeEventListener("spatial-context-lost", failed);
+      target?.removeEventListener("webglcontextlost", failed, true);
+    };
   }, []);
   useEffect(() => {
     const listener = (event: KeyboardEvent) => {
