@@ -1,0 +1,3 @@
+import{z}from'zod';
+export const HistoryRunSchema=z.strictObject({company:z.string().min(1),runDate:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),status:z.enum(['ok','empty','blocked','error','not_applicable']),collected:z.number().int().nonnegative(),siteTotal:z.number().int().nonnegative().nullable(),inventoryStatus:z.enum(['complete','partial','unknown']),engine:z.literal('legacy-python'),kind:z.literal('historical-import')});
+export const HistorySchema=z.strictObject({schemaVersion:z.literal('2.5'),kind:z.literal('historical-import'),engine:z.literal('legacy-python'),scheduled:z.literal(false),runs:z.array(HistoryRunSchema)});

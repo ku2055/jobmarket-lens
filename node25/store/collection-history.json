@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "2.5",
+  "kind": "historical-import",
+  "engine": "legacy-python",
+  "scheduled": false,
+  "runs": [
+    {
+      "company": "AMZN",
+      "runDate": "2026-10-16",
+      "status": "ok",
+      "collected": 10,
+      "siteTotal": 10000,
+      "inventoryStatus": "partial",
+      "engine": "legacy-python",
+      "kind": "historical-import"
+    },
+    {
+      "company": "BF.B",
+      "runDate": "2026-10-16",
+      "status": "ok",
+      "collected": 25,
+      "siteTotal": 25,
+      "inventoryStatus": "complete",
+      "engine": "legacy-python",
+      "kind": "historical-import"
+    },
+    {
+      "company": "COP",
+      "runDate": "2026-10-16",
+      "status": "ok",
+      "collected": 4,
+      "siteTotal": 4,
+      "inventoryStatus": "complete",
+      "engine": "legacy-python",
+      "kind": "historical-import"
+    },
+    {
+      "company": "GL",
+      "runDate": "2026-10-16",
+      "status": "ok",
+      "collected": 28,
+      "siteTotal": 28,
+      "inventoryStatus": "complete",
+      "engine": "legacy-python",
+      "kind": "historical-import"
+    },
+    {
+      "company": "HST",
+      "runDate": "2026-10-16",
+      "status": "ok",
+      "collected": 5,
+      "siteTotal": 5,
+      "inventoryStatus": "complete",
+      "engine": "legacy-python",
+      "kind": "historical-import"
+    },
+    {
+      "company": "NVDA",
+      "runDate": "2026-10-16",
+      "status": "ok",
+      "collected": 10,
+      "siteTotal": 2000,
+      "inventoryStatus": "partial",
+      "engine": "legacy-python",
+      "kind": "historical-import"
+    },
+    {
+      "company": "V",
+      "runDate": "2026-10-16",
+      "status": "ok",
+      "collected": 10,
+      "siteTotal": 826,
+      "inventoryStatus": "partial",
+      "engine": "legacy-python",
+      "kind": "historical-import"
+    }
+  ]
+}
