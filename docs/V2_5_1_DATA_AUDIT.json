@@ -1,0 +1,71 @@
+{
+  "checkedAt": "2026-10-16T17:55:48.726Z",
+  "method": "Read-only native queries against hash-verified sanitized Node Parquet; no collection or projection computation.",
+  "all": {
+    "matched": 86190,
+    "employers": 311,
+    "analyzedText": 92,
+    "eligibleUsdPay": 28246,
+    "unknownCountry": 23711,
+    "unknownArrangement": 46916
+  },
+  "datasetVersion": "2d18d6d0d99a370a7ebc6a7d0d637cbca917682b504110427727ba76a339041b",
+  "open": {
+    "matched": 82851,
+    "employers": 311,
+    "analyzedText": 92,
+    "eligibleUsdPay": 27284,
+    "unknownCountry": 23145,
+    "unknownArrangement": 44903
+  },
+  "dimensions": {
+    "occupations": 23,
+    "levels": 8,
+    "arrangements": 4,
+    "noRecordedSkills": 1324
+  },
+  "levels": [
+    {
+      "label": "Unknown",
+      "count": 24192
+    },
+    {
+      "label": "Manager",
+      "count": 14045
+    },
+    {
+      "label": "Senior",
+      "count": 13977
+    },
+    {
+      "label": "Entry",
+      "count": 12873
+    },
+    {
+      "label": "Mid",
+      "count": 8325
+    },
+    {
+      "label": "Lead / Principal",
+      "count": 5979
+    },
+    {
+      "label": "Director & Executive",
+      "count": 3921
+    },
+    {
+      "label": "Intern",
+      "count": 2878
+    }
+  ],
+  "overlapAudit": {
+    "pairs": 46,
+    "rawStatusDifference": 46,
+    "normalizedStateDisagreement": 0,
+    "rawConflictGroups": {
+      "status": 46,
+      "location": 6,
+      "date": 7
+    }
+  }
+}

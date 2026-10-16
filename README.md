@@ -187,3 +187,9 @@ accessed the author's private repo has been removed. No recurring collection is 
 the deployed site remains a limited preview until explicitly refreshed.
 
 © 2026 Yimi Zhao. All rights reserved. Job postings remain the property of the companies that published them.
+
+## V2.5.1 spatial analysis design
+
+[Three.js / spatial-analysis proposal](docs/V2_5_1_3D_ANALYSIS_DESIGN.md) and its
+[concept board](docs/v2-5-1-spatial-analysis.svg) explore demand shelves, evidence coverage and
+focused skill relationships. This is design only; both deployed versions remain unchanged.
